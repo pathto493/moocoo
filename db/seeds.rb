@@ -30,7 +30,7 @@ def generate_youtube_video
   query = 'makeup'
   type = 'video'
   key = ENV['YOUTUBE_API_KEY']
-  url_query = "#{url}?key=#{key}&q=#{query}&type=#{type}"
+  url_query = "#{url}?key=#{key}&q=#{query}&type=#{type}&part=snippet"
 
   json = open(url_query).read
   parsed_json = JSON.parse(json)
@@ -60,12 +60,12 @@ puts "Call Youtube API to generate videos 🎥"
 videos = generate_youtube_video
 
 puts "Generate Videos 🎥"
-(0...10).each do |i|
+(0...5).each do |i|
   youtube_video_id = videos[i]['id']['videoId']
   video_url = "https://www.youtube.com/embed/#{youtube_video_id}"
   video = Video.new(
-    title: Faker::Restaurant.name,
-    description: Faker::Restaurant.description,
+    title: videos[i]['snippet']['title'],
+    description: videos[i]['snippet']['description'],
     video_url: video_url,
     )
   puts "Create Video - #{i + 1}"
