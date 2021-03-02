@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_02_044219) do
+ActiveRecord::Schema.define(version: 2021_03_02_044624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,10 @@ ActiveRecord::Schema.define(version: 2021_03_02_044219) do
   create_table "annotations", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "video_id"
+    t.bigint "product_id"
+    t.index ["product_id"], name: "index_annotations_on_product_id"
+    t.index ["video_id"], name: "index_annotations_on_video_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -59,6 +63,8 @@ ActiveRecord::Schema.define(version: 2021_03_02_044219) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "annotations", "products"
+  add_foreign_key "annotations", "videos"
   add_foreign_key "orders", "products"
   add_foreign_key "orders", "users"
 end
