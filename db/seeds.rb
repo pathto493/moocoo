@@ -78,7 +78,8 @@ puts "Create Users 🙋‍♂️"
 
   selected_products = []
   puts "Create Orders 🧾"
-  3.times do
+  3.times do |j|
+    puts "Create Order - #{j + 1}"
     selected_products, chosen_product = generate_product(selected_products)
     Order.create!(
       quantity: (1..5).to_a.sample,
