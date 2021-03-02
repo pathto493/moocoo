@@ -1,3 +1,7 @@
+require 'open-uri'
+require 'json'
+require 'pry-byebug'
+
 puts "Start seeding 🍑"
 
 puts "Cleaning Orders 🧹"
@@ -21,6 +25,18 @@ def generate_pexel_video
   # [video_url, video_type]
 end
 
+def generate_youtube_video
+  url = 'https://www.googleapis.com/youtube/v3/search'
+  query = 'makeup'
+  type = 'video'
+  key = ENV['YOUTUBE_API_KEY']
+  url_query = "#{url}?key=#{key}&q=#{query}&type=#{type}"
+
+  json = open(url_query).read
+  parsed_json = JSON.parse(json)
+  videos = parsed_json['items']
+end
+
 def generate_product(selected_products)
     chosen_product = Product.all.sample
     while selected_products.include?(chosen_product)
@@ -40,16 +56,18 @@ puts "Create Products 💄"
   puts "Create Product - #{i + 1}"
 end
 
-puts "Call Pexel API to generate videos 🎥"
-videos = generate_pexel_video
+puts "Call Youtube API to generate videos 🎥"
+videos = generate_youtube_video
 
 puts "Generate Videos 🎥"
 (0...10).each do |i|
+  youtube_video_id = videos[i]['id']['videoId']
+  video_url = "https://www.youtube.com/embed/#{youtube_video_id}"
   video = Video.new(
     title: Faker::Restaurant.name,
     description: Faker::Restaurant.description,
-    video_url: videos[i].files[0].link,
-    video_type: videos[i].files[0].file_type)
+    video_url: video_url,
+    )
   puts "Create Video - #{i + 1}"
   video.save!
 
