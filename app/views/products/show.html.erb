@@ -1,0 +1,23 @@
+<h1>Products#show</h1>
+
+<p><%= @product.name %> </p>
+
+<% if @product.photos.attached? %>
+  <% @product.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <%= link_to "Delete", product_photo_path(@product, photo), method: :delete %>
+  <% end %>
+<% end %>
+
+<p>Add Images</p>
+<%= simple_form_for @product, url: product_path(@product) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :photos, as: :file, inner_html: { multiple: true } %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Add image" %>
+  </div>
+<% end %>

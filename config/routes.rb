@@ -9,5 +9,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :products, only: [:index, :show]
+  resources :products, only: [:index, :show, :update] do
+    resources :photos, only: [:destroy]
+    get :home
+  end
 end
