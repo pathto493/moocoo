@@ -28,6 +28,9 @@
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :photo, as: :file %>
+    <%# f.object.photo.each do |p|
+      span image_tag(p)
+      end %>
   </div>
 
   <div class="form-actions">
