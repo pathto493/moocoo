@@ -1,6 +1,7 @@
 .navbar-moocoo {
   justify-content: space-between;
   background: white;
+
   .navbar-collapse {
     flex-grow: 0;
   }
@@ -21,8 +22,10 @@
 
 .search-container {
   display: flex;
-  .input-bar {
-    width: 391px;
+  justify-content: space-between;
+  #input-bar {
+    // width: 391px;
+    flex-grow: 1;
   }
 }
 
