@@ -4,3 +4,9 @@ div.scrollmenu {
   white-space: nowrap;
   width: 100%;
 }
+
+.invisible-scrollbar::-webkit-scrollbar {
+ @media screen and (max-width: 600px) {
+    display: none;
+  }
+}
