@@ -73,6 +73,7 @@ puts "Generate Videos 🎥"
     title: videos[i]['snippet']['title'],
     description: videos[i]['snippet']['description'],
     video_url: video_url,
+    creator: videos[i]['snippet']['channelTitle']
     )
   puts "Create Video - #{i + 1}"
   video.save!
