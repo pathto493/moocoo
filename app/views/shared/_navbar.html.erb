@@ -1,7 +1,14 @@
-<div class="navbar navbar-light navbar-moocoo">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<div class="navbar navbar-light navbar-moocoo px-0">
+  <p>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
     <span class="navbar-toggler-icon"></span>
   </button>
+  </p>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+    </div>
+  </div>
 
   <%= link_to "#", class: "navbar-logo" do %>
     <%= image_tag "moocoo.png"%>
@@ -26,9 +33,11 @@
       </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
     </div>
+  <div class="search-container">
   <form action="/action_page.php">
     <input type="text" id="fname" name="fname" class="input-bar" value="Search for brands and products">
     <i class="fas fa-search" type="submit" id="search-icon"></i>
+  </div>
   </form>
 </div>
 
