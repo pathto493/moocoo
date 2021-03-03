@@ -1,4 +1,4 @@
-class CreateAnnotations < ActiveRecord::Migration[6.1]
+class CreateAnnotations < ActiveRecord::Migration[6.0]
   def change
     create_table :annotations do |t|
 
