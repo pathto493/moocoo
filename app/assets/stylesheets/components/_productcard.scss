@@ -10,6 +10,13 @@
 
 .card-product-body {
   flex-grow: 1;
+  max-height: 120px;
+  overflow: hidden;
+}
+
+.card-product-body div {
+  overflow-wrap: break-word;
+  overflow: hidden;
 }
 
 
