@@ -1,10 +1,19 @@
-.card-product-container {
+.card-product-big {
+
+}
+
+.card-product-big img {
+  width: 100%;
+}
+
+
+.card-product {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.card-product-container img{
+.card-product img{
   width: 100%;
 }
 
