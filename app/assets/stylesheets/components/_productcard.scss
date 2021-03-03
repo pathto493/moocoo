@@ -1,3 +1,34 @@
+.card-product-big {
+
+}
+
+.card-product-big img {
+  width: 100%;
+}
+
+
+.card-product {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-product img{
+  width: 100%;
+}
+
+.card-product-body {
+  flex-grow: 1;
+  max-height: 120px;
+  overflow: hidden;
+}
+
+.card-product-body div {
+  overflow-wrap: break-word;
+  overflow: hidden;
+}
+
+
 .card-product {
   overflow: hidden;
   height: 120px;

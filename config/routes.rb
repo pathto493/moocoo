@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :show, :update] do
     resources :photos, only: [:destroy]
-    get :home
+    collection do
+      get :home
+    end
   end
 end
