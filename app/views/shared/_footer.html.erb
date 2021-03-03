@@ -1,0 +1,35 @@
+
+<div class="footer fixed-bottom">
+  <div class="accordion bg-dark text-ligt" id="accordionExample">
+    <div class="card">
+      <div class="card-header px-0 ml-2" id="headingOne">
+        <h5 class="mb-0">
+          <button class="text-light btn btn-link px-0" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <%#= use of ID to mave the v shapre to the end as per figma design %>
+            About us <i class="fas fa-chevron-down" id="v-drop"></i>
+          </button>
+        </h5>
+      </div>
+
+      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body text-light">
+          for buttons
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="icons">
+        <%= link_to "#" do %>
+          <i class="fab fa-facebook" id="small-icon"></i>
+        <% end %>
+        <%= link_to "#" do %>
+          <i class="fab fa-twitter-square" id="small-icon"></i>
+        <% end %>
+        <%= link_to "#" do %>
+          <i class="fab fa-instagram" id="small-icon"></i>
+        <% end %>
+        <%= link_to "#" do %>
+          <i class="fab fa-youtube-square" id="small-icon"></i>
+        <% end %>
+    </div>
+</div>
