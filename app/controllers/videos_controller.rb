@@ -18,6 +18,7 @@ class VideosController < ApplicationController
     p video.description
     p video.video_url
     p video.creator
+    p video.tags
     url_two = "https://www.googleapis.com/youtube/v3/videos?part=statistics&id=nf8ySuesAPg&key=#{ENV['YOUTUBE_API_KEY_NEW']}"
     url_two_read = open(url_two).read
     video_stats = JSON.parse(url_two_read)
