@@ -1,12 +1,21 @@
-.navbar-lewagon {
+.navbar-moocoo {
   justify-content: space-between;
   background: white;
-}
-
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
+  .navbar-collapse {
+    flex-grow: 0;
+  }
+  .navbar-three-line-icon img {
   width: 40px;
+  }
+  .navbar-logo img {
+    width: 40px;
+  }
+  .nav-profile > img {
+    width: 3rem;
+    height: 3rem;
+  }
+  .navbar-cart img {
+    width: 40px;
+  }
 }
+
