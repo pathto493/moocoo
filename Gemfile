@@ -39,6 +39,8 @@ gem 'cloudinary'
 gem 'faker'
 # For having currency and money on prices
 gem 'money-rails'
+# For stripe payment
+gem 'stripe'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'

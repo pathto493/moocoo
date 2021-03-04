@@ -18,7 +18,7 @@ class PurchasesController < ApplicationController
 
     total_price = 0
     orders.each do |order|
-      total_price += order.video.price_cents
+      total_price += order.product.price_cents
     end
 
     @purchase = Purchase.create!(total_price_cents: total_price, user: current_user, state: 'unsend')
