@@ -49,7 +49,8 @@ document.addEventListener('turbolinks:load', () => {
 
   initTabImageOnClick();
   carousel();
-  $('.carousel').slick();
+  $('.ci').slick()
+
 });
 
 
