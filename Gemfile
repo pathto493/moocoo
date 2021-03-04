@@ -28,12 +28,17 @@ gem 'redis', '~> 4.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+# Gem devise for user authentication
 gem 'devise'
+# For video seeding
 gem 'pexels'
+# For uploading and storing of photos
 gem 'cloudinary'
 # gem 'activestorage-cloudinary-service'
-
+# For creating seeds
 gem 'faker'
+# For having currency and money on prices
+gem 'money-rails'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
