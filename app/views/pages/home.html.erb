@@ -3,15 +3,78 @@
 <% end %>
 
 <%= render 'shared/footer' %>
+<%#= Promotional Video section of the Home Page  %>
+  <div>
+    <h1>Promotional Video</h1>
+  </div>
+  <div class="home-page-container">
+    <h4>Popular Looks</h4>
+    <div class="d-flex justify-content-around">
+      <div class="card rounded" style="width: 7rem;">
+        <div class="card-body">
+          <a href="#" class="card-link text-light">Natural</a>
+        </div>
+      </div>
+      <div class="card rounded" style="width: 7rem;">
+        <div class="card-body">
+          <a href="#" class="card-link text-light">Korean</a>
+        </div>
+      </div>
+      <div class="card rounded" style="width: 7rem;">
+        <div class="card-body">
+          <a href="#" class="card-link text-light">Glam</a>
+        </div>
+      </div>
+    </div>
+  </div>
+<%#= Added ID to control the circle button  %>
+  <div class="d-flex justify-content-center">
+    <i class="fas fa-circle mx-2" id="black-circle"></i>
+    <i class="fas fa-circle mx-2" id="black-circle"></i>
+    <i class="fas fa-circle mx-2" id="black-circle"></i>
+  </div>
+<%#= Latest Trend Portion  %>
+<div class="home-page-container">
+<h4>Latest Trends</h4>
+</div>
+</div>
+<%#= Get Inspired Portion  %>
+  <div class="get-inspired">
+  <h4>Get Inspired</h4>
+  <%= image_tag "https://images.unsplash.com/photo-1602910344008-22f323cc1817?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" %>
+    <div class="d-flex justify-content-center mt-2 mb-5">
+      <i class="fas fa-circle mx-2" id="black-circle"></i>
+      <i class="fas fa-circle mx-2" id="black-circle"></i>
+      <i class="fas fa-circle mx-2" id="black-circle"></i>
+    </div>
+  </div>
+<%#= Shop by Products Portion  %>
+<div class="dark-container">
+  <h4>Shop by Products</h4>
+  <div class="d-flex justify-content-around my-3 mx-3">
+    <% product_options = ["lipstick", "blusher", "Eyeliner"] %>
+    <% product_options.each do |option|  %>
+      <div class="card rounded" style="width: 7rem;">
+        <div class="product-card-body bg-white">
+          <a href="#" class="card-link text-dark"> <%= option %></a>
+        </div>
+      </div>
+    <% end  %>
+  </div>
+  <div class="d-flex justify-content-around my-4 mx-3">
+    <% product_options = ["lipstick", "blusher", "Eyeliner"] %>
+    <% product_options.each do |option|  %>
+      <div class="card rounded" style="width: 7rem;">
+        <div class="product-card-body bg-white">
+          <a href="#" class="card-link text-dark"> <%= option %></a>
+        </div>
+      </div>
+    <% end  %>
+  </div>
 
-<h1>Promotional Video</h1>
-<h1>Popular Looks</h1>
-<h1>Latest Trends</h1>
-<h1>Get Inspired</h1>
-<h1>Shop by Products</h1>
 
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+</div>
 <% if @user.present? && @user.photo.attached? %>
 
   <%# @user.photo.each do |photo| %>
