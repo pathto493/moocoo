@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2>My Cart</h2>
+      <% @orders.each do |order| %>
+        <div><%= order.product.name %></div>
+        <div><%= order.product.quantity %></div>
+      <% end %>
+    </div>
+  </div>
+</div>
