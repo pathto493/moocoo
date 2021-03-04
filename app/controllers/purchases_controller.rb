@@ -9,7 +9,7 @@ class PurchasesController < ApplicationController
     @purchases.each do |purchase|
       purchase.orders.each do |order|
         order.purchase = nil
-        order.save
+        order.save!
       end
       purchase.destroy
     end
@@ -18,13 +18,16 @@ class PurchasesController < ApplicationController
 
     total_price = 0
     orders.each do |order|
-      total_price += order.product.price_cents
+      total_price += order.quantity * order.product.price_cents
     end
 
     @purchase = Purchase.create!(total_price_cents: total_price, user: current_user, state: 'unsend')
 
     # Make the orders to have purchase = purchase
-    @purchase.orders.concat(orders)
+    orders.each do |order|
+      order.purchase = @purchase
+      order.save!
+    end
 
     redirect_to new_purchase_payment_path(@purchase)
   end

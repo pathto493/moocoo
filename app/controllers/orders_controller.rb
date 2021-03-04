@@ -1,6 +1,11 @@
 class OrdersController < ApplicationController
   def cart
     @orders = Order.where(user: current_user, confirmed: false)
+
+    @total_price = 0
+    @orders.each do |order|
+      @total_price += order.quantity * order.product.price
+    end
   end
 
   def create
