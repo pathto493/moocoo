@@ -1,0 +1,14 @@
+<div class="card-cart bg-white p-4 my-3 rounded">
+  <div class="card-cart-img-container">
+    <%= cl_image_tag order.product.photos.first.key, width: 400, crop: :fill %>
+  </div>
+  <div class="card-cart-name">
+    <%= order.product.name %>
+  </div>
+  <div><%= humanized_money_with_symbol (order.quantity * order.product.price) %></div>
+  <div>
+    <%= link_to order_path(order), method: "delete" do %>
+    <i class="fas fa-trash"></i>
+    <% end %>
+  </div>
+</div>
