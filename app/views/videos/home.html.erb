@@ -31,9 +31,9 @@
             <h2><%= link_to vid.title, vid %></h2>
             <p><%= vid.creator %></p>
           </div>
-          <h2 class="card-video-index-infos">
-            <i class="fa fa-thumbs-up" aria-hidden="true"></i> &nbsp <%= vid.likes %> &nbsp
-            <i class="fa fa-eye" aria-hidden="true"></i> &nbsp <%= vid.views %>
+          <h2 class="card-video-index-infos right-info">
+            <i class="fa fa-thumbs-up" aria-hidden="true"></i> &nbsp <%=  number_with_delimiter(vid.likes, :delimiter => ',') %> &nbsp
+            <i class="fa fa-eye" aria-hidden="true"></i> &nbsp <%= number_with_delimiter(vid.views, :delimiter => ',') %>
         </div>
       </div>
     <% end %>
