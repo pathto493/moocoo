@@ -1,6 +1,9 @@
 // Specific CSS for your home-page
-.home-page-container h4 {
-  text-align: center;
+.home-page-container {
+  margin-bottom: 1.4rem;
+  h4 {
+    text-align: center;
+  }
 }
 
 .get-inspired {
@@ -13,6 +16,7 @@
 .dark-container {
   text-align: center;
   background-color:#000022;
+  margin-bottom: 4.4rem;
   h4 {
     color: white;
   }
