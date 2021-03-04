@@ -15,4 +15,8 @@ Rails.application.routes.draw do
       get :home
     end
   end
+
+  resources :orders, only: [:new, :create, :destroy]
+
+  get '/cart', to: 'orders#checkout'
 end
