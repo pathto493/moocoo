@@ -58,7 +58,7 @@
 
 
 .card-video-index .card-video-index-infos {
-  padding: 16px;
+  padding: 16px 5px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -73,10 +73,6 @@
   line-height: 18px;
   width: 300px;
   justify-content: flex-end !important;
+  padding-right: 0px !important;
 }
 
-.right-info-large {
-  width: 300px;
-  justify-content: flex-end !important
-
-}
