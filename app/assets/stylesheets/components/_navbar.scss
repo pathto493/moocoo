@@ -23,13 +23,17 @@
 .search-container {
   display: flex;
   justify-content: space-between;
+  background-color: white;
   #input-bar {
     // width: 391px;
     flex-grow: 1;
   }
 }
 
-// #search-icon {
-//   font-size: 1.5rem;
-// }
+#search-icon {
+  font-size: 1.3rem;
+  background-color: #000022;
+  color: white;
+  padding: 5px;
+}
 
