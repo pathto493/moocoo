@@ -16,6 +16,10 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:create, :destroy]
 
-  resources :purchases, only: [:new, :create]
+  resources :purchases, only: [:index, :show, :create, :destroy] do
+    resources :payments, only: [:new]
+    get '/payments/success', to: 'payments#success'
+    get '/payments/cancel', to: 'payments#cancel'
+  end
 
 end
