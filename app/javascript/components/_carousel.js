@@ -11,9 +11,6 @@ const carousel = () => {
     alert("Hello!");
   });
 
-  document.querySelector(".carousel-item").addEventListener('onclick', () => {
-
-  });
 }
 
 export { carousel };
