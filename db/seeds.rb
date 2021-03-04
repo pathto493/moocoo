@@ -51,7 +51,7 @@ puts "Create Products 💄"
 8.times do |i|
   product = Product.new(
     name: Faker::Commerce.product_name,
-    price: (0..50).to_a.sample,
+    price_cents: (1000..1500).step(10).to_a.sample,
     description: Faker::Food.description
     )
   puts "Create Product - #{i + 1}"
