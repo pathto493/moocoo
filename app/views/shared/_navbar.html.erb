@@ -23,7 +23,10 @@
               <div class="navbar-right d-flex">
                 <% if user_signed_in? %>
                     <div class="nav-profile-pic mr-2">
-                    <%# todo - Remember to link to profile path, this is useless as of now %>
+                      <%= link_to profile_path, class: "nav-profile" do %>
+                        <%= cl_image_tag(current_user.photo.key, class: 'avatar') %>
+                      <% end %>
+                <% else %>
                       <%= link_to new_user_session_path, class: "nav-profile" do %>
                       <%= image_tag "profile.png"%>
                       <% end %>
