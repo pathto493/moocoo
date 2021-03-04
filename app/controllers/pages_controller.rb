@@ -11,4 +11,8 @@ class PagesController < ApplicationController
     @products = @user.products
     @purchased_order = Order.where(user: @user, confirmed: true)
   end
+
+  def search
+    @videos = Video
+  end
 end
