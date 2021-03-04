@@ -11,6 +11,8 @@ puts "Cleaning Videos 🧹"
 Video.destroy_all
 puts "Cleaning Products 🧹"
 Product.destroy_all
+puts "Cleaning Purchases 🧹"
+Purchase.destroy_all
 puts "Cleaning Users 🧹"
 User.destroy_all
 
@@ -49,7 +51,7 @@ puts "Create Products 💄"
 8.times do |i|
   product = Product.new(
     name: Faker::Commerce.product_name,
-    price: (0..50).to_a.sample,
+    price_cents: (1000..1500).step(10).to_a.sample,
     description: Faker::Food.description
     )
   puts "Create Product - #{i + 1}"
@@ -109,7 +111,7 @@ puts "Call Youtube API to generate videos 🎥"
   end
 
 puts "Create Users 🙋‍♂️"
-5.times do |i|
+3.times do |i|
   user = User.new(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,

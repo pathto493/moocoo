@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
+  get '/profile', to: 'pages#profile'
+
+  get 'cart', to: 'orders#cart'
+
   resources :videos, only: [:index, :show] do
     collection do
       get :home
@@ -15,4 +19,13 @@ Rails.application.routes.draw do
       get :home
     end
   end
+
+  resources :orders, only: [:create, :destroy]
+
+  resources :purchases, only: [:index, :show, :create, :destroy] do
+    resources :payments, only: [:new]
+    get '/payments/success', to: 'payments#success'
+    get '/payments/cancel', to: 'payments#cancel'
+  end
+
 end
