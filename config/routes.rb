@@ -5,5 +5,10 @@ Rails.application.routes.draw do
 
   resources :videos, only: [:index, :show]
 
-  resources :products, only: [:index, :show]
+  resources :products, only: [:index, :show, :update] do
+    resources :photos, only: [:destroy]
+    collection do
+      get :home
+    end
+  end
 end

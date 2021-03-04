@@ -1,6 +1,5 @@
 require 'open-uri'
 require 'json'
-require 'pry-byebug'
 
 puts "Start seeding 🍑"
 
@@ -47,13 +46,20 @@ def generate_product(selected_products)
 end
 
 puts "Create Products 💄"
-10.times do |i|
-  Product.create!(
+8.times do |i|
+  product = Product.new(
     name: Faker::Commerce.product_name,
     price: (0..50).to_a.sample,
     description: Faker::Food.description
     )
   puts "Create Product - #{i + 1}"
+  product.save!
+  puts "Attaching Photos to Product - #{i + 1}"
+  2.times do |j|
+    puts "Attaching Photos - #{j + 1} to Product - #{i + 1}"
+    file = URI.open("https://picsum.photos/200")
+    product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+  end
 end
 
 puts "Call Youtube API to generate videos 🎥"
