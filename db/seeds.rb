@@ -91,7 +91,7 @@ puts "Generate Videos 🎥"
 end
 
 puts "Create Users 🙋‍♂️"
-5.times do |i|
+3.times do |i|
   user = User.new(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
