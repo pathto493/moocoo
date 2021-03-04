@@ -16,4 +16,6 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:create, :destroy]
 
+  resources :purchases, only: [:new, :create]
+
 end

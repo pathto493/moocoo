@@ -6,9 +6,10 @@
         <% @orders.each do |order| %>
           <%= render partial: "shared/cart_card", locals: { order: order } %>
         <% end %>
-        <%#= form_tag purchases_path, method: :post do %>
-        <%#= hidden_field_tag 'orders', @purchased_orders %>
-        <%#= submit_tag 'REVIEW YOUR ORDER', class: 'btn btn-primary my-2' %>
+        <%= form_tag purchases_path, method: :post do %>
+        <%= hidden_field_tag 'orders', @purchased_orders %>
+        <%= submit_tag 'Review Orders', class: 'btn btn-primary my-2' %>
+        <% end %>
       <% else %>
         <h2 class="py-3">Oops! Your cart is empty!</h2>
       <% end %>
