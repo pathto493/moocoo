@@ -98,6 +98,10 @@ ActiveRecord::Schema.define(version: 2021_03_04_040923) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "video_type"
+    t.string "creator"
+    t.string "tags"
+    t.integer "likes"
+    t.integer "views"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
