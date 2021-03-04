@@ -11,6 +11,8 @@ puts "Cleaning Videos 🧹"
 Video.destroy_all
 puts "Cleaning Products 🧹"
 Product.destroy_all
+puts "Cleaning Purchases 🧹"
+Purchase.destroy_all
 puts "Cleaning Users 🧹"
 User.destroy_all
 

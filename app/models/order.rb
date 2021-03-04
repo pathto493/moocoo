@@ -1,9 +1,9 @@
 class Order < ApplicationRecord
   belongs_to :product
-  belongs_to :user
   belongs_to :purchase, optional: true
+  belongs_to :user
 
-  validates :quantity, presence: true, numericality: { only_integer: true }
+  validates :quantity, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   validate :user_and_product_cannot_be_the_same
 
