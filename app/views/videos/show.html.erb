@@ -1,0 +1,13 @@
+<div class="container">
+  <h3><%= @video.title %> </h3>
+  <div class="overlay">
+    <iframe width="480" height="300" allow="autoplay" src="<%= @video.video_url %>" class="main-video" ></iframe>
+    <div class="overlay1">
+      <button class="button1 btn btn-primary" data-url="<%= @video.video_url %>">click me to play</button>
+    </div>
+    <p>
+      <%= @video.description %>
+    </p>
+  </div>
+  <button class="jump-btn btn-primary" data-url="<%= @video.video_url %>" data-point="200" >Jump to Point 1</button>
+</div>

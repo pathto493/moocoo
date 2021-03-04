@@ -1,8 +1,9 @@
 <div class="container">
 
-  <% @videos.each do |vid| %>
 
-  <iframe width="480" height="300" src="<%= vid.video_url %>" ></iframe>
+    <% @videos.each do |vid| %>
+      <iframe width="480" height="300" src="<%= vid.video_url %>" ></iframe>
+    <% end %>
 
-  <% end %>
+
 </div>
