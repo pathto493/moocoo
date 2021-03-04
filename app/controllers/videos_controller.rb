@@ -4,6 +4,9 @@ class VideosController < ApplicationController
     @videos = Video.all
   end
 
+  def show
+    @video = Video.find(params[:id])
+
   def index
     if params[:q].nil? || params[:q] == ""
       @videos = Video.all
