@@ -3,11 +3,17 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+
+
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-
+require("slick-carousel")
+var $ = require("jquery")
+import "slick-carousel/slick/slick.scss";
+import "slick-carousel/slick/slick-theme.scss";
+import "../styles/application.scss";
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -31,6 +37,7 @@ import { playAhead } from './buttontest';
 
 // import { initSelect2 } from '../components/init_select2';
 import { initTabImageOnClick } from '../components/_tab_images';
+import { carousel } from '../components/_carousel';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -41,4 +48,8 @@ document.addEventListener('turbolinks:load', () => {
   playAhead();
 
   initTabImageOnClick();
+  carousel();
+  $('.carousel').slick();
 });
+
+
