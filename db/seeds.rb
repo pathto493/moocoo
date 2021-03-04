@@ -89,6 +89,7 @@ puts "Call Youtube API to generate videos 🎥"
     video.title = video_info['items'][0]['snippet']['title']
     video.description = video_info['items'][0]['snippet']['description']
     # video.video_url = video_info['items'][0]['snippet']['thumbnails']['default']['url']
+    video.youtube_id = video_info['items'][0]['id']
     video.video_url = "https://www.youtube.com/embed/#{i}"
     video.creator = video_info['items'][0]['snippet']['channelTitle']
     video.tags = video_info['items'][0]['snippet']['tags']

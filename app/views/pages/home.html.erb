@@ -5,7 +5,7 @@
 <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
   <div>
     <div class="player-container" style="position: relative;">
-      <div id="player" style="position: absolute;">
+      <div id="player" style="position: absolute;" data-video-id="<%= video. %> ">
       </div>
       <% @video.annotations.each_with_index do |annotation, index|  %>
       <div id="annotation-<%= index + 1 %> " style="position: absolute; z-index: 1; background-color: white"
@@ -17,8 +17,6 @@
   </div>
 
     <script>
-
-
       // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
 
@@ -34,38 +32,8 @@
           height: '390',
           width: '640',
           videoId: 'M7lc1UVf-VE'
-          // events: {
-          //   'onReady': onPlayerReady,
-          //   'onStateChange': onPlayerStateChange
-          // }
         });
       }
-
-      // 4. The API will call this function when the video player is ready.
-      // function onPlayerReady(event) {
-      //   event.target.playVideo();
-      // }
-
-      // 5. The API calls this function when the player's state changes.
-      //    The function indicates that when playing a video (state=1),
-      //    the player should play for six seconds and then stop.
-      // var done = false;
-      // function onPlayerStateChange(event) {
-      //   if (event.data == YT.PlayerState.PLAYING && !done) {
-      //     //setTimeout(stopVideo, 6000);
-      //     done = true;
-      //     console.log("test")
-      //     console.log(player.getDuration());
-      //   }
-
-      //   if (event.data == YT.PlayerState.PLAYING) {
-      //     console.log(player.getDuration())
-      //     console.log(player.getCurrentTime())
-      //   }
-      // }
-      // function stopVideo() {
-      //   player.stopVideo();
-      // }
     </script>
 
     <h1>Current Video duration is <span id="videoNow"></span></h1>
@@ -99,18 +67,6 @@
         } else {
           videoAnnotation.style.display = "none";
         }
-      }
-    </script>
-
-    <!-- To update current time -->
-    <h1>The time now is <span id="timeNow"></span></h1>
-
-    <script>
-      var myVar=setInterval(function () {myTimer()}, 1000);
-
-      function myTimer() {
-        var d = new Date();
-        document.getElementById("timeNow").innerHTML =  d.toLocaleTimeString();
       }
     </script>
 
