@@ -3,7 +3,11 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  resources :videos, only: [:index, :show]
+  resources :videos, only: [:index, :show] do
+    collection do
+      get :home
+    end
+  end
 
   resources :products, only: [:index, :show, :update] do
     resources :photos, only: [:destroy]

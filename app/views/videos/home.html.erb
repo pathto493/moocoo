@@ -1,9 +1,27 @@
+
+
 <div class="container">
-
+  <p class="title">Trending</p>
+</div>
+<br>
+<br>
+<div class="container">
+  <p class="title" style="text-align: center;" >Recently Released</p>
+  <div class="scrollmenu invisible-scrollbar">
   <% @videos.each do |vid| %>
-  <iframe width="480" height="300" src="<%= vid.video_url %>" ></iframe>
+    <div class="card-video">
+    <iframe width="40%" src="<%= vid.video_url %>" ></iframe>
+    <div class="card-video-infos">
+      <h2><%= link_to vid.title, vid %></h2>
+      <p><%= vid.creator %></p>
+    </div>
+    </div>
   <% end %>
-
+  </div>
+</div>
+<br>
+<br>
+<div class="container">
   <p class="title" style="text-align: center;">Popular Videos</p>
     <% @videos.each do |vid| %>
       <div class="card-video-index">
@@ -13,7 +31,7 @@
             <h2><%= link_to vid.title, vid %></h2>
             <p><%= vid.creator %></p>
           </div>
-          <h2 class="card-video-index-infos right-info"></h2>
+          <h2 class="card-video-index-infos right-info">
             <i class="fa fa-thumbs-up" aria-hidden="true"></i> &nbsp <%=  number_with_delimiter(vid.likes, :delimiter => ',') %> &nbsp
             <i class="fa fa-eye" aria-hidden="true"></i> &nbsp <%= number_with_delimiter(vid.views, :delimiter => ',') %>
         </div>
