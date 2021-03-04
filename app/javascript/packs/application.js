@@ -28,9 +28,11 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { initTabImageOnClick } from '../components/_tab_images';
+import { initAddEventListenerToVideo } from '../components/_video_state_listener';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   initTabImageOnClick();
+  initAddEventListenerToVideo();
 });

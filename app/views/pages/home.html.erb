@@ -1,26 +1,122 @@
-<% if @user.present?%>
-<%#= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
+<!-- <div id="player">
+  <iframe height="400px" width="100%" src="<%= @video.video_url %>" ></iframe>
+</div> -->
 
-<h1>Promotional Video</h1>
-<h1>Popular Looks</h1>
-<h1>Latest Trends</h1>
-<h1>Get Inspired</h1>
-<h1>Shop by Products</h1>
+<!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+  <div>
+    <div class="player-container" style="position: relative;">
+      <div id="player" style="position: absolute;">
+      </div>
+      <% @video.annotations.each_with_index do |annotation, index|  %>
+      <div id="annotation-<%= index + 1 %> " style="position: absolute; z-index: 1; background-color: white"
+      data-time-start="<%= annotation.time_start %>"
+      data-time-end="<%= annotation.time_end %> ">ANNOTATION-<%= index + 1 %>
+      </div>
+      <% end %>
+    </div>
+  </div>
 
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<% if @user.present? && @user.photo.attached? %>
+    <script>
 
-  <%# @user.photo.each do |photo| %>
-<%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
-<%= link_to "Delete", "#" %>
-<% end %>
 
-<p>
-  <%= link_to "Edit profile", edit_user_registration_path %>
-</p>
+      // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
 
-<p>
-  <%= link_to "Product Index", products_path %>
-</p>
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '390',
+          width: '640',
+          videoId: 'M7lc1UVf-VE'
+          // events: {
+          //   'onReady': onPlayerReady,
+          //   'onStateChange': onPlayerStateChange
+          // }
+        });
+      }
+
+      // 4. The API will call this function when the video player is ready.
+      // function onPlayerReady(event) {
+      //   event.target.playVideo();
+      // }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      // var done = false;
+      // function onPlayerStateChange(event) {
+      //   if (event.data == YT.PlayerState.PLAYING && !done) {
+      //     //setTimeout(stopVideo, 6000);
+      //     done = true;
+      //     console.log("test")
+      //     console.log(player.getDuration());
+      //   }
+
+      //   if (event.data == YT.PlayerState.PLAYING) {
+      //     console.log(player.getDuration())
+      //     console.log(player.getCurrentTime())
+      //   }
+      // }
+      // function stopVideo() {
+      //   player.stopVideo();
+      // }
+    </script>
+
+    <h1>Current Video duration is <span id="videoNow"></span></h1>
+    <h5 id="popUp">This must pop out during 2:30 to 2:35</h5>
+
+    <script>
+      var myTime=setInterval(function () {myTimer2()}, 1000);
+
+      function myTimer2() {
+        let videoCurrentTime = player.getCurrentTime();
+        document.getElementById("videoNow").innerHTML =  Math.round(videoCurrentTime);
+        if (videoCurrentTime >= 150 && videoCurrentTime <= 155) {
+          console.log("IT WORKS!")
+          document.getElementById("popUp").style.display = "block";
+        } else {
+          document.getElementById("popUp").style.display = "none";
+        }
+      }
+    </script>
+
+    <script>
+      var myTime3=setInterval(function () {myTimer3()}, 1000);
+
+      function myTimer3() {
+        let videoCurrentTime = player.getCurrentTime();
+        const videoAnnotation = document.querySelector("annotation-1");
+
+        if (videoCurrentTime >= dataset.timeStart && videoCurrentTime <= dataset.timeEnd) {
+          console.log("IT WORKS!")
+          videoAnnotation.style.display = "block";
+        } else {
+          videoAnnotation.style.display = "none";
+        }
+      }
+    </script>
+
+    <!-- To update current time -->
+    <h1>The time now is <span id="timeNow"></span></h1>
+
+    <script>
+      var myVar=setInterval(function () {myTimer()}, 1000);
+
+      function myTimer() {
+        var d = new Date();
+        document.getElementById("timeNow").innerHTML =  d.toLocaleTimeString();
+      }
+    </script>
+
+    <p>
+      <%= link_to "Edit profile", edit_user_registration_path %>
+    </p>
+    <p>
+      <%= link_to "Product Index", products_path %>
+    </p>

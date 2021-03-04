@@ -3,5 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @user = current_user
+    @video = Video.first
   end
 end

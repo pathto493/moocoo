@@ -99,14 +99,18 @@ puts "Call Youtube API to generate videos 🎥"
     video.views = video_stats['items'][0]['statistics']['viewCount']
     video.save
 
-  puts "Generate Annotations ▶️"
-  selected_products = []
-  3.times do |j|
-    selected_products, chosen_product = generate_product(selected_products)
-    puts "Create Annotation - #{j + 1}"
-    Annotation.create!(
-      video: video,
-      product: chosen_product)
+    puts "Generate Annotations ▶️"
+    selected_products = []
+    2.times do |j|
+      selected_products, chosen_product = generate_product(selected_products)
+      puts "Create Annotation - #{j + 1}"
+      Annotation.create!(
+        video: video,
+        product: chosen_product,
+        time_start: (0..5).to_a.sample,
+        time_end: (15..20).to_a.sample,
+        x_coordinate: rand().round(2),
+        y_coordinate: rand().round(2))
     end
   end
 
