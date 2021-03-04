@@ -12,9 +12,9 @@
         <i class="fa fa-bars fa-lg" aria-hidden="true"></i>
       </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-          <button class="dropdown-item" type="button">Action</button>
-          <button class="dropdown-item" type="button">Another action</button>
-          <button class="dropdown-item" type="button">Something else here</button>
+          <button class="dropdown-item" type="button"><%= link_to "home", root_path %></button>
+          <button class="dropdown-item" type="button"> <%= link_to "videos", home_videos_path  %></button>
+          <button class="dropdown-item" type="button"> <%= link_to "products", home_products_path %></button>
         </div>
       </div>
           <ul class="navbar-nav ml-auto">
