@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
+  get 'cart', to: 'orders#cart'
+
   resources :videos, only: [:index, :show]
 
   resources :products, only: [:index, :show, :update] do
@@ -11,4 +13,7 @@ Rails.application.routes.draw do
       get :home
     end
   end
+
+  resources :orders, only: [:create, :destroy]
+
 end
