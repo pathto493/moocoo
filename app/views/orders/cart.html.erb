@@ -1,10 +1,16 @@
 <div class="container">
   <div class="row">
-    <div class="col-12">
-      <h2>My Cart</h2>
-      <% @orders.each do |order| %>
-        <div><%= order.product.name %></div>
-        <div><%= order.product.quantity %></div>
+    <div class="col-12 text-center">
+      <h2 class="mt-3">My Cart</h2>
+      <% if @orders.present? %>
+        <% @orders.each do |order| %>
+          <%= render partial: "shared/cart_card", locals: { order: order } %>
+        <% end %>
+        <%#= form_tag purchases_path, method: :post do %>
+        <%#= hidden_field_tag 'orders', @purchased_orders %>
+        <%#= submit_tag 'REVIEW YOUR ORDER', class: 'btn btn-primary my-2' %>
+      <% else %>
+        <h2 class="py-3">Oops! Your cart is empty!</h2>
       <% end %>
     </div>
   </div>
