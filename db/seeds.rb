@@ -24,17 +24,17 @@ def generate_pexel_video
   # [video_url, video_type]
 end
 
-def generate_youtube_video
-  url = 'https://www.googleapis.com/youtube/v3/search'
-  query = 'makeup'
-  type = 'video'
-  key = ENV['YOUTUBE_API_KEY']
-  url_query = "#{url}?key=#{key}&q=#{query}&type=#{type}&part=snippet"
+# def generate_youtube_video
+#   url = 'https://www.googleapis.com/youtube/v3/search'
+#   query = 'makeup'
+#   type = 'video'
+#   key = ENV['YOUTUBE_API_KEY']
+#   url_query = "#{url}?key=#{key}&q=#{query}&type=#{type}&part=snippet"
 
-  json = open(url_query).read
-  parsed_json = JSON.parse(json)
-  videos = parsed_json['items']
-end
+#   json = open(url_query).read
+#   parsed_json = JSON.parse(json)
+#   videos = parsed_json['items']
+# end
 
 def generate_product(selected_products)
     chosen_product = Product.all.sample
@@ -63,19 +63,39 @@ puts "Create Products 💄"
 end
 
 puts "Call Youtube API to generate videos 🎥"
-videos = generate_youtube_video
+# videos = generate_youtube_video
 
-puts "Generate Videos 🎥"
-(0...5).each do |i|
-  youtube_video_id = videos[i]['id']['videoId']
-  video_url = "https://www.youtube.com/embed/#{youtube_video_id}"
-  video = Video.new(
-    title: videos[i]['snippet']['title'],
-    description: videos[i]['snippet']['description'],
-    video_url: video_url,
-    )
-  puts "Create Video - #{i + 1}"
-  video.save!
+# puts "Generate Videos 🎥"
+# (0...5).each do |i|
+#   youtube_video_id = videos[i]['id']['videoId']
+#   video_url = "https://www.youtube.com/embed/#{youtube_video_id}"
+#   video = Video.new(
+#     title: videos[i]['snippet']['title'],
+#     description: videos[i]['snippet']['description'],
+#     video_url: video_url,
+#     creator: videos[i]['snippet']['channelTitle']
+#     )
+#   puts "Create Video - #{i + 1}"
+#   video.save!
+
+  id = %w[dPyKEwCn62A joBfpN9eMg0 h-lhr_mMcMA lc8xek03ZUg CpW-Hy8DFic]
+  id.each do |i|
+    url_one = "https://www.googleapis.com/youtube/v3/videos?part=snippet&id=#{i}&key=#{ENV['YOUTUBE_API_KEY']}"
+    url_one_read = open(url_one).read
+    video_info = JSON.parse(url_one_read)
+    video = Video.new
+    video.title = video_info['items'][0]['snippet']['title']
+    video.description = video_info['items'][0]['snippet']['description']
+    # video.video_url = video_info['items'][0]['snippet']['thumbnails']['default']['url']
+    video.video_url = "https://www.youtube.com/embed/#{i}"
+    video.creator = video_info['items'][0]['snippet']['channelTitle']
+    video.tags = video_info['items'][0]['snippet']['tags']
+    url_two = "https://www.googleapis.com/youtube/v3/videos?part=statistics&id=#{i}&key=#{ENV['YOUTUBE_API_KEY']}"
+    url_two_read = open(url_two).read
+    video_stats = JSON.parse(url_two_read)
+    video.likes = video_stats['items'][0]['statistics']['likeCount']
+    video.views = video_stats['items'][0]['statistics']['viewCount']
+    video.save
 
   puts "Generate Annotations ▶️"
   selected_products = []
@@ -85,8 +105,8 @@ puts "Generate Videos 🎥"
     Annotation.create!(
       video: video,
       product: chosen_product)
+    end
   end
-end
 
 puts "Create Users 🙋‍♂️"
 5.times do |i|

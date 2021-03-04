@@ -1,0 +1,17 @@
+<!-- The grid: four columns -->
+<div class="row tab-images-row mt-3">
+  <div class="col-2 tab-images-col">
+    <% photos.each do |photo| %>
+    <div class="tab-images-photo-container">
+      <%= cl_image_tag photo.key, width: 400, crop: :fit %>
+    </div>
+    <% end %>
+  </div>
+
+  <!-- The expanding image container -->
+  <div class="col-10 tab-expanded-img">
+    <!-- Expanded image -->
+    <div id="expanded-img" style='background-image: url(<%= url_for(photos.first) %>);'>
+    </div>
+  </div>
+</div>

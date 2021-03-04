@@ -1,0 +1,12 @@
+<div class="card-product bg-white">
+  <div class="card-product-img">
+    <%= cl_image_tag product.photos.first.key, width: 400, crop: :fit %>
+  </div>
+  <div class="card-product-body p-2">
+    <div><strong>Brand</strong></div>
+    <%= link_to product.name, product_path(product) %>
+  </div>
+  <div class="card-product-footer p-2">
+    <div><strong>SGD <%= product.price %></strong></div>
+  </div>
+</div>

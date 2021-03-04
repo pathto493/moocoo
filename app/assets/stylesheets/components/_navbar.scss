@@ -1,39 +1,44 @@
-.navbar-moocoo {
-  justify-content: space-between;
-  background: white;
-
-  .navbar-collapse {
-    flex-grow: 0;
-  }
-  .navbar-three-line-icon img {
-  width: 40px;
-  }
-  .navbar-logo img {
-    width: 72px;
-  }
-  .nav-profile > img {
-    width: 3rem;
-    height: 3rem;
-  }
-  .navbar-cart img {
-    width: 40px;
-  }
-}
-
-.search-container {
-  display: flex;
-  justify-content: space-between;
+.dropdown-menu {
   background-color: white;
-  #input-bar {
-    // width: 391px;
-    flex-grow: 1;
-  }
 }
 
-#search-icon {
-  font-size: 1.3rem;
-  background-color: #000022;
-  color: white;
-  padding: 5px;
+.nav-profile > img {
+  width: 30px;
+  margin: 10px;
 }
 
+.navbar-cart img {
+  width: 30px;
+  margin-top: 13px;
+}
+
+.search-icon {
+  background-color: white;
+  border-width: 0px;
+}
+
+.navbar-brand.abs{
+  position: absolute;
+  width: 100%;
+  left: 0;
+  text-align: center;
+}
+
+.navbar-brand.abs img {
+  width: 100px;
+}
+
+.navbar {
+  height: 100px;
+}
+
+
+.top {
+  position: fixed;
+  width: 100%;
+}
+
+.spacer {
+  width: 100%;
+  height: 150px;
+}
