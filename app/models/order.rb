@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :product
   belongs_to :user
-  belongs_to :purchase
+  belongs_to :purchase, optional: true
 
   validates :quantity, presence: true, numericality: { only_integer: true }
 
