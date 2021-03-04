@@ -41,7 +41,8 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   initTabImageOnClick();
   carousel();
-  $('.carousel').slick();
+  $('.ci').slick()
+
 });
 
 
