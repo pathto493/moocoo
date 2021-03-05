@@ -58,3 +58,60 @@
   <h1>Current Video duration is <span id="videoNow"></span></h1>
   <h5 id="popUp">This must pop out during 2:30 to 2:35</h5>
 </div>
+
+<div class="container">
+  <div class="card-video-index">
+    <iframe width="100%", height="100%" src="<%= @video.video_url %>" ></iframe>
+    <div class="card-video-index-infos">
+      <div>
+        <h2 style="font-size: 14px;"><%= @video.title %></h2>
+        <p style="font-size: 14px; padding-top: 2px;"><%= @video.creator %></p>
+      </div>
+      <h2 class="card-video-index-infos right-info" style="font-size: 14px;">
+        <i class="fa fa-thumbs-up" aria-hidden="true"></i> &nbsp <%=  number_with_delimiter(@video.likes, :delimiter => ',') %> &nbsp
+        <i class="fa fa-eye"  aria-hidden="true"></i> &nbsp <%= number_with_delimiter(@video.views, :delimiter => ',') %>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<div class="container shop">
+  <p class="title" style="font-size: 18px; text-align: center;">Shop the Look</p>
+  <br>
+  <% @products.each do |prod| %>
+    <div class="card-video card-prod">
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+    <div class="card-video-infos">
+      <h2><%= link_to prod.name, prod %></h2>
+      <p><%= prod.description %></p>
+    </div>
+    <div class="card-video-infos info-right">
+      <h2>$<%= prod.price %></h2>
+
+      <%= simple_form_for(@order, method: :post, url: orders_path) do |f| %>
+        <%= f.input :product,  :as => :hidden, :input_html => { :value => prod } %>
+        <%= f.input :quantity, label: false, :collection => 1..12, :prompt => "-- Select Quantity --"%>
+        <%= f.input :user,  :as => :hidden, :input_html => { :value => current_user }%>
+        <%= button_tag type: 'submit', class: "cart" do %>
+          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+        <% end %>
+      <% end %>
+    </div>
+    </div>
+  <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <h3><%= @video.title %> </h3>
+  <div class="overlay">
+    <iframe width="480" height="300" allow="autoplay" src="<%= @video.video_url %>" class="main-video" ></iframe>
+    <div class="overlay1">
+      <button class="button1 btn btn-primary" data-url="<%= @video.video_url %>">click me to play</button>
+    </div>
+    <p>
+      <%= @video.description %>
+    </p>
+  </div>
+  <button class="jump-btn btn-primary" data-url="<%= @video.video_url %>" data-point="90" >Jump to Point 1</button>
+</div>

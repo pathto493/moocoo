@@ -6,7 +6,11 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @products = Product.all
+    if params[:q].nil? || params[:q] == ""
+      @products = Product.all
+    else
+      @products = Product.search_by_product_name(params[:q])
+    end
   end
 
   def show

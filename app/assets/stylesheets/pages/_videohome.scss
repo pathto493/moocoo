@@ -10,3 +10,47 @@ div.scrollmenu {
     display: none;
   }
 }
+
+// scroll snap
+
+
+.holster {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-flow: column nowrap;
+  font-family: monospace;
+}
+
+.container-snap {
+  display: flex;
+  flex: none;
+  overflow-x: scroll;
+}
+
+.container-snap.x {
+  width: 100%;
+  flex-flow: row nowrap;
+
+}
+
+/* scroll-snap */
+.x.mandatory-scroll-snapping {
+  scroll-snap-type: x mandatory;
+}
+
+.container-snap > div {
+  text-align: center;
+  scroll-snap-align: center;
+  flex: none;
+}
+
+.x.container-snap > div {
+  line-height: 128px;
+  font-size: 64px;
+  width: 100%;
+
+}
+
+
+

@@ -8,4 +8,7 @@ class Product < ApplicationRecord
 
   validates :name, presence: true
   validates :price, presence: true
+
+  include PgSearch::Model
+  multisearchable against: [:name]
 end

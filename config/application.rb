@@ -16,7 +16,7 @@ module Moocoo
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
-    # Embed authenticity token in any forms
+    # Embed token in forms
     config.action_view.embed_authenticity_token_in_remote_forms = true
 
     # Settings in config/environments/* take precedence over those specified here.
