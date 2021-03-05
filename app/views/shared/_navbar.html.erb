@@ -27,7 +27,7 @@
                       <%= cl_image_tag current_user.photo.key, height: 50, width: 50, crop: :fill %>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                      <button class="dropdown-item" type="button"><%= link_to "home", root_path %></button>
+                      <button class="dropdown-item" type="button"><%= link_to "profile", profile_path %></button>
                       <button class="dropdown-item" type="button"> <%= link_to "videos", home_videos_path  %></button>
                       <button class="dropdown-item" type="button"> <%= link_to "products", home_products_path %></button>
                     </div>
@@ -44,16 +44,8 @@
           </ul>
   </nav>
 
-<%= render 'shared/search' %>
-  <!-- <div class="container search-container">
-    <form action="/videos" style="text-align: center;">
-      <input type="text" name="q" class="input-bar" value="Search for videos" style="width: 90%">
-      <button type="submit" class="search-icon">
-        <i class="fa fa-search" aria-hidden="true"></i>
-      </button>
-    </form>
-    <br>
-  </div> -->
+  <%= render 'shared/search' %>
+
 </div>
 
 <div class="spacer">
