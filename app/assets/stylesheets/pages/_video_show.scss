@@ -1,0 +1,30 @@
+.big-player-container {
+  height: 390px;
+  position: relative;
+}
+
+.player-container {
+  position: absolute;
+}
+
+.annotations {
+}
+
+.annotation {
+  background-color: white;
+  position: absolute;
+  top: 40%;
+  left: 40%;
+}
+
+#player {
+
+}
+
+.annotation-product {
+  display: none;
+}
+
+.annotation-product-block {
+  display: block;
+}
