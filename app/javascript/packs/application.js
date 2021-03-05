@@ -3,6 +3,8 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+
+
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
@@ -26,11 +28,23 @@ require("channels")
 import "bootstrap";
 
 // Internal imports, e.g:
+import { onClick } from './vidtest';
+import { playAhead } from './buttontest';
+
 // import { initSelect2 } from '../components/init_select2';
 import { initTabImageOnClick } from '../components/_tab_images';
+import { carousel } from '../components/_carousel';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+
+  onClick();
+
+  playAhead();
+
   initTabImageOnClick();
+
 });
+
+
