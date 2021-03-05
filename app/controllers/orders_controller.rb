@@ -11,18 +11,23 @@ class OrdersController < ApplicationController
   def create
     strong_params = params.require(:product).permit(:product_id, :quantity)
     product = Product.find(strong_params[:product_id])
-    quantity = strong_params[:quantity]
+    quantity = strong_params[:quantity].exist? ? strong_params[:quantity] : 1 # Check if quantity exists
     order = Order.new(user: current_user, confirmed: false, quantity: quantity)
     order.product = product
-    if quantity == ""
-      #redirect_to product_path(product)
-      flash.alert = "Please insert quantity"
-    elsif order.save
-      #redirect_to cart_path
-      flash.alert = "Successfully added to cart"
+
+    # Check orders exist already?
+    other_orders = current_user.orders.where(confirmed: false)
+    bad_cart = other_orders.find { |order| order.user_id == self.user_id && order.product_id == self.product_id }
+    if self.confirmed == false && bad_cart
+
+    end
+
+    if order.save
+      # redirect_to cart_path
+      # flash.alert = "Successfully added to cart"
     else
-      #redirect_to product_path(product)
-      flash.alert = "You have added this to your cart already"
+      # redirect_to product_path(product)
+      # flash.alert = "You have added this to your cart already"
     end
     render json: order
   end
