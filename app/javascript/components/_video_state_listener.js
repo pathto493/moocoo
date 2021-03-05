@@ -1,6 +1,7 @@
 import { fetchWithToken } from "../utils/fetch_with_token";
 
 const initAddEventListenerToVideo = () => {
+  console.log()
   var myTime=setInterval(function () {myTimer()}, 1000);
 
   // 2a. Set the player size

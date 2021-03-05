@@ -17,7 +17,7 @@
   <div class="scrollmenu invisible-scrollbar">
   <% @videos.each do |vid| %>
     <div class="card-video">
-    <iframe width="40%" src="<%= @vid.video_url %>" ></iframe>
+    <iframe width="40%" src="<%= vid.video_url %>" ></iframe>
     <div class="card-video-infos">
       <h2><%= link_to vid.title, vid %></h2>
       <p><%= vid.creator %></p>

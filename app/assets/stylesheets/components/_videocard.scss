@@ -3,6 +3,8 @@
 .card-video {
   display: flex;
   align-items: center;
+  max-height: 150px;
+  overflow: hidden;
 }
 
 .card-video h2 {
@@ -59,10 +61,6 @@
 
 .card-video-index .card-video-index-infos {
   padding: 16px 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  position: relative;
 }
 
 .right-info {

@@ -70,9 +70,8 @@ function onYouTubeIframeAPIReady() {
         <h2 style="font-size: 14px;"><%= @video.title %></h2>
         <p style="font-size: 14px; padding-top: 2px;"><%= @video.creator %></p>
       </div>
-      <h2 class="card-video-index-infos right-info" style="font-size: 14px;"></h2>
-      <i class="fa fa-thumbs-up" aria-hidden="true"></i> &nbsp <%=  number_with_delimiter(@video.likes, :delimiter => ',') %> &nbsp
-      <i class="fa fa-eye"  aria-hidden="true"></i> &nbsp <%= number_with_delimiter(@video.views, :delimiter => ',') %>
+      <i class="fa fa-thumbs-up" aria-hidden="true"></i> <%=  number_with_delimiter(@video.likes, :delimiter => ',') %>
+      <i class="fa fa-eye"  aria-hidden="true"></i> <%= number_with_delimiter(@video.views, :delimiter => ',') %>
     </div>
   </div>
 </div>
