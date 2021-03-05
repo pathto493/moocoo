@@ -10,9 +10,6 @@ class VideosController < ApplicationController
     @video_t5 = videos_trending[4]
   end
 
-  def show
-    @video = Video.find(params[:id])
-
   def index
     if params[:q].nil? || params[:q] == ""
       @videos = Video.all
