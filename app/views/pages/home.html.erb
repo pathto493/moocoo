@@ -1,5 +1,3 @@
-
-
 <% if @user.present?%>
 <%#= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
 <% end %>
@@ -11,21 +9,16 @@
   <div class="home-page-container">
       <h4>Popular Looks</h4>
       <div class="d-flex justify-content-around">
-        <div class="card rounded" style="width: 7rem;">
-          <div class="card-body">
-            <a href="#" class="card-link text-light">Natural</a>
+      <%#= @trends - see pages controller %>
+        <% @trends.each do |trend| %>
+          <div class="card rounded" style="width: 7rem;">
+            <div class="card-body">
+              <%= link_to search_path(q:trend), class:"card-link text-light" do %>
+                <%= trend %>
+              <% end %>
+            </div>
           </div>
-        </div>
-        <div class="card rounded" style="width: 7rem;">
-          <div class="card-body">
-            <a href="#" class="card-link text-light">Korean</a>
-          </div>
-        </div>
-        <div class="card rounded" style="width: 7rem;">
-          <div class="card-body">
-            <a href="#" class="card-link text-light">Glam</a>
-          </div>
-        </div>
+        <% end %>
       </div>
 
     <%#= Added ID to control the circle button  %>
@@ -54,25 +47,17 @@
 <div class="dark-container">
   <h4>Shop by Products</h4>
   <div class="d-flex justify-content-around my-2 mx-3">
-    <% product_options = ["lipstick", "blusher", "Eyeliner"] %>
-    <% product_options.each do |option|  %>
+    <% @featured_products.each do |product|  %>
       <div class="card rounded pb-4 mx-3" style="width: 7rem;">
         <div class="product-card-body bg-white">
-          <a href="#" class="card-link text-dark"> <%= option %></a>
+          <%= link_to search_path(q:product), class:"card-link text-dark" do %>
+            <%= product %>
+          <% end %>
         </div>
       </div>
     <% end  %>
   </div>
-  <div class="d-flex justify-content-around my-2 mx-3">
-    <% product_options = ["lipstick", "blusher", "Eyeliner"] %>
-    <% product_options.each do |option|  %>
-      <div class="card rounded pb-4 mx-3" style="width: 7rem;">
-        <div class="product-card-body bg-white">
-          <a href="#" class="card-link text-dark"> <%= option %></a>
-        </div>
-      </div>
-    <% end %>
-  </div>
+
 </div>
 
 
