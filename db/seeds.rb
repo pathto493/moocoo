@@ -92,7 +92,7 @@ puts "Call Youtube API to generate videos 🎥"
     video.video_url = "https://www.youtube.com/embed/#{i}"
     video.creator = video_info['items'][0]['snippet']['channelTitle']
     video.tags = video_info['items'][0]['snippet']['tags']
-    url_two = "https://www.googleapis.com/youtube/v3/videos?part=statistics&id=#{i}&key=#{ENV['YOUTUBE_API_KEY']}"
+    url_two = "https://www.googleapis.com/youtube/v3/videos?part=statistics&id=#{i}&key=#{ENV['AIzaSyD4ZAj0FMGnALKrabWZ-evXyF8KoxaZXPg']}"
     url_two_read = open(url_two).read
     video_stats = JSON.parse(url_two_read)
     video.likes = video_stats['items'][0]['statistics']['likeCount']
