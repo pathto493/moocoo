@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="search-video-container my-10" style="text-align:center;">
+    <h4>Videos matching your search:</h4>
+    <% if @video_results_mapped.empty? %>
+      <p>No videos matched your search</p>
+    <% else %>
+      <% @video_results_mapped.each do |result| %>
+        <%= link_to video_path(result) do %>
+          <span><strong><%= result.title %></strong></span>
+          <iframe width="50%", height="40%" src="<%= result.video_url %>" ></iframe>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="search-product-container my-10" style="text-align:center;">
+    <h4>Products matching your search:</h4>
+    <% if @product_results_mapped.empty? %>
+      <p>No products matched your search</p>
+    <% else %>
+      <% @product_results_mapped.each do |result| %>
+        <%= link_to product_path(result) do %>
+          <span><strong><%= result.name %></strong></span>
+          <%= cl_image_tag result.photos.first.key, width: 200, crop: :fill %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

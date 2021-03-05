@@ -1,0 +1,9 @@
+<div class="container" style="text-align:center;">
+  <%= form_tag("/search", method: :get) do %>
+    <%= text_field_tag :q %>
+    <%= button_tag "Search", class: 'btn btn-primary' do %>
+      <i class="fa fa-search"></i>
+    <% end %>
+  <% end %>
+</div>
+
