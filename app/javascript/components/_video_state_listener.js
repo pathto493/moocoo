@@ -30,61 +30,53 @@ const initAddEventListenerToVideo = () => {
     }
     annotationsArray.forEach((aHash)=> {
       if (videoCurrentTime >= aHash.timeStart && videoCurrentTime <= aHash.timeEnd) {
-        aHash.annotationElement.style.display = "block";
+        aHash.annotationElement.querySelector(".annotation-button").style.display = "inline";
       } else {
-        aHash.annotationElement.style.display = "none";
+        aHash.annotationElement.querySelector(".annotation-button").style.display = "none";
       }
     })
   }
 
-  const clickAnnotation = (e) => {
+  const clickAnnotationCircle = (e) => {
     e.preventDefault();
-    console.log(e.currentTarget);
-    console.log(e.currentTarget.querySelector("div"));
-    e.currentTarget.querySelector("div").classList.toggle("annotation-product-block")
+    e.currentTarget.parentElement.querySelector("div").classList.toggle("annotation-product-block");
   }
 
   annotations.forEach((annotation) => {
-    annotation.addEventListener('click', clickAnnotation);
+    annotation.querySelector(".annotation-button").addEventListener('click', clickAnnotationCircle);
   })
 
-  const clickAnnotation = (e) => {
+  const clickAddToCart = (e) => {
+    e.preventDefault();
+    const productId = parseInt(e.currentTarget.dataset.productId, 10);
+    // console.log(e.currentTarget.parentElement.parentElement);
+    // fetch url!!
+    const crsfToken = document.querySelector("[name='csrf-token']").content;
 
-  }
+    fetch("/orders", {
+      method: "POST",
+      headers: {
+        "X-CSRF-Token": crsfToken,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        product: {
+          product_id: productId,
+          quantity: 1
+          }
+        })
+      })
+      .then(response => response.json())
+      .then((data) => {
+        console.log(data); // Look at local_names.default
+    });
+    alert("Successfully added to cart!");
+  };
 
-  // 2. This code loads the IFrame Player API code asynchronously.
-      // var tag = document.createElement('script');
-      // console.log("test");
-
-      // tag.src = "https://www.youtube.com/iframe_api";
-      // var firstScriptTag = document.getElementsByTagName('script')[0];
-      // firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-      // 3. This function creates an <iframe> (and YouTube player)
-      //    after the API code downloads.
-      // var player;
-      // function onYouTubeIframeAPIReady() {
-      //   console.log("test2")
-      //   player = new YT.Player('player', {
-      //     height: '390',
-      //     width: '640',
-      //     videoId: 'M7lc1UVf-VE',
-      //     events: {
-      //       'onReady': onPlayerReady,
-      //       'onStateChange': onPlayerStateChange
-      //     }
-      //   });
-
-      //   function onPlayerReady(event) {
-      //     console.log("PLAYER READY");
-      //     event.target.playVideo();
-      //   }
-
-      //   function onPlayerStateChange(event) {
-      //     if(event.data == YT.PlayerState.PLAYING) {
-      //     }
-      //   }
-      // }
+  const annotationCarts = document.querySelectorAll(".annotations .annotation-add-to-cart")
+  annotationCarts.forEach((annotationCart) => {
+    annotationCart.addEventListener('click', clickAddToCart)
+  })
 }
 
 export { initAddEventListenerToVideo };

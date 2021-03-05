@@ -13,8 +13,14 @@
 .annotation {
   background-color: white;
   position: absolute;
-  top: 40%;
-  left: 40%;
+}
+
+.annotation-button:hover {
+  cursor: pointer;
+}
+
+.annotation-add-to-cart:hover {
+  cursor: pointer;
 }
 
 #player {
