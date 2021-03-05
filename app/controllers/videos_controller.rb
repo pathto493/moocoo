@@ -5,11 +5,11 @@ class VideosController < ApplicationController
   end
 
   def index
-    if params[:q].nil? || params[:q] == ""
+    # if params[:q].nil? || params[:q] == ""
       @videos = Video.all
-    else
-      @videos = Video.search_by_video_title_and_tags(params[:q])
-    end
+    # else
+    #   @videos = Video.search_by_video_title_and_tags(params[:q])
+    # end
   end
 
   def show
