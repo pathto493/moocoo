@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   get '/profile', to: 'pages#profile'
-
+  get '/search', to: 'pages#search'
   get 'cart', to: 'orders#cart'
 
   resources :videos, only: [:index, :show] do
