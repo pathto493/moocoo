@@ -1,25 +1,29 @@
-<!-- <div id="player">
-  <iframe height="400px" width="100%" src="<%= @video.video_url %>" ></iframe>
-</div> -->
-
 <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
-  <div>
-    <div class="player-container" style="position: relative;">
-      <div id="player" style="position: absolute;" data-video-id="<%= video. %> ">
+  <div class="container big-player-container">
+    <div class="player-container">
+      <div id="player" data-video-id="<%= @video.youtube_id %> ">
       </div>
+    </div>
+    <div class="annotations">
       <% @video.annotations.each_with_index do |annotation, index|  %>
-      <div id="annotation-<%= index + 1 %> " style="position: absolute; z-index: 1; background-color: white"
-      data-time-start="<%= annotation.time_start %>"
-      data-time-end="<%= annotation.time_end %> ">ANNOTATION-<%= index + 1 %>
+      <div class="annotation" id="annotation-<%= index + 1 %>" data-time-start="<%= annotation.time_start %>" data-time-end="<%= annotation.time_end %>" data-x-coordinate="<%= annotation.x_coordinate %>" data-y-coordinate="<%= annotation.y_coordinate %>">
+        <i class="fas fa-circle"></i>-<%= index + 1 %>
+        <div class="annotation-product" id="annotation-product-<%= index + 1 %>">
+          <%= annotation.product.name %>
+          <%= annotation.product.price %>
+          <i class="fas fa-cart-plus"></i>
+        </div>
       </div>
       <% end %>
     </div>
   </div>
 
-    <script>
+  <script>
+      // This script is to inject the youtube player iframe ready on our player
       // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
-
+      const getVideoId = document.querySelector("#player").dataset.videoId;
+      console.log(getVideoId);
       tag.src = "https://www.youtube.com/iframe_api";
       var firstScriptTag = document.getElementsByTagName('script')[0];
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
@@ -31,48 +35,48 @@
         player = new YT.Player('player', {
           height: '390',
           width: '640',
-          videoId: 'M7lc1UVf-VE'
+          videoId: 'joBfpN9eMg0',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
         });
-      }
-    </script>
 
-    <h1>Current Video duration is <span id="videoNow"></span></h1>
-    <h5 id="popUp">This must pop out during 2:30 to 2:35</h5>
+        function onPlayerReady(event) {
+          console.log("PLAYER READY");
+          event.target.playVideo();
+        }
 
-    <script>
-      var myTime=setInterval(function () {myTimer2()}, 1000);
-
-      function myTimer2() {
-        let videoCurrentTime = player.getCurrentTime();
-        document.getElementById("videoNow").innerHTML =  Math.round(videoCurrentTime);
-        if (videoCurrentTime >= 150 && videoCurrentTime <= 155) {
-          console.log("IT WORKS!")
-          document.getElementById("popUp").style.display = "block";
-        } else {
-          document.getElementById("popUp").style.display = "none";
+        function onPlayerStateChange(event) {
+          if(event.data == YT.PlayerState.PLAYING) {
+          }
         }
       }
-    </script>
+</script>
 
-    <script>
-      var myTime3=setInterval(function () {myTimer3()}, 1000);
+<div>
+  <h1>Current Video duration is <span id="videoNow"></span></h1>
+  <h5 id="popUp">This must pop out during 2:30 to 2:35</h5>
+</div>
+<script>
+  // var myTime=setInterval(function () {myTimer2()}, 1000);
 
-      function myTimer3() {
-        let videoCurrentTime = player.getCurrentTime();
-        const videoAnnotation = document.querySelector("annotation-1");
-
-        if (videoCurrentTime >= dataset.timeStart && videoCurrentTime <= dataset.timeEnd) {
-          console.log("IT WORKS!")
-          videoAnnotation.style.display = "block";
-        } else {
-          videoAnnotation.style.display = "none";
-        }
-      }
-    </script>
-
-    <p>
-      <%= link_to "Edit profile", edit_user_registration_path %>
-    </p>
-    <p>
-      <%= link_to "Product Index", products_path %>
-    </p>
+  // function myTimer2() {
+  //   let videoCurrentTime = player.getCurrentTime();
+  //   document.getElementById("videoNow").innerHTML =  Math.round(videoCurrentTime);
+  //   if (videoCurrentTime >= 150 && videoCurrentTime <= 155) {
+  //     console.log("IT WORKS!")
+  //     document.getElementById("popUp").style.display = "block";
+  //   } else {
+  //     document.getElementById("popUp").style.display = "none";
+  //   }
+  // }
+</script>
+    <div>
+      <p>
+        <%= link_to "Edit profile", edit_user_registration_path %>
+      </p>
+      <p>
+        <%= link_to "Product Index", products_path %>
+      </p>
+    </div>
