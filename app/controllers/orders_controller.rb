@@ -9,7 +9,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    puts "WORKS"
     strong_params = params.require(:product).permit(:product_id, :quantity)
     product = Product.find(strong_params[:product_id])
     quantity = strong_params[:quantity]
