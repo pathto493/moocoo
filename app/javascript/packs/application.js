@@ -32,7 +32,7 @@ import "bootstrap";
 
 // import { initSelect2 } from '../components/init_select2';
 import { initTabImageOnClick } from '../components/_tab_images';
-// import { carousel } from '../components/_carousel';
+
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
