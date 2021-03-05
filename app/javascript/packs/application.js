@@ -33,7 +33,7 @@ import { playAhead } from './buttontest';
 
 // import { initSelect2 } from '../components/init_select2';
 import { initTabImageOnClick } from '../components/_tab_images';
-import { carousel } from '../components/_carousel';
+import { vidformorder } from '../components/_vidformorder';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -44,6 +44,8 @@ document.addEventListener('turbolinks:load', () => {
   playAhead();
 
   initTabImageOnClick();
+
+  vidformorder();
 
 });
 

@@ -20,7 +20,7 @@ class VideosController < ApplicationController
 
   def show
     @video = Video.find(params[:id])
-    @products = Product.all
+    @annotations = @video.annotations
     @order = Order.new
   end
 end

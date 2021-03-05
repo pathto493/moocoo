@@ -26,6 +26,23 @@ class OrdersController < ApplicationController
     end
   end
 
+  def vidcreateorder
+    video_id = params.require(:order).require(:video)
+    product_id = params.require(:order).require(:product)
+    quantity_zero = params.require(:order).permit(:quantity).values.join
+    if quantity_zero == ""
+      p "p-#{product_id}"
+      redirect_to video_path(video_id, anchor: "p_#{product_id}")
+      flash.alert = "Please insert quantity"
+    else
+      quantity = params.require(:order).require(:quantity)
+      product = Product.find(product_id)
+      Order.create(user: current_user, confirmed: false, quantity: quantity, product: product)
+      redirect_to video_path(video_id, anchor: "p_#{product_id}")
+      flash.alert = "Successfully added to cart"
+    end
+  end
+
   def destroy
     order = Order.find(params[:id])
     order.destroy
