@@ -1,6 +1,60 @@
+<!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+  <div class="container big-player-container">
+    <div class="player-container">
+      <div id="player" data-video-id="<%= @video.youtube_id %> ">
+      </div>
+    </div>
+    <div class="annotations">
+      <% @video.annotations.each_with_index do |annotation, index|  %>
+      <div class="annotation" id="annotation-<%= index + 1 %>" data-time-start="<%= annotation.time_start %>" data-time-end="<%= annotation.time_end %>" data-x-coordinate="<%= annotation.x_coordinate %>" data-y-coordinate="<%= annotation.y_coordinate %>">
+        <span class="annotation-button"><i class="fas fa-circle"></i>-<%= index + 1 %></span>
+        <div class="annotation-product" id="annotation-product-<%= index + 1 %>">
+          <%= annotation.product.name %>
+          <%= annotation.product.price %>
+          <span class="annotation-add-to-cart" id="annotation-add-to-cart-<%= index + 1 %>" data-product-id="<%= annotation.product.id%>"><i class="fas fa-cart-plus"></i></span>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
 
+  <script>
+      // This script is to inject the youtube player iframe ready on our player
+      // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+      const getVideoId = document.querySelector("#player").dataset.videoId;
+      console.log(getVideoId);
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '390',
+          width: '640',
+          videoId: 'joBfpN9eMg0',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
 
-<p class="title">Shop the Look</p>
+        function onPlayerReady(event) {
+          console.log("PLAYER READY");
+          event.target.playVideo();
+        }
 
-<p>
+        function onPlayerStateChange(event) {
+          if(event.data == YT.PlayerState.PLAYING) {
+          }
+        }
+      }
+</script>
+
+<div>
+  <h1>Current Video duration is <span id="videoNow"></span></h1>
+  <h5 id="popUp">This must pop out during 2:30 to 2:35</h5>
+</div>
