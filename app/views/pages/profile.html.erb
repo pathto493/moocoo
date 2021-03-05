@@ -19,16 +19,16 @@
     <h4 class="text-center" style="margin:10px;">Watched Videos</h4>
   </div>
   <div class="watched-vids d-flex flex-wrap" style="max-width:1000px;">
-    <% 4.times do %>
+    <% @watched_videos.each do |vid| %>
       <div class="card-video-profile" style="text-align:center;">
-        <iframe width="320" height="160" allow="autoplay" src="<%= @watched_videos.video_url %>" ></iframe>
+        <iframe width="320" height="160" allow="autoplay" src="<%= vid.video_url %>" ></iframe>
         <div>
-          <h6><%= link_to @watched_videos.title, @watched_videos %></h6>
-          <p><%= @watched_videos.creator %></p>
+          <h6><%= link_to vid.title, vid %></h6>
+          <p><%= vid.creator %></p>
         </div>
         <div class="card-video-index-infos right-info">
-          <i class="fa fa-thumbs-up" aria-hidden="true"></i> &nbsp <%=  number_with_delimiter(@watched_videos.likes, :delimiter => ',') %> &nbsp
-          <i class="fa fa-eye" aria-hidden="true"></i> &nbsp <%= number_with_delimiter(@watched_videos.views, :delimiter => ',') %>
+          <i class="fa fa-thumbs-up" aria-hidden="true"></i> &nbsp <%=  number_with_delimiter(vid.likes, :delimiter => ',') %> &nbsp
+          <i class="fa fa-eye" aria-hidden="true"></i> &nbsp <%= number_with_delimiter(vid.views, :delimiter => ',') %>
         </div>
       </div>
     <% end %>
