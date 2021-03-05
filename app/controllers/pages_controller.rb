@@ -7,7 +7,7 @@ class PagesController < ApplicationController
 
   def profile
     @user = current_user
-    @watched_videos = Video.first
+    @watched_videos = Video.order("views DESC").limit(3)
     @products = @user.products
     @purchased_order = Order.where(user: @user, confirmed: true)
   end
