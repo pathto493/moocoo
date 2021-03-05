@@ -20,10 +20,16 @@
   </div>
   <div class="watched-vids d-flex flex-wrap" style="max-width:1000px;">
     <% 4.times do %>
-      <div style="margin:8px;">
+      <div class="card-video-profile" style="text-align:center;">
         <iframe width="320" height="160" allow="autoplay" src="<%= @watched_videos.video_url %>" ></iframe>
-        <p> Viewed <%= @watched_videos.views%> times</p>
-        <p><%= @watched_videos.likes %> Likes </p>
+        <div>
+          <h6><%= link_to @watched_videos.title, @watched_videos %></h6>
+          <p><%= @watched_videos.creator %></p>
+        </div>
+        <div class="card-video-index-infos right-info">
+          <i class="fa fa-thumbs-up" aria-hidden="true"></i> &nbsp <%=  number_with_delimiter(@watched_videos.likes, :delimiter => ',') %> &nbsp
+          <i class="fa fa-eye" aria-hidden="true"></i> &nbsp <%= number_with_delimiter(@watched_videos.views, :delimiter => ',') %>
+        </div>
       </div>
     <% end %>
   </div>
