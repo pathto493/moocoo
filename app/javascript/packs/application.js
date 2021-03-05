@@ -30,13 +30,9 @@ import "bootstrap";
 // Internal imports, e.g:
 import { onClick } from './vidtest';
 import { playAhead } from './buttontest';
-
+import { vidOrderAlert } from './vidorderalert';
 // import { initSelect2 } from '../components/init_select2';
 import { initTabImageOnClick } from '../components/_tab_images';
-<<<<<<< HEAD
-import { vidformorder } from '../components/_vidformorder';
-=======
->>>>>>> master
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -48,8 +44,26 @@ document.addEventListener('turbolinks:load', () => {
 
   initTabImageOnClick();
 
-  vidformorder();
+  vidOrderAlert ();
 
+  // const element = document.querySelector("#article");
+  // element.addEventListener("ajax:success", (event) => {
+  //   let quantity = document.getElementById('quantity').value
+  //   if (quantity >= 1) {
+  //     element.insertAdjacentHTML("beforeend", `<div class="alert alert-warning alert-dismissible fade show m-1" role="alert">
+  //       Successfully added to cart
+  //   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  //         <span aria-hidden="true">&times;</span>
+  //       </button>
+  //     </div>`);
+  //   } else {
+  //     element.insertAdjacentHTML("beforeend", `<div class="alert alert-warning alert-dismissible fade show m-1" role="alert">
+  //       Please insert quantity
+  //   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  //         <span aria-hidden="true">&times;</span>
+  //       </button>
+  //     </div>`);
+  //   }
+  // });
 });
-
 

@@ -18,25 +18,24 @@
   <p class="title" style="font-size: 18px; text-align: center;">Shop the Look</p>
   <br>
   <% @annotations.each do |a| %>
+    <p id="p_<%= "#{a.product.id}" %>"></p>
     <div class="card-video card-prod">
       <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-    <div class="card-video-infos">
-      <h2><%= link_to a.product.name, a.product %></h2>
-      <p><%= a.product.description %></p>
-       p_<%= "#{a.product.id}" %>
-    </div>
-    <div class="card-video-infos info-right">
-      <h2 id="p_<% "#{a.product.id}" %>">$<%= a.product.price_cents %></h2>
+      <div class="card-video-infos">
+        <h2><%= link_to a.product.name, a.product %></h2>
+        <p><%= a.product.description %></p>
+      </div>
+      <div class="card-video-infos info-right">
+        <h2 >$<%= a.product.price_cents %></h2>
 
-      <%= simple_form_for(@order, method: :post, url: vidcreateorder_path) do |f| %>
-        <%= f.input :product,  :as => :hidden, :input_html => { :value => a.product.id } %>
-        <%= f.input :video,  :as => :hidden, :input_html => { :value => @video.id } %>
-        <%= f.input :quantity, label: false, :collection => 1..12, :prompt => "-- Select Quantity --"%>
-        <%= button_tag type: 'submit', class: "cart" do %>
-          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+        <%= simple_form_for(@order, method: :post, url: vidcreateorder_path, :remote => true,  html: { class: :item }) do |f| %>
+          <%= f.input :product,  :as => :hidden, :input_html => { :value => a.product.id } %>
+          <%= f.input :quantity, label: false, :input_html => { :id => "quantity" }, :collection => 1..12, :prompt => "-- Select Quantity --"%>
+          <%= button_tag type: 'submit', class: "cart" do %>
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
     </div>
   <% end %>
 </div>
