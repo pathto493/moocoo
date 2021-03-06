@@ -26,6 +26,18 @@ class OrdersController < ApplicationController
     end
   end
 
+  def vidcreateorder
+    product_id = params.require(:order).require(:product)
+    quantity_zero = params.require(:order).permit(:quantity).values.join
+    if quantity_zero == ""
+      return
+    else
+      quantity = params.require(:order).require(:quantity)
+      product = Product.find(product_id)
+      Order.create(user: current_user, confirmed: false, quantity: quantity, product: product)
+    end
+  end
+
   def destroy
     order = Order.find(params[:id])
     order.destroy
