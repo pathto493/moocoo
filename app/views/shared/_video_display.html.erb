@@ -1,0 +1,15 @@
+<div class="watched-vids d-flex flex-wrap justify-content-center" style="max-width:1000px;">
+    <% videos.each do |vid| %>
+      <div class="card-video-profile m-2" style="text-align:center;">
+        <iframe width="320" height="180" allow="autoplay" src="<%= vid.video_url %>" ></iframe>
+        <div>
+          <h6><%= link_to vid.title, vid %></h6>
+          <p><%= vid.creator %></p>
+          <div class="card-video-index-infos right-info text-center mx-auto">
+            <i class="fa fa-thumbs-up" aria-hidden="true"></i> &nbsp <%=  number_with_delimiter(vid.likes, :delimiter => ',') %> &nbsp
+            <i class="fa fa-eye" aria-hidden="true"></i> &nbsp <%= number_with_delimiter(vid.views, :delimiter => ',') %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
