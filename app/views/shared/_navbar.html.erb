@@ -8,17 +8,17 @@
   <% end %>
   <div class="d-flex">
     <% if user_signed_in? && current_user.photo.attached? %>
-      <%= link_to new_user_session_path do %>
+      <%= link_to profile_path do %>
         <%# TODO set avatar %>
-        <%= image_tag "profile.png", width: "40"%>
+        <%= cl_image_tag current_user.photo.key, width: 35, height: 35, crop: :fill, class: "avatar my-3 mx-2" %>
       <% end  %>
     <% else %>
       <%= link_to new_user_session_path do %>
-        <%= image_tag "profile.png", width: "40"%>
+        <%= image_tag "profile.png", width: 40 %>
       <% end  %>
     <% end %>
-    <%= link_to "#", class: "navbar-cart" do %>
-      <%= image_tag "cart.png", width: "45" %>
+    <%= link_to "#", class: "navbar-cart my-3" do %>
+      <%= image_tag "cart.png", width: 35 %>
     <% end %>
   </div>
 
