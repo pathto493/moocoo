@@ -32,6 +32,7 @@ import { onClick } from './vidtest';
 import { playAhead } from './buttontest';
 
 // import { initSelect2 } from '../components/init_select2';
+import { initYTPlayerSize } from '../components/init_yt_player_size';
 import { initTabImageOnClick } from '../components/_tab_images';
 import { initAddEventListenerToVideo } from '../components/_video_state_listener';
 
@@ -42,10 +43,9 @@ document.addEventListener('turbolinks:load', () => {
   // onClick();
 
   // playAhead();
-
-  initTabImageOnClick();
-
+  initYTPlayerSize();
   initAddEventListenerToVideo();
+  initTabImageOnClick();
 
 });
 

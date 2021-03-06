@@ -22,28 +22,27 @@
 // This script is to inject the youtube player iframe ready on our player
 // 2. This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
-const getVideoId = document.querySelector("#player").dataset.videoId;
-console.log(getVideoId);
+//let getVideoId = document.querySelector("#player").dataset.videoId;
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 // 2a. Set the player size
-let widthMultiplier = 0.8;
+var widthMultiplier = 0.8;
 if (window.innerWidth <= 480) {
   widthMultiplier = 0.92;
 }
 
-const playerWidth = widthMultiplier * window.innerWidth;
-const playerHeight = 9/16*playerWidth;
+var playerWidth = widthMultiplier * window.innerWidth;
+var playerHeight = 9/16*playerWidth;
 
 // 3. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
 var player;
 function onYouTubeIframeAPIReady() {
   player = new YT.Player('player', {
-    height: playerHeight,
-    width: playerWidth,
+    height: 390,
+    width: 640,
     videoId: 'joBfpN9eMg0',
     events: {
       'onReady': onPlayerReady,
