@@ -5,6 +5,7 @@ class PagesController < ApplicationController
     @user = current_user
     @trends = %w[Natural Drama Eye]
     @featured_products = %w[Lipstick Blusher Eyeliner]
+    @video = Video.all
   end
 
   def profile
