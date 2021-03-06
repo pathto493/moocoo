@@ -28,10 +28,9 @@ require("channels")
 import "bootstrap";
 
 // Internal imports, e.g:
-
-
 // import { initSelect2 } from '../components/init_select2';
 import { initTabImageOnClick } from '../components/_tab_images';
+import { vidOrderAlert } from './vidorderalert';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -39,6 +38,7 @@ document.addEventListener('turbolinks:load', () => {
 
   initTabImageOnClick();
 
+  vidOrderAlert ();
 });
 
 document.addEventListener('turbolinks:request-start', () => {
