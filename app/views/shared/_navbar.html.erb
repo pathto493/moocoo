@@ -8,6 +8,7 @@
     <%= image_tag "moocoo.png", width: "60" %>
   <% end %>
   <div class="d-flex">
+
     <% if user_signed_in? && current_user.photo.attached? %>
       <%= link_to profile_path do %>
         <%# TODO set avatar %>
