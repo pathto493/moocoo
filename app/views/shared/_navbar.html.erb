@@ -7,7 +7,7 @@
   <%= link_to root_path, class: 'navbar-brand' do %>
     <%= image_tag "moocoo.png", width: "60" %>
   <% end %>
-  <div class="d-flex">
+  <div class="d-flex align-items-center">
     <% if user_signed_in? %>
       <% if current_user.photo.attached? %>
         <%= link_to profile_path do %>
@@ -19,11 +19,11 @@
         <% end %>
       <% end %>
     <% else %>
-      <%= link_to "Login", new_user_session_path, class: "btn" %>
+      <%= link_to "Login", new_user_session_path, class: "btn my-3" %>
     <% end  %>
 
-    <%= link_to cart_path, class: "navbar-cart" do %>
-      <i class="fas fa-shopping-cart"></i>
+    <%= link_to cart_path, class: "navbar-cart my-3" do %>
+      <i class="fas fa-shopping-cart" style="font-size:1.8em;"></i>
     <% end %>
   </div>
 
@@ -43,10 +43,9 @@
     </ul>
   </div>
 </nav>
+<%# searchbar %>
   <%= render 'shared/search' %>
 
 </div>
-<%# searchbar %>
-<div>
-</div>
+
 
