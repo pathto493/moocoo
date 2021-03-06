@@ -10,7 +10,7 @@
     <% if user_signed_in? %>
       <% if current_user.photo.attached? %>
         <%= link_to profile_path do %>
-        <%= cl_image_tag @user.photo.key, height: 45, width: 45, crop: :fill %>
+        <%= cl_image_tag @user.photo.key, height: 45, width: 45, crop: :fill, class: "rounded-circle" %>
         <% end %>
       <% else  %>
         <%= link_to profile_path do %>
