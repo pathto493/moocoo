@@ -1,4 +1,12 @@
 body {
   position: relative;
-  height: 100vh;
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100vh;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  padding-bottom: 100px;
 }
