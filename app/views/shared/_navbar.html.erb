@@ -8,18 +8,22 @@
     <%= image_tag "moocoo.png", width: "60" %>
   <% end %>
   <div class="d-flex">
-    <% if user_signed_in? && current_user.photo.attached? %>
-      <%= link_to profile_path do %>
-        <%# TODO set avatar %>
-        <%= cl_image_tag current_user.photo.key, width: 35, height: 35, crop: :fill, class: "avatar my-3 mx-2" %>
-      <% end  %>
+    <% if user_signed_in? %>
+      <% if current_user.photo.attached? %>
+        <%= link_to profile_path do %>
+        <%= cl_image_tag @user.photo.key, height: 45, width: 45, crop: :fill, class: "rounded-circle" %>
+        <% end %>
+      <% else  %>
+        <%= link_to profile_path do %>
+        <%= image_tag "profile.png", width: "40"%>
+        <% end %>
+      <% end %>
     <% else %>
-      <%= link_to new_user_session_path do %>
-        <%= image_tag "profile.png", width: 40 %>
-      <% end  %>
-    <% end %>
-    <%= link_to "#", class: "navbar-cart my-3" do %>
-      <%= image_tag "cart.png", width: 35 %>
+      <%= link_to "Login", new_user_session_path, class: "btn" %>
+    <% end  %>
+
+    <%= link_to cart_path, class: "navbar-cart" do %>
+      <i class="fas fa-shopping-cart"></i>
     <% end %>
   </div>
 
