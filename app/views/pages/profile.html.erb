@@ -1,54 +1,29 @@
 <div class="container" style="max-width:1000px;">
-  <div class="d-flex justify-content-between align-items-end my-10">
+  <div class="d-flex justify-content-between align-items-center my-3">
     <div class="profile">
       <% if @user.photo.attached? %>
-        <%= cl_image_tag @user.photo.key, width: 40, height: 40, crop: :fill, class: 'avatar' %>
+        <%= cl_image_tag @user.photo.key, width: 56, height: 56, crop: :fill, class: 'avatar-large' %>
       <% else %>
-        <%= image_tag('profile', class: 'avatar') %>
+        <%= image_tag('profile', class: 'avatar-large') %>
       <% end %>
     </div>
     <div>
-      <h4><%= @user.first_name %> <%= @user.last_name %></h4>
+      <h4 class="mx-2"><%= @user.first_name %> <%= @user.last_name %></h4>
     </div>
     <div>
-      <%= link_to 'Edit my profile', edit_user_registration_path, class: "btn btn-primary"  %>
+      <%= link_to 'Edit profile', edit_user_registration_path, class: "btn btn-primary btn-xs"  %>
     </div>
   </div>
 
   <div>
-    <h4 class="text-center" style="margin:10px;">Watched Videos</h4>
-  </div>
-  <div class="watched-vids d-flex flex-wrap" style="max-width:1000px;">
-    <% @watched_videos.each do |vid| %>
-      <div class="card-video-profile" style="text-align:center;">
-        <iframe width="320" height="160" allow="autoplay" src="<%= vid.video_url %>" ></iframe>
-        <div>
-          <h6><%= link_to vid.title, vid %></h6>
-          <p><%= vid.creator %></p>
-        </div>
-        <div class="card-video-index-infos right-info">
-          <i class="fa fa-thumbs-up" aria-hidden="true"></i> &nbsp <%=  number_with_delimiter(vid.likes, :delimiter => ',') %> &nbsp
-          <i class="fa fa-eye" aria-hidden="true"></i> &nbsp <%= number_with_delimiter(vid.views, :delimiter => ',') %>
-        </div>
-      </div>
-    <% end %>
+    <h4 class="text-center m-3">Watched Videos</h4>
   </div>
 
+  <%= render 'shared/video_display', videos: @watched_videos %>
+
   <div>
-    <h4 class="text-center" style="margin:10px;">My Purchases</h4>
+    <h4 class="text-center m-3">My Purchases</h4>
   </div>
-  <div class="products-bought d-flex flex-wrap" style="max-width:1000px;">
-    <% @products.each do |product| %>
-      <% if product.photos.attached? %>
-        <div>
-          <%= cl_image_tag product.photos.first.key, width: 200, crop: :fill %>
-          <p><%= product.name %></p>
-        </div>
-      <% else %>
-        <div>
-          <p><%= product.name %></p>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+
+  <%= render 'shared/product_display', products: @products %>
 </div>

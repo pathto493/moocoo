@@ -1,0 +1,12 @@
+<div class="products-bought d-flex flex-wrap justify-content-center" style="max-width:1000px;">
+  <% products.each do |product| %>
+    <div class="product-card-profile m-2" style="text-align:center;">
+      <% if product.photos.attached? %>
+        <%= cl_image_tag product.photos.first.key, width: 200, height: 200, crop: :fill %>
+        <p><%= product.name %></p>
+      <% else %>
+        <p><%= product.name %></p>
+      <% end %>
+    </div>
+  <% end %>
+</div>
