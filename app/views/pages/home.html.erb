@@ -1,6 +1,6 @@
 <%#= Promotional Video section of the Home Page  %>
   <div class="home-page-container">
-    <div><iframe id="video" width="80%" height="200vh" src="https://www.youtube.com/embed/dPyKEwCn62A" ></iframe></div>
+    <iframe id="video" width="80%" height="200vh" src= <%="#{@video.first.video_url}"%>></iframe>
   </div>
   <div class="home-page-container">
       <h4>Popular Looks</h4>
@@ -25,29 +25,34 @@
     </div>
   </div>
 <%#= Latest Trend Portion  %>
-  <h4>Latest Trends</h4>
-    <div class="container d-flex justify-content-around text-center pb-4">
-        <div class="video-trend">
-        <iframe class="video" width="85px" height="79px" src="https://www.youtube.com/embed/dPyKEwCn62A" ></iframe>
-        <p>Glitter Eyes</p>
-        </div>
-        <div class="video-trend">
-        <iframe class="video" width="85px" height="79px" src="https://www.youtube.com/embed/dPyKEwCn62A" ></iframe>
-        <p>Purple Eyeliner</p>
-        </div>
-        <div class="video-trend">
-        <iframe class="video" width="85px" height="79px" src="https://www.youtube.com/embed/dPyKEwCn62A" ></iframe>
-        <p>Yellow lipstick</p>
-        </div>
-    </div>
+  <div class="home-page-container">
+    <h4>Latest Trends</h4>
+      <div class="container d-flex justify-content-around text-center pb-4">
+          <div class="video-trend">
+          <iframe class="video" width="85px" height="79px" src= <%="#{@video.first.video_url}"%> ></iframe>
+          <p>Glitter Eyes</p>
+          </div>
+          <div class="video-trend">
+          <iframe class="video" width="85px" height="79px" src= <%="#{@video.first.video_url}"%>></iframe>
+          <p>Purple Eyeliner</p>
+          </div>
+          <div class="video-trend">
+          <iframe class="video" width="85px" height="79px" src= <%="#{@video.first.video_url}"%> ></iframe>
+          <p>Yellow lipstick</p>
+          </div>
+      </div>
+  </div>
 <%#= Get Inspired Portion  %>
   <div class="get-inspired">
   <h4>Get Inspired</h4>
-  <%= image_tag "https://images.unsplash.com/photo-1602910344008-22f323cc1817?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" %>
-    <div class="d-flex justify-content-center mt-2 mb-5">
-      <i class="fas fa-circle mx-2 black-circle"></i>
-      <i class="fas fa-circle mx-2 black-circle"></i>
-      <i class="fas fa-circle mx-2 black-circle"></i>
+
+  <div class="container">
+    <div class="holster">
+      <div class="container-snap x mandatory-scroll-snapping" dir="ltr">
+        <div><%= image_tag "https://images.unsplash.com/photo-1602910344008-22f323cc1817?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" %></div>
+        <div><%= image_tag "https://images.unsplash.com/photo-1511424323602-d3c1a4138056?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80" %></div>
+        <div><%= image_tag "https://images.unsplash.com/photo-1602910344008-22f323cc1817?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" %></div>
+      </div>
     </div>
   </div>
 <%#= Shop by Products Portion  %>
