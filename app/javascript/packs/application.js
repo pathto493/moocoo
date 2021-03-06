@@ -39,6 +39,7 @@ document.addEventListener('turbolinks:load', () => {
   initTabImageOnClick();
 
   vidOrderAlert ();
+});
 
 document.addEventListener('turbolinks:request-start', () => {
   const spinner = document.querySelector('#spinner');
@@ -49,4 +50,3 @@ document.addEventListener('turbolinks:request-end', () => {
   const spinner = document.querySelector('#spinner');
   spinner.style.display = 'none';
 });
-}
