@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:create, :destroy]
 
+  post '/vidcreateorder', to: 'orders#vidcreateorder'
+
   resources :purchases, only: [:index, :show, :create, :destroy] do
     resources :payments, only: [:new]
     get '/payments/success', to: 'payments#success'
