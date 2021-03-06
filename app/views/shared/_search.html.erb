@@ -1,6 +1,6 @@
 <div class="container justify-content-center">
   <%= form_tag("/search", method: :get, class: "input-group justify-content-center", style: "margin: 8px auto 16px;") do %>
-    <%= text_field_tag :q %> <%#= in _navbar.scss %>
+    <%= text_field_tag :q, "", class: "form-control" %>
     <%= button_tag "Search", class: 'btn btn-primary' do %>
       <i class="fa fa-search"></i>
     <% end %>
