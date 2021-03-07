@@ -4,6 +4,8 @@ class Product < ApplicationRecord
 
   has_many_attached :photos
 
+  belongs_to :brand
+
   monetize :price_cents
 
   validates :name, presence: true
