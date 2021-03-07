@@ -7,11 +7,13 @@ class ProductsController < ApplicationController
   end
 
   def index
-    if params[:q].nil? || params[:q] == ""
-      @products = Product.all
-    else
-      @products = Product.search_by_product_name(params[:q])
-    end
+    # if params[:q].nil? || params[:q] == ""
+    #   @products = Product.all
+    # else
+    #   @products = Product.search_by_product_name(params[:q])
+    # end
+    @products = Product.all
+    @price = Product.order('price_cents DESC')
   end
 
   def show
