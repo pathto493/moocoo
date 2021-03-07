@@ -7,10 +7,6 @@
   </div>
   <div><%= humanized_money_with_symbol (order.quantity * order.product.price) %></div>
   <div>
-    <%= link_to order_path(order), method: "delete" do %>
-    <i class="fas fa-trash"></i>
-    <% end %>
-
     <%= form_tag order_path(order), method: :delete, remote: true, class: "remove-order-from-cart" do %>
       <%= button_tag type: 'submit' do %>
         <i class="fas fa-trash" aria-hidden="true"></i>

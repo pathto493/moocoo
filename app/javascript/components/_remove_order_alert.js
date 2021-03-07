@@ -26,6 +26,7 @@ const initRemoveOrderFromCartAlert = () => {
         <h2 class="py-3">Oops! Your cart is empty!</h2>
         `);
       totalPrice.remove();
+      document.querySelector(".review-order-button").remove();
     }
   };
 
