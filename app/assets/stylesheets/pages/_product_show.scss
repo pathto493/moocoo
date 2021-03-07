@@ -8,3 +8,15 @@
 .product-img-container img{
   max-width: 100%;
 }
+
+.product-show-info {
+  .item {
+    .form-group {
+      margin-bottom: 0px;
+    }
+    .form-control {
+      height: 100%;
+      padding: 0px;
+    }
+  }
+}
