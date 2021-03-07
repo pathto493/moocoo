@@ -53,4 +53,4 @@ const filterFunction = () => {
   })
 };
 
-export { filterVid };
+export { filterFunction };
