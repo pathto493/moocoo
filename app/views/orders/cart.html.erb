@@ -10,7 +10,7 @@
           <div class="total-price p-4 my-3 rounded bg-white">
             <h3>TOTAL PRICE : SGD <%= @total_price %></h3>
           </div>
-          <%= form_tag purchases_path, method: :post do %>
+          <%= form_tag purchases_path, method: :post, class: "review-order-button" do %>
             <%= hidden_field_tag 'orders', @purchased_orders %>
           <%= submit_tag 'Review Orders', class: 'btn btn-primary my-2' %>
           <% end %>
