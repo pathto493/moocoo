@@ -1,7 +1,7 @@
 <div class="container justify-content-center">
   <%= form_tag("/search", method: :get, class: "input-group justify-content-center", style: "margin: 0px auto 16px;") do %>
     <%= text_field_tag :q, "", class: "form-control", placeholder: "Search for videos or products" %>
-    <%= button_tag "Search", class: 'btn btn-primary' do %>
+    <%= button_tag "Search", class: 'btn' do %>
       <i class="fa fa-search"></i>
     <% end %>
   <% end %>
