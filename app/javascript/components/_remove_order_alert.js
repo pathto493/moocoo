@@ -25,16 +25,21 @@ const initRemoveOrderFromCartAlert = () => {
       cartBody.insertAdjacentHTML("beforebegin", `
         <h2 class="py-3">Oops! Your cart is empty!</h2>
         `);
+      totalPrice.remove();
     }
   };
 
-  const refreshTotalPrice = (totalPrice) => {
-    console.log("Run refreshTotalPrice");
+  const centsToPrice = (cents) => {
+    let priceDollar = Math.floor(cents / 100);
+    let priceCents = cents % 100;
+    return `${priceDollar}.${priceCents}`
+  };
 
+  const refreshTotalPrice = (totalPrice) => {
     fetch("/cart.json")
       .then(respond => respond.json())
       .then((data) => {
-        totalPrice.innerHTML = `TOTAL PRICE : SGD ${data}`;
+        totalPrice.innerHTML = `TOTAL PRICE : SGD ${centsToPrice(data.cents)}`;
       })
 
   }
