@@ -1,11 +1,11 @@
 <div class="container">
   <% if params[:q].nil? || params[:q] == "" %>
-    <p class="title"">Popular Videos</p>
+    <p class="title">Popular Videos</p>
   <% else %>
-    <p class="title"">Search Results for "<%= params[:q].capitalize %>"</p>
+    <p class="title">Search Results for "<%= params[:q].capitalize %>"</p>
   <% end %>
   <% if @videos[0].nil?  %>
-    <p class="title"">No results </p>
+    <p class="title">No results </p>
   <% else %>
     <div style="height: 100px"></div>
     <% @videos.each do |vid| %>

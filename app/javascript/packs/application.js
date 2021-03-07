@@ -31,14 +31,15 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 import { initTabImageOnClick } from '../components/_tab_images';
 import { vidOrderAlert } from './vidorderalert';
+import { initVideoJump } from '../components/_init_video_jump';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
 
   initTabImageOnClick();
-
-  vidOrderAlert ();
+  vidOrderAlert();
+  initVideoJump();
 });
 
 document.addEventListener('turbolinks:request-start', () => {

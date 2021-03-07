@@ -11,18 +11,19 @@ class OrdersController < ApplicationController
   def create
     strong_params = params.require(:product).permit(:product_id, :quantity)
     product = Product.find(strong_params[:product_id])
-    quantity = strong_params[:quantity]
+    quantity = strong_params[:quantity] || 1 # Check if quantity exists
     order = Order.new(user: current_user, confirmed: false, quantity: quantity)
     order.product = product
-    if quantity == ""
-      redirect_to product_path(product)
-      flash.alert = "Please insert quantity"
-    elsif order.save
-      redirect_to cart_path
-      flash.alert = "Successfully added to cart"
+    # Check orders exist already?
+    other_orders = current_user.orders.where(confirmed: false)
+    same_order = other_orders.find { |o| o.user == current_user && o.product_id == order.product_id }
+    if order.confirmed == false && same_order
+      same_order.quantity += quantity
+      same_order.save
+      order.destroy
+      order = same_order
     else
-      redirect_to product_path(product)
-      flash.alert = "You have added this to your cart already"
+      order.save
     end
   end
 
@@ -32,9 +33,21 @@ class OrdersController < ApplicationController
     if quantity_zero == ""
       return
     else
-      quantity = params.require(:order).require(:quantity)
+      quantity = params.require(:order).require(:quantity).to_i
       product = Product.find(product_id)
-      Order.create(user: current_user, confirmed: false, quantity: quantity, product: product)
+
+      # Check orders exist already?
+      order = Order.new(user: current_user, confirmed: false, quantity: quantity, product: product)
+      other_orders = current_user.orders.where(confirmed: false)
+      same_order = other_orders.find { |o| o.user == current_user && o.product_id == order.product_id }
+      if order.confirmed == false && same_order
+        same_order.quantity += quantity
+        same_order.save
+        order.destroy
+        order = same_order
+      else
+        order.save
+      end
     end
   end
 
