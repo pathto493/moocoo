@@ -12,6 +12,7 @@ class ProductsController < ApplicationController
     else
       @products = Product.search_by_product_name(params[:q])
     end
+    @brands = Brand.all
   end
 
   def show
