@@ -1,50 +1,50 @@
-const filterSelection = (c) => {
-  var filter, i;
-  filter = document.getElementsByClassName("filter");
-  if (c == "all") c = "";
-  // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
-  for (i = 0; i < filter.length; i++) {
-    removeClass(filter[i], "show")
-    if (filter[i].className.indexOf(c) > -1) addClass(filter[i], "show");
-  };
-}
+const filter_btn = document.querySelectorAll(".btn-filter");
+const all = document.querySelectorAll(".all");
+const creator = document.querySelectorAll(".creator");
+const likes = document.querySelectorAll(".likes");
+const views = document.querySelectorAll(".views");
+const filter = document.querySelectorAll(".filter");
 
-// Show filtered elements
-function addClass(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(" ");
-  arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
-    if (arr1.indexOf(arr2[i]) == -1) {
-      element.className += " " + arr2[i];
-    }
-  }
-}
+const filterVid = () => {
+  filter_btn.forEach((btn) => {
+    btn.addEventListener("click", ()=>{
+      filter_btn.forEach((btn) => {
+        btn.classList.remove("active");
+      })
+      btn.classList.add("active");
+      const btnVal = btn.getAttribute("data-tabs");
 
-// Hide elements that are not selected
-function removeClass(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(" ");
-  arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
-    while (arr1.indexOf(arr2[i]) > -1) {
-      arr1.splice(arr1.indexOf(arr2[i]), 1);
-    }
-  }
-  element.className = arr1.join(" ");
-}
+      filter.forEach((item)=>{
+        item.style.display = "none";
+      })
 
-// Add active class to the current control button (highlight it)
-const activeButton = () => {
-  const btnContainer = document.getElementById("myBtnContainer");
-  const btns = btnContainer.getElementsByClassName("btn-filter");
-  for (var i = 0; i < btns.length; i++) {
-    btns[i].addEventListener("click", function() {
-      var current = document.getElementsByClassName("active");
-      current[0].className = current[0].className.replace(" active", "");
-      this.className += " active";
-  });
+      if(btnVal === "creator"){
+        creator.forEach((creator)=>{
+          creator.style.display = "block";
+        })
+      }
+      else if(btnVal === "likes"){
+        likes.forEach((like)=>{
+          like.style.display = "block";
+        })
+      }
+      else if(btnVal === "views"){
+        views.forEach((view)=>{
+          view.style.display = "block";
+        })
+      }
+      else if(btnVal === "all"){
+        all.forEach((item)=>{
+          item.style.display = "block";
+        })
+      }
+      else{
+        filter.forEach((item)=>{
+          item.style.display = "block";
+        })
+      }
+    })
+  })
 };
-}
 
-export { activeButton, filterSelection };
+export { filterVid };
