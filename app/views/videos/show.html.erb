@@ -14,27 +14,32 @@
     </div>
   </div>
 </div>
-<div class="container mt-3">
+<div class="container mt-3 p-1">
   <p class="title" style="font-size: 18px; text-align: center;">Shop the Look</p>
   <% @annotations.each do |a| %>
-    <p id="p_<%= "#{a.product.id}" %>"></p>
-    <div class="card-video card-prod">
-      <%= cl_image_tag a.product.photos.first.key, width: 200, crop: :fill %>
-      <div class="card-video-infos">
-        <h2><%= link_to a.product.name, a.product %></h2>
-        <p><%= a.product.description[0..140].gsub(/\s\w+\s*$/,'...') %></p>
-        <button class="jump-btn btn-primary" data-url="<%= @video.video_url %>" data-point="90" >Jump to Point 1</button>
+    <div class="video-show-card row no-gutters p-1 my-2">
+      <div class="video-show-card-img col-3">
+        <%= cl_image_tag a.product.photos.first.key, width: 100, crop: :fill %>
       </div>
-      <div class="card-video-infos info-right">
-        <h2 ><%= humanized_money_with_symbol a.product.price %></h2>
-
-        <%= simple_form_for(@order, method: :post, url: vidcreateorder_path, :remote => true,  html: { class: :item }) do |f| %>
-          <%= f.input :product,  :as => :hidden, :input_html => { :value => a.product.id } %>
-          <%= f.input :quantity, label: false, :input_html => { :id => "quantity" }, :collection => 1..12, :prompt => "-- Select Quantity --"%>
-          <%= button_tag type: 'submit', class: "cart" do %>
-            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+      <div class="col-6">
+        <div class="d-flex flex-column justify-content-between h-100 px-1 align-items-start">
+          <p><strong><%= link_to a.product.name, a.product %></strong></p>
+          <button class="jump-btn btn-primary" data-url="<%= @video.video_url %>" data-point="<%= a.time_start %>" >Jump to <%= seconds_to_minute(a.time_start) %></button>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="d-flex flex-column justify-content-between h-100 px-1 align-items-end">
+        <p><strong><%= humanized_money_with_symbol a.product.price %></strong></p>
+        <div class="text-right">
+          <%= simple_form_for(@order, method: :post, url: vidcreateorder_path, :remote => true,  html: { class: :item }) do |f| %>
+            <%= f.input :product,  :as => :hidden, :input_html => { :value => a.product.id } %>
+            <%= f.input :quantity, label: false, :input_html => { :id => "quantity" }, :collection => 1..12, :prompt => "-- Select Quantity --"%>
+            <%= button_tag type: 'submit', class: "cart" do %>
+              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
+        </div>
       </div>
     </div>
   <% end %>

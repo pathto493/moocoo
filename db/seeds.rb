@@ -106,7 +106,8 @@ puts "Call Youtube API to generate videos 🎥"
     puts "Create Annotation - #{j + 1}"
     Annotation.create!(
       video: video,
-      product: chosen_product)
+      product: chosen_product,
+      time_start: (10..90).step(10).to_a.sample)
     end
   end
 
