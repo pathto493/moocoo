@@ -3,9 +3,10 @@ const all = document.querySelectorAll(".all");
 const creator = document.querySelectorAll(".creator");
 const likes = document.querySelectorAll(".likes");
 const views = document.querySelectorAll(".views");
+const price = document.querySelectorAll(".price");
 const filter = document.querySelectorAll(".filter");
 
-const filterVid = () => {
+const filterFunction = () => {
   filter_btn.forEach((btn) => {
     btn.addEventListener("click", ()=>{
       filter_btn.forEach((btn) => {
@@ -36,6 +37,11 @@ const filterVid = () => {
       else if(btnVal === "all"){
         all.forEach((item)=>{
           item.style.display = "block";
+        })
+      }
+      else if(btnVal === "price"){
+        price.forEach((price)=>{
+          price.style.display = "block";
         })
       }
       else{
