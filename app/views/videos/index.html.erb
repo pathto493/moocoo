@@ -1,26 +1,27 @@
-<div class="container">
-  <% if params[:q].nil? || params[:q] == "" %>
-    <p class="title"">Popular Videos</p>
-  <% else %>
-    <p class="title"">Search Results for "<%= params[:q].capitalize %>"</p>
-  <% end %>
-  <% if @videos[0].nil?  %>
-    <p class="title"">No results </p>
-  <% else %>
-    <div style="height: 100px"></div>
-    <% @videos.each do |vid| %>
-      <div class="card-video-index" style="margin-top:-80px;">
-        <iframe width="100%" height="60%" src="<%= vid.video_url %>" ></iframe>
-        <div class="card-video-index-infos">
-          <div>
-            <h2><%= link_to vid.title, vid %></h2>
-            <p><%= vid.creator %></p>
-          </div>
-          <h2 class="card-video-index-infos right-info">
-            <i class="fa fa-thumbs-up" aria-hidden="true"></i> &nbsp <%=  number_with_delimiter(vid.likes, :delimiter => ',') %> &nbsp
-            <i class="fa fa-eye" aria-hidden="true"></i> &nbsp <%= number_with_delimiter(vid.views, :delimiter => ',') %>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
+<!-- Control buttons -->
+<div id="myBtnContainer">
+  <button class="btn-filter active" onclick="filterSelection('all')"> All</button>
+  <button class="btn-filter" onclick="filterSelection('creator')"> Creator</button>
+  <button class="btn-filter" onclick="filterSelection('likes')"> Likes</button>
+  <button class="btn-filter" onclick="filterSelection('views')"> Views</button>
+</div>
+
+<!-- The filterable elements. Note that some have multiple class names (this can be used if they belong to multiple categories) -->
+<div class="filter-container">
+  <div class="filter All">
+    <%= render 'shared/video_display', videos: @videos %>
+  </div>
+
+  <div class="filter Creator">
+    <%= render 'shared/video_display', videos: @creators %>
+  </div>
+
+  <div class="filter Likes">
+    <%= render 'shared/video_display', videos: @likes %>
+  </div>
+
+  <div class="filter Views">
+    <%= render 'shared/video_display', videos: @views %>
+  </div>
+
 </div>

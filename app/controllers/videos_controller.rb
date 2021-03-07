@@ -17,6 +17,9 @@ class VideosController < ApplicationController
     # else
     #   @videos = Video.search_by_video_title_and_tags(params[:q])
     # end
+    @creators = Video.order('creator ASC')
+    @likes = Video.order('likes DESC')
+    @views = Video.order('views DESC')
   end
 
   def show

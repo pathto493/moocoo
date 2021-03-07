@@ -31,7 +31,7 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 import { initTabImageOnClick } from '../components/_tab_images';
 import { vidOrderAlert } from './vidorderalert';
-
+import { activeButton, filterSelection } from '../components/_filter';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
@@ -39,6 +39,10 @@ document.addEventListener('turbolinks:load', () => {
   initTabImageOnClick();
 
   vidOrderAlert ();
+
+  activeButton();
+
+  filterSelection();
 });
 
 document.addEventListener('turbolinks:request-start', () => {
