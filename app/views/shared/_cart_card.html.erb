@@ -1,4 +1,4 @@
-<div class="card-cart bg-white p-4 my-3 rounded">
+<div class="card-cart bg-white p-4 my-3 rounded" id="order-<%= order.id %>">
   <div class="card-cart-img-container">
     <%= cl_image_tag order.product.photos.first.key, width: 400, crop: :fill %>
   </div>
@@ -9,6 +9,12 @@
   <div>
     <%= link_to order_path(order), method: "delete" do %>
     <i class="fas fa-trash"></i>
+    <% end %>
+
+    <%= form_tag order_path(order), method: :delete, remote: true, class: "remove-order-from-cart" do %>
+      <%= button_tag type: 'submit' do %>
+        <i class="fas fa-trash" aria-hidden="true"></i>
+      <% end %>
     <% end %>
   </div>
 </div>

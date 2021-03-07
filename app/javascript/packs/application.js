@@ -35,6 +35,7 @@ import { vidOrderAlert } from './vidorderalert';
 import { filterFunction } from '../components/_filter';
 
 import { initVideoJump } from '../components/_init_video_jump';
+import { initRemoveOrderFromCartAlert } from '../components/_remove_order_alert';
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -42,14 +43,10 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
 
   initTabImageOnClick();
-
-
   vidOrderAlert ();
-
   filterFunction();
-
-
   initVideoJump();
+  initRemoveOrderFromCartAlert();
 
 });
 
