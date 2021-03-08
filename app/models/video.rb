@@ -1,5 +1,6 @@
 class Video < ApplicationRecord
   has_many :annotations
+  has_many :reviews, dependent: :destroy
 
   validates :title, presence: true
 
