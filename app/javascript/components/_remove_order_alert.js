@@ -47,7 +47,7 @@ const initRemoveOrderFromCartAlert = () => {
 
   const cartBody = document.querySelector(".cart-body");
   const elements = document.getElementsByClassName("remove-order-from-cart");
-  const totalPrice = document.querySelector(".total-price h3");
+  const totalPrice = document.querySelector(".total-price h4");
 
   Array.from(elements).forEach((element) => {
     const orderId = parseInt(element.getAttribute("action").split("/").slice(-1), 10);

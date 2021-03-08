@@ -8,7 +8,7 @@
             <%= render partial: "shared/cart_card", locals: { order: order } %>
           <% end %>
           <div class="total-price p-4 my-3 rounded bg-white">
-            <h3>TOTAL PRICE : SGD <%= @total_price %></h3>
+            <h4>TOTAL PRICE : SGD <%= @total_price %></h4>
           </div>
           <%= form_tag purchases_path, method: :post, class: "review-order-button" do %>
             <%= hidden_field_tag 'orders', @purchased_orders %>
