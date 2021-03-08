@@ -16,7 +16,7 @@ Purchase.destroy_all
 puts "Cleaning Users 🧹"
 User.destroy_all
 puts "Cleaning Brands"
-User.destroy_all
+Brand.destroy_all
 
 def generate_pexel_video
    # Your authentication key
@@ -49,12 +49,15 @@ def generate_product(selected_products)
     [selected_products, chosen_product]
 end
 
-makeup_brands = ["Dior","L'Oreal", "Lancome"]
+makeup_brands = [{ name: "Dior", image_path: 'dior.jpg'} ,
+                 { name: "L'Oreal", image_path: 'Loreal.jpg'},
+                 { name: "Lancome", image_path: 'Lancome.jpg'} ]
 puts "Create Brands 💄"
 
-makeup_brands.each do |m|
+makeup_brands.each do |brand|
   Brand.create!(
-    name: m
+    name: brand[:name],
+    image_file_path: brand[:image_path]
   )
 end
 

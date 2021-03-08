@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :brands, only: [:index, :show]
   resources :reviews, only: [ :destroy ]
 
   resources :orders, only: [:create, :destroy]
