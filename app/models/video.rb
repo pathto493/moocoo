@@ -11,5 +11,5 @@ class Video < ApplicationRecord
   #   }
 
   include PgSearch::Model
-  multisearchable against: [:title, :description]
+  multisearchable against: [:title, :tags]
 end
