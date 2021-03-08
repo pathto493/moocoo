@@ -1,63 +1,46 @@
+<%# navbar %>
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top my-0 py-0">
+  <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <%= link_to root_path, class: 'navbar-brand' do %>
+    <%= image_tag "moocoo.png", width: "60" %>
+  <% end %>
+  <div class="d-flex align-items-center">
+    <% if user_signed_in? %>
+      <% if current_user.photo.attached? %>
+        <%= link_to profile_path do %>
+        <%= cl_image_tag current_user.photo.key, height: 35, width: 35, crop: :fill, class: "rounded-circle my-3 mx-2" %>
+        <% end %>
+      <% else  %>
+        <%= link_to profile_path do %>
+        <%= image_tag "profile.png", width: 35, height: 35, crop: :fill, class: "avatar my-3 mx-2" %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <%= link_to "Login", new_user_session_path, class: "btn my-3" %>
+    <% end  %>
 
-<div class="top bg-white">
-  <nav class=" navbar navbar-expand-md">
-    <%= link_to "/", class: "navbar-brand abs" do %>
-      <%= image_tag "moocoo.png"%>
+    <%= link_to cart_path, class: "navbar-cart my-3" do %>
+      <i class="fas fa-shopping-cart" style="font-size:1.8em;"></i>
     <% end %>
+  </div>
+  <%# searchbar %>
+  <%= render 'shared/search' %>
 
-
-    <div class="dropdown">
-
-
-      <button type="button" class="search-icon" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fa fa-bars fa-lg" aria-hidden="true"></i>
-      </button>
-
-      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-        <button class="dropdown-item" type="button"><%= link_to "Home", root_path%></button>
-        <button class="dropdown-item" type="button"><%= link_to "Videos", home_videos_path %></button>
-        <button class="dropdown-item" type="button"><%= link_to "Products", home_products_path %></button>
-      </div>
-    </div>
-          <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-              <div class="navbar-right d-flex">
-                <% if user_signed_in? && current_user.photo.attached? %>
-                    <button type="button" class="search-icon" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <%= cl_image_tag current_user.photo.key, height: 50, width: 50, crop: :fill %>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                      <button class="dropdown-item" type="button"><%= link_to "home", root_path %></button>
-                      <button class="dropdown-item" type="button"> <%= link_to "videos", home_videos_path  %></button>
-                      <button class="dropdown-item" type="button"> <%= link_to "products", home_products_path %></button>
-                    </div>
-                <% else %>
-                  <%= link_to new_user_session_path, class: "nav-profile" do %>
-                  <%= image_tag "profile.png"%>
-                  <% end  %>
-                <% end %>
-                <%= link_to "#", class: "navbar-cart" do %>
-                  <%= image_tag "cart.png"%>
-                <% end %>
-                </div>
-              </li>
-          </ul>
-  </nav>
-
-<%= render 'shared/search' %>
-  <!-- <div class="container search-container">
-    <form action="/videos" style="text-align: center;">
-      <input type="text" name="q" class="input-bar" value="Search for videos" style="width: 90%">
-      <button type="submit" class="search-icon">
-        <i class="fa fa-search" aria-hidden="true"></i>
-      </button>
-    </form>
-    <br>
-  </div> -->
-</div>
-
-<div class="spacer">
-  &nbsp;
-</div>
-
-
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <%= link_to 'Products', home_products_path, class: 'nav-link'  %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Videos', home_videos_path, class: 'nav-link'  %>
+      </li>
+      <% if user_signed_in? %>
+      <li class="nav-item">
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

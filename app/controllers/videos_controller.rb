@@ -1,4 +1,5 @@
 class VideosController < ApplicationController
+  skip_before_action :authenticate_user!, only: [ :index, :show, :home ]
 
   def home
     @videos = Video.all
@@ -12,15 +13,18 @@ class VideosController < ApplicationController
 
   def index
     # if params[:q].nil? || params[:q] == ""
-      @videos = Video.all
+    @videos = Video.all
     # else
     #   @videos = Video.search_by_video_title_and_tags(params[:q])
     # end
+    @creators = Video.order('creator ASC')
+    @likes = Video.order('likes DESC')
+    @views = Video.order('views DESC')
   end
 
   def show
     @video = Video.find(params[:id])
-    @products = Product.all
+    @annotations = @video.annotations
     @order = Order.new
   end
 end

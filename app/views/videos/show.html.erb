@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
 <div class="big-player-container">
   <div class="container player-container">
@@ -140,4 +141,53 @@ console.log(firstScriptTag.parentNode.insertBefore(tag, firstScriptTag));
       </div>
     </div>
     <% end %>
+=======
+<div class="main-video-container sticky-card">
+  <iframe width="100%" height="240" allow="autoplay" src="<%= @video.video_url %>" class="main-video"></iframe>
+  <div class="container">
+    <div class="card-video-show">
+      <div class="card-video-show-infos">
+        <div>
+          <h2 style="font-size: 14px;"><%= @video.title %></h2>
+          <p style="font-size: 14px; padding-top: 2px;"><%= @video.creator %></p>
+        </div>
+        <h2 class="card-video-show-infos right-info" style="font-size: 14px;">
+          <i class="fa fa-thumbs-up" aria-hidden="true"></i> &nbsp <%=  number_with_delimiter(@video.likes, :delimiter => ',') %> &nbsp
+          <i class="fa fa-eye"  aria-hidden="true"></i> &nbsp <%= number_with_delimiter(@video.views, :delimiter => ',') %>
+        </h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="vid-prod-container mt-3 p-3">
+  <p class="title" style="font-size: 18px; text-align: center;">Shop the Look</p>
+  <% @annotations.each do |a| %>
+    <div class="video-show-card row no-gutters p-1 my-2">
+      <div class="video-show-card-img col-3">
+        <%= cl_image_tag a.product.photos.first.key, width: 100, crop: :fill %>
+      </div>
+      <div class="col-6">
+        <div class="d-flex flex-column justify-content-between h-100 px-1 align-items-start">
+          <p><strong><%= link_to a.product.name, a.product %></strong></p>
+          <button class="jump-btn btn-primary" data-url="<%= @video.video_url %>" data-point="<%= a.time_start %>" >Jump to <%= seconds_to_minute(a.time_start) %></button>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="d-flex flex-column justify-content-between h-100 px-1 align-items-end">
+        <p><strong><%= humanized_money_with_symbol a.product.price %></strong></p>
+        <div class="text-right">
+          <%= simple_form_for(@order, method: :post, url: vidcreateorder_path, :remote => true,  html: { class: :item }) do |f| %>
+            <%= f.input :product,  :as => :hidden, :input_html => { :value => a.product.id } %>
+            <%= f.input :quantity, label: false, :input_html => { :id => "quantity" }, :collection => 1..12, :prompt => "-- Select Quantity --"%>
+            <%= button_tag type: 'submit', class: "cart" do %>
+              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            <% end %>
+          <% end %>
+        </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+>>>>>>> 6ee9dcd37221eaa3c22a74f0c20ed12a32e2410b
 </div>

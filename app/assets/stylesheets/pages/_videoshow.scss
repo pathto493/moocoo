@@ -1,5 +1,7 @@
-.shop {
 
+.main-video-container {
+  background-color: white;
+  z-index: 1;
 }
 
 .card-prod img {
@@ -20,13 +22,23 @@
  text-align: right;
 }
 
-.form-control {
-  font-size: 10px;
-  width: 50px;
-  display: inline;
-}
+// temporary disable this because it is affecting the form control for all pages, to name space it
+// .form-control {
+//   font-size: 10px;
+//   width: 50px;
+//   display: inline;
+// }
 
 .cart {
-  background-color: white;
   border-width: 0px;
+}
+
+.cart i {
+  font-size: 1em;
+}
+
+div.sticky-card {
+  position: sticky;
+  top: 0;
+  padding-bottom: 8px;
 }

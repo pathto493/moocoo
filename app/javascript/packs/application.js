@@ -28,25 +28,48 @@ require("channels")
 import "bootstrap";
 
 // Internal imports, e.g:
-import { onClick } from './vidtest';
-import { playAhead } from './buttontest';
-
 // import { initSelect2 } from '../components/init_select2';
 import { initYTPlayerSize } from '../components/init_yt_player_size';
 import { initTabImageOnClick } from '../components/_tab_images';
+
 import { initAddEventListenerToVideo } from '../components/_video_state_listener';
+
+import { vidOrderAlert } from './vidorderalert';
+
+import { filterFunction } from '../components/_filter';
+
+import { initVideoJump } from '../components/_init_video_jump';
+import { initRemoveOrderFromCartAlert } from '../components/_remove_order_alert';
+
+import { scrollNav } from '../components/_scrollNav';
+
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+
 
   // onClick();
 
   // playAhead();
   initYTPlayerSize();
   initAddEventListenerToVideo();
+
   initTabImageOnClick();
+  vidOrderAlert ();
+  filterFunction();
+  initVideoJump();
+  initRemoveOrderFromCartAlert();
+  scrollNav();
 
 });
 
+document.addEventListener('turbolinks:request-start', () => {
+  const spinner = document.querySelector('#spinner');
+  spinner.style.display = 'flex';
+});
 
+document.addEventListener('turbolinks:request-end', () => {
+  const spinner = document.querySelector('#spinner');
+  spinner.style.display = 'none';
+});
