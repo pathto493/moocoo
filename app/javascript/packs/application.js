@@ -36,6 +36,7 @@ import { filterFunction } from '../components/_filter';
 
 import { initVideoJump } from '../components/_init_video_jump';
 
+import { scrollNav } from '../components/_scrollNav';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -48,8 +49,9 @@ document.addEventListener('turbolinks:load', () => {
 
   filterFunction();
 
-
   initVideoJump();
+
+  scrollNav();
 
 });
 
