@@ -1,12 +1,21 @@
-<div class="card-cart bg-white p-4 my-3 rounded" id="order-<%= order.id %>">
-  <div class="card-cart-img-container">
+<div class="row no-gutters card-cart bg-white my-3 rounded" id="order-<%= order.id %>">
+  <div class="col-3 card-cart-img-container">
     <%= cl_image_tag order.product.photos.first.key, width: 400, crop: :fill %>
   </div>
-  <div class="card-cart-name">
-    <%= order.product.name %>
+  <div class="col-5 card-cart-name text-left px-1">
+    <div>
+      <strong><%= link_to order.product.name, product_path(order.product) %></strong>
+    </div>
+    <div>
+      Quantity : <%= order.quantity %>
+    </div>
+    <div>
+      Unit Price : <%= humanized_money_with_symbol order.product.price %>
+    </div>
   </div>
-  <div><%= humanized_money_with_symbol (order.quantity * order.product.price) %></div>
-  <div>
+  <div class="col-2">
+    <%= humanized_money_with_symbol (order.quantity * order.product.price) %></div>
+  <div class="col-2 text-right">
     <%= form_tag order_path(order), method: :delete, remote: true, class: "remove-order-from-cart" do %>
       <%= button_tag type: 'submit' do %>
         <i class="fas fa-trash" aria-hidden="true"></i>

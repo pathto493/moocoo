@@ -37,6 +37,7 @@ import { filterFunction } from '../components/_filter';
 import { initVideoJump } from '../components/_init_video_jump';
 import { initRemoveOrderFromCartAlert } from '../components/_remove_order_alert';
 
+import { scrollNav } from '../components/_scrollNav';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -47,6 +48,7 @@ document.addEventListener('turbolinks:load', () => {
   filterFunction();
   initVideoJump();
   initRemoveOrderFromCartAlert();
+  scrollNav();
 
 });
 
