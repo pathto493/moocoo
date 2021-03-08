@@ -3,6 +3,7 @@
 .card-video {
   display: flex;
   align-items: center;
+  max-height: 200px;
 }
 
 .card-video h2 {
@@ -37,7 +38,6 @@
 // For index
 
 .card-video-index {
-  height: 500px;
 }
 
 .card-video-index h2 {
@@ -77,3 +77,22 @@
   margin-bottom: 0px
 }
 
+// videos show
+.video-show-card-img img {
+  width: 100%;
+}
+
+.video-show-card {
+  border: 1px solid darkgrey;
+  border-radius: 2px;
+  .form-control {
+    font-size: 0.75em;
+    padding: 0px;
+  }
+  .form-group {
+    margin-bottom: 0px;
+  }
+  p {
+    margin-bottom: 0px;
+  }
+}
