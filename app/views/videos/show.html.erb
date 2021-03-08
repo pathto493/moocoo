@@ -19,29 +19,41 @@
 </div>
 
 <script>
+if (window.tag) {
+location.reload();
+}
 
-const tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api"; // Create source to script
-const firstScriptTag = document.getElementsByTagName('script')[0]; // Get the first <script> on <head></head>!
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); // Insert the script src=youtube to <head></head> -> Calling script which you can try by opening "https://www.youtube.com/iframe_api"
-console.log(tag);
-console.log(firstScriptTag);
-console.log(firstScriptTag.parentNode);
-console.log(firstScriptTag.parentNode.insertBefore(tag, firstScriptTag));
+window.player = null;
 
-const player;
-
-const onYouTubeIframeAPIReady = () => {
+window.onYouTubeIframeAPIReady = function() {
   player = new YT.Player('player', {
-    height: 390,
-    width: 640,
-    videoId: getVideoId,
+    height: 9/16*350,
+    width: 350,
+    videoId: "<%= @video.youtube_id %>" ,
     events: {
       'onReady': onPlayerReady,
       'onStateChange': onPlayerStateChange
     }
   });
 }
+
+window.onPlayerReady = function(event) {
+  console.log("PLAYER READY");
+}
+
+window.onPlayerStateChange = function(event) {
+  if(event.data == YT.PlayerState.PLAYING) {
+  }
+}
+
+window.tag = document.createElement('script');
+window.tag.src = "https://www.youtube.com/iframe_api"; // Create source to script
+window.firstScriptTag = document.getElementsByTagName('script')[0]; // Get the first <script> on <head></head>!
+window.firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); // Insert the script src=youtube to <head></head> -> Calling script which you can try by opening "https://www.youtube.com/iframe_api"
+console.log(tag);
+console.log(firstScriptTag);
+console.log(firstScriptTag.parentNode);
+console.log(firstScriptTag.parentNode.insertBefore(tag, firstScriptTag));
 
 // This script is to inject the youtube player iframe ready on our player
 // 2. This code loads the IFrame Player API code asynchronously.
@@ -84,6 +96,13 @@ const onYouTubeIframeAPIReady = () => {
 //     }
 //   }
 // }
+</script>
+
+<script>
+  window.setTimeout(function() {printTime()}, 1000);
+  const printTime = () => {
+    console.log(player.getCurrentTime());
+  }
 </script>
 
 <div class="container">
