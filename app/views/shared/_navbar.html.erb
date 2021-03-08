@@ -1,6 +1,6 @@
 <%# navbar %>
-<div class="sticky-top">
-<nav class="navbar navbar-expand-lg navbar-light bg-white">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
   <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -46,6 +46,17 @@
   </div>
 </nav>
 
-</div>
 
 
+<script>
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+  var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.querySelector(".navbar").style.top = "0";
+  } else {
+    document.querySelector(".navbar").style.top = "-100px";
+  }
+  prevScrollpos = currentScrollPos;
+}
+</script>
