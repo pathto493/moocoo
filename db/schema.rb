@@ -42,6 +42,9 @@ ActiveRecord::Schema.define(version: 2021_03_08_041048) do
     t.bigint "video_id"
     t.bigint "product_id"
     t.integer "time_start"
+    t.integer "time_end"
+    t.float "x_coordinate"
+    t.float "y_coordinate"
     t.index ["product_id"], name: "index_annotations_on_product_id"
     t.index ["video_id"], name: "index_annotations_on_video_id"
   end
@@ -132,6 +135,7 @@ ActiveRecord::Schema.define(version: 2021_03_08_041048) do
     t.string "tags"
     t.integer "likes"
     t.integer "views"
+    t.string "youtube_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

@@ -104,6 +104,7 @@ puts "Call Youtube API to generate videos 🎥"
     video.title = video_info['items'][0]['snippet']['title']
     video.description = video_info['items'][0]['snippet']['description']
     # video.video_url = video_info['items'][0]['snippet']['thumbnails']['default']['url']
+    video.youtube_id = video_info['items'][0]['id']
     video.video_url = "https://www.youtube.com/embed/#{i}"
     video.creator = video_info['items'][0]['snippet']['channelTitle']
     video.tags = video_info['items'][0]['snippet']['tags']
@@ -114,15 +115,18 @@ puts "Call Youtube API to generate videos 🎥"
     video.views = video_stats['items'][0]['statistics']['viewCount']
     video.save
 
-  puts "Generate Annotations ▶️"
-  selected_products = []
-  3.times do |j|
-    selected_products, chosen_product = generate_product(selected_products)
-    puts "Create Annotation - #{j + 1}"
-    Annotation.create!(
-      video: video,
-      product: chosen_product,
-      time_start: (10..90).step(10).to_a.sample)
+    puts "Generate Annotations ▶️"
+    selected_products = []
+    2.times do |j|
+      selected_products, chosen_product = generate_product(selected_products)
+      puts "Create Annotation - #{j + 1}"
+      Annotation.create!(
+        video: video,
+        product: chosen_product,
+        time_start: (0..5).to_a.sample,
+        time_end: (15..20).to_a.sample,
+        x_coordinate: rand().round(2),
+        y_coordinate: rand().round(2))
     end
   end
 

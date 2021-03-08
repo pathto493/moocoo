@@ -1,0 +1,43 @@
+.big-player-container {
+  height: calc(9/16*350)px;
+  position: relative;
+}
+
+.player-container {
+  position: absolute;
+}
+
+.annotations {
+}
+
+.annotation {
+  position: absolute;
+  border-radius: 2px;
+}
+
+.annotation-button {
+  opacity: 0.6;
+  font-size: 1.5em;
+  color: white;
+}
+
+.annotation-button:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.annotation-add-to-cart:hover {
+  cursor: pointer;
+}
+
+.annotation-product {
+  display: none;
+  background-color: rgba(0,0,0,0.6);
+  color: white;
+  padding: 2px;
+  border-radius: 2px;
+}
+
+.annotation-product-block {
+  display: block;
+}
