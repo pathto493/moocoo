@@ -6,6 +6,11 @@ class OrdersController < ApplicationController
     @orders.each do |order|
       @total_price += order.quantity * order.product.price
     end
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @total_price }
+    end
   end
 
   def create
@@ -54,7 +59,7 @@ class OrdersController < ApplicationController
   def destroy
     order = Order.find(params[:id])
     order.destroy
-    redirect_to cart_path
-    flash.alert = "Remove items from cart"
+    #redirect_to cart_path
+    #flash.alert = "Remove items from cart"
   end
 end
