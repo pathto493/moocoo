@@ -1,12 +1,12 @@
-const filter_btn = document.querySelectorAll(".btn-filter");
-const all = document.querySelectorAll(".all");
-const creator = document.querySelectorAll(".creator");
-const likes = document.querySelectorAll(".likes");
-const views = document.querySelectorAll(".views");
-const price = document.querySelectorAll(".price");
-const filter = document.querySelectorAll(".filter");
-
 const filterFunction = () => {
+  const filter_btn = document.querySelectorAll(".btn-filter");
+  const all = document.querySelectorAll(".all");
+  const creator = document.querySelectorAll(".creator");
+  const likes = document.querySelectorAll(".likes");
+  const views = document.querySelectorAll(".views");
+  const price = document.querySelectorAll(".price");
+  const filter = document.querySelectorAll(".filter");
+
   filter_btn.forEach((btn) => {
     btn.addEventListener("click", ()=>{
       filter_btn.forEach((btn) => {
