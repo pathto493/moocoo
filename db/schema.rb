@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_08_045925) do
+ActiveRecord::Schema.define(version: 2021_03_07_050742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,12 @@ ActiveRecord::Schema.define(version: 2021_03_08_045925) do
     t.index ["video_id"], name: "index_annotations_on_video_id"
   end
 
+  create_table "brands", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "name"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
@@ -74,6 +80,8 @@ ActiveRecord::Schema.define(version: 2021_03_08_045925) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "price_cents", default: 0, null: false
+    t.bigint "brands_id"
+    t.index ["brands_id"], name: "index_products_on_brands_id"
   end
 
   create_table "purchases", force: :cascade do |t|
@@ -131,6 +139,7 @@ ActiveRecord::Schema.define(version: 2021_03_08_045925) do
   add_foreign_key "orders", "products"
   add_foreign_key "orders", "purchases"
   add_foreign_key "orders", "users"
+  add_foreign_key "products", "brands", column: "brands_id"
   add_foreign_key "purchases", "users"
   add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users"
