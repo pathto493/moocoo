@@ -32,21 +32,32 @@ import "bootstrap";
 import { initTabImageOnClick } from '../components/_tab_images';
 import { vidOrderAlert } from './vidorderalert';
 
+import { filterFunction } from '../components/_filter';
+
+import { initVideoJump } from '../components/_init_video_jump';
+import { initRemoveOrderFromCartAlert } from '../components/_remove_order_alert';
+
+import { scrollNav } from '../components/_scrollNav';
+
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
 
   initTabImageOnClick();
-
   vidOrderAlert ();
+  filterFunction();
+  initVideoJump();
+  initRemoveOrderFromCartAlert();
+  scrollNav();
+
+  document.addEventListener('turbolinks:request-start', () => {
+    const spinner = document.querySelector('#spinner');
+    spinner.style.display = 'flex';
+  });
+
+  document.addEventListener('turbolinks:request-end', () => {
+    const spinner = document.querySelector('#spinner');
+    spinner.style.display = 'none';
+  });
 });
 
-document.addEventListener('turbolinks:request-start', () => {
-  const spinner = document.querySelector('#spinner');
-  spinner.style.display = 'flex';
-});
-
-document.addEventListener('turbolinks:request-end', () => {
-  const spinner = document.querySelector('#spinner');
-  spinner.style.display = 'none';
-});
