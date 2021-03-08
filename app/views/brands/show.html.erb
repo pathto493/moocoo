@@ -1,22 +1,13 @@
-<div class="brand-container">
+<div class="container brand-container">
   <h1> <%= @brand.name %></h1>
-  <% @products.each do |p| %>
-      <div class="row">
-        <div class="col-12">
-          <h4> <%= p.name %> </h4>
-        </div>
-      </div>
-  <% end  %>
 </div>
 
-
-    <div class="col-10">
-      <div class="shadow p-3 mb-5 bg-white rounded mt-4 ml-5">
-        <% @products.each do |p| %>
-        <div>
-        <%= cl_image_tag @products.first.photos.first.key, width: 300, crop: :fill %>
-        <h4> <%= p.name %> </h4>
-        </div>
-        <% end %>
-      </div>
+<div class="brand-grid">
+  <% @products.each do |p| %>
+    <div class="brand-cart">
+      <%= cl_image_tag @products.last.photos.first.key, width: 300, crop: :fill %>
+        <h6> <%= p.name %> </h6>
     </div>
+  <% end %>
+</div>
+
