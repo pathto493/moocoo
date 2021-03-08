@@ -15,10 +15,13 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :show, :update] do
     resources :photos, only: [:destroy]
+    resources :reviews, only: [ :create ]
     collection do
       get :home
     end
   end
+
+  resources :reviews, only: [ :destroy ]
 
   resources :orders, only: [:create, :destroy]
 
