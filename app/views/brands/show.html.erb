@@ -5,7 +5,7 @@
 <div class="brand-grid">
   <% @products.each do |p| %>
     <div class="brand-cart">
-      <%= cl_image_tag @products.last.photos.first.key, width: 300, crop: :fill %>
+      <%= cl_image_tag p.photos.first.key, width: 300, crop: :fill %>
         <h6> <%= p.name %> </h6>
     </div>
   <% end %>
