@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :brands, only: [:index, :show]
+
   resources :orders, only: [:create, :destroy]
 
   post '/vidcreateorder', to: 'orders#vidcreateorder'
