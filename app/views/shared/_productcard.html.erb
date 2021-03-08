@@ -3,7 +3,7 @@
     <%= cl_image_tag product.photos.first.key, width: 400, crop: :fit %>
   </div>
   <div class="card-product-body p-2">
-    <div><strong><%= @brands.first.name %></strong></div>
+    <div><strong><%= product.brand.name %></strong></div>
     <%= link_to product.name, product_path(product) %>
   </div>
   <div class="card-product-footer p-2">
