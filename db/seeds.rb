@@ -15,6 +15,8 @@ puts "Cleaning Purchases 🧹"
 Purchase.destroy_all
 puts "Cleaning Users 🧹"
 User.destroy_all
+puts "Cleaning Brands"
+User.destroy_all
 
 def generate_pexel_video
    # Your authentication key
@@ -47,12 +49,22 @@ def generate_product(selected_products)
     [selected_products, chosen_product]
 end
 
+makeup_brands = ["Dior","L'Oreal", "Lancome"]
+puts "Create Brands 💄"
+
+makeup_brands.each do |m|
+  Brand.create!(
+    name: m
+  )
+end
+
 puts "Create Products 💄"
 8.times do |i|
   product = Product.new(
     name: Faker::Commerce.product_name,
     price_cents: (1000..1500).step(10).to_a.sample,
-    description: Faker::Food.description
+    description: Faker::Food.description,
+    brand: Brand.all.sample
     )
   puts "Create Product - #{i + 1}"
   product.save!

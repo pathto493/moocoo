@@ -3,9 +3,9 @@ class Product < ApplicationRecord
   has_many :annotations
   has_many :reviews, dependent: :destroy
 
-  has_many_attached :photos
+  belongs_to :brand, optional: true
 
-  belongs_to :brand
+  has_many_attached :photos
 
   monetize :price_cents
 
