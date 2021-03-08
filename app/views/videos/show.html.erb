@@ -50,10 +50,10 @@ window.tag = document.createElement('script');
 window.tag.src = "https://www.youtube.com/iframe_api"; // Create source to script
 window.firstScriptTag = document.getElementsByTagName('script')[0]; // Get the first <script> on <head></head>!
 window.firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); // Insert the script src=youtube to <head></head> -> Calling script which you can try by opening "https://www.youtube.com/iframe_api"
-console.log(tag);
-console.log(firstScriptTag);
-console.log(firstScriptTag.parentNode);
-console.log(firstScriptTag.parentNode.insertBefore(tag, firstScriptTag));
+// console.log(tag);
+// console.log(firstScriptTag);
+// console.log(firstScriptTag.parentNode);
+// console.log(firstScriptTag.parentNode.insertBefore(tag, firstScriptTag));
 </script>
 
 <script>
