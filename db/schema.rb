@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_07_073858) do
+ActiveRecord::Schema.define(version: 2021_03_08_045925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,8 +42,18 @@ ActiveRecord::Schema.define(version: 2021_03_07_073858) do
     t.bigint "video_id"
     t.bigint "product_id"
     t.integer "time_start"
+    t.integer "time_end"
+    t.float "x_coordinate"
+    t.float "y_coordinate"
     t.index ["product_id"], name: "index_annotations_on_product_id"
     t.index ["video_id"], name: "index_annotations_on_video_id"
+  end
+
+  create_table "brands", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "name"
+    t.text "image_file_path"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -74,6 +84,8 @@ ActiveRecord::Schema.define(version: 2021_03_07_073858) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "price_cents", default: 0, null: false
+    t.bigint "brand_id"
+    t.index ["brand_id"], name: "index_products_on_brand_id"
   end
 
   create_table "purchases", force: :cascade do |t|
@@ -84,6 +96,17 @@ ActiveRecord::Schema.define(version: 2021_03_07_073858) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "total_price_cents", default: 0, null: false
     t.index ["user_id"], name: "index_purchases_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "comment"
+    t.integer "rating"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "product_id"
+    t.index ["product_id"], name: "index_reviews_on_product_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -112,6 +135,7 @@ ActiveRecord::Schema.define(version: 2021_03_07_073858) do
     t.string "tags"
     t.integer "likes"
     t.integer "views"
+    t.string "youtube_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -120,5 +144,8 @@ ActiveRecord::Schema.define(version: 2021_03_07_073858) do
   add_foreign_key "orders", "products"
   add_foreign_key "orders", "purchases"
   add_foreign_key "orders", "users"
+  add_foreign_key "products", "brands"
   add_foreign_key "purchases", "users"
+  add_foreign_key "reviews", "products"
+  add_foreign_key "reviews", "users"
 end

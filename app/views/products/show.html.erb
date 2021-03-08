@@ -27,11 +27,14 @@
               <% end %>
             </div>
           <% end %>
-          <p class="mt-3"><%= @product.description %> </p>
+          <p class="mt-3" id="review-anchor"><%= @product.description %> </p>
         </div>
       </div>
     </div>
   </div>
+  <BR><BR>
+
+   <%= render partial: "shared/reviews"  %>
 
   <div class="row border-top border-dark border-3 pt-3">
     <div class="col-12">

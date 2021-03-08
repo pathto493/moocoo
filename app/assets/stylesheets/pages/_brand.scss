@@ -1,0 +1,27 @@
+.index-brand-container img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.brand-container {
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.brand-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+  padding: 10px;
+  // margin: 40px;
+}
+
+.brand-cart {
+    background-color: white;
+    box-shadow: whitesmoke;
+  img {
+    width:100%;
+  }
+}

@@ -19,6 +19,7 @@ class OrdersController < ApplicationController
     quantity = strong_params[:quantity] || 1 # Check if quantity exists
     order = Order.new(user: current_user, confirmed: false, quantity: quantity)
     order.product = product
+
     # Check orders exist already?
     other_orders = current_user.orders.where(confirmed: false)
     same_order = other_orders.find { |o| o.user == current_user && o.product_id == order.product_id }
@@ -29,6 +30,11 @@ class OrdersController < ApplicationController
       order = same_order
     else
       order.save
+    end
+
+    respond_to do |format|
+      format.html
+      format.json { render json: order}
     end
   end
 
@@ -53,6 +59,10 @@ class OrdersController < ApplicationController
       else
         order.save
       end
+    end
+    respond_to do |format|
+      format.html
+      format.json { render json: order}
     end
   end
 

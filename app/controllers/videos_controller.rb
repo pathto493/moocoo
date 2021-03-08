@@ -26,5 +26,6 @@ class VideosController < ApplicationController
     @video = Video.find(params[:id])
     @annotations = @video.annotations
     @order = Order.new
+    @products = @annotations.map { |a| a.product }
   end
 end

@@ -29,7 +29,11 @@ import "bootstrap";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { initYTPlayerSize } from '../components/init_yt_player_size';
 import { initTabImageOnClick } from '../components/_tab_images';
+
+import { initAddEventListenerToVideo } from '../components/_video_state_listener';
+
 import { vidOrderAlert } from './vidorderalert';
 
 import { filterFunction } from '../components/_filter';
@@ -39,9 +43,17 @@ import { initRemoveOrderFromCartAlert } from '../components/_remove_order_alert'
 
 import { scrollNav } from '../components/_scrollNav';
 
+
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+
+
+  // onClick();
+
+  // playAhead();
+  initYTPlayerSize();
+  initAddEventListenerToVideo();
 
   initTabImageOnClick();
   vidOrderAlert ();

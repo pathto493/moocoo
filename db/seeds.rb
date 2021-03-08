@@ -15,6 +15,8 @@ puts "Cleaning Purchases 🧹"
 Purchase.destroy_all
 puts "Cleaning Users 🧹"
 User.destroy_all
+puts "Cleaning Brands"
+Brand.destroy_all
 
 def generate_pexel_video
    # Your authentication key
@@ -47,12 +49,25 @@ def generate_product(selected_products)
     [selected_products, chosen_product]
 end
 
+makeup_brands = [{ name: "Dior", image_path: 'dior.jpg'} ,
+                 { name: "L'Oreal", image_path: 'Loreal.jpg'},
+                 { name: "Lancome", image_path: 'Lancome.jpg'} ]
+puts "Create Brands 💄"
+
+makeup_brands.each do |brand|
+  Brand.create!(
+    name: brand[:name],
+    image_file_path: brand[:image_path]
+  )
+end
+
 puts "Create Products 💄"
 8.times do |i|
   product = Product.new(
     name: Faker::Commerce.product_name,
     price_cents: (1000..1500).step(10).to_a.sample,
-    description: Faker::Food.description
+    description: Faker::Food.description,
+    brand: Brand.all.sample
     )
   puts "Create Product - #{i + 1}"
   product.save!
@@ -89,6 +104,7 @@ puts "Call Youtube API to generate videos 🎥"
     video.title = video_info['items'][0]['snippet']['title']
     video.description = video_info['items'][0]['snippet']['description']
     # video.video_url = video_info['items'][0]['snippet']['thumbnails']['default']['url']
+    video.youtube_id = video_info['items'][0]['id']
     video.video_url = "https://www.youtube.com/embed/#{i}"
     video.creator = video_info['items'][0]['snippet']['channelTitle']
     video.tags = video_info['items'][0]['snippet']['tags']
@@ -99,15 +115,18 @@ puts "Call Youtube API to generate videos 🎥"
     video.views = video_stats['items'][0]['statistics']['viewCount']
     video.save
 
-  puts "Generate Annotations ▶️"
-  selected_products = []
-  3.times do |j|
-    selected_products, chosen_product = generate_product(selected_products)
-    puts "Create Annotation - #{j + 1}"
-    Annotation.create!(
-      video: video,
-      product: chosen_product,
-      time_start: (10..90).step(10).to_a.sample)
+    puts "Generate Annotations ▶️"
+    selected_products = []
+    2.times do |j|
+      selected_products, chosen_product = generate_product(selected_products)
+      puts "Create Annotation - #{j + 1}"
+      Annotation.create!(
+        video: video,
+        product: chosen_product,
+        time_start: (0..5).to_a.sample,
+        time_end: (15..20).to_a.sample,
+        x_coordinate: rand().round(2),
+        y_coordinate: rand().round(2))
     end
   end
 
@@ -133,6 +152,12 @@ puts "Create Users 🙋‍♂️"
       user: user,
       product: chosen_product
     )
+  end
+
+  puts "Creating reviews - start"
+  products = Product.all
+  products.each do |product|
+   Review.create!(user: user, product: product, comment: Faker::Hipster.sentence(word_count: 3, supplemental: true, random_words_to_add: 0, open_compounds_allowed: false), rating: rand(1..5))
   end
 end
 

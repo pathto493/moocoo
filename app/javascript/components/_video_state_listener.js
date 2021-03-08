@@ -1,90 +1,99 @@
+import { fetchWithToken } from "../utils/fetch_with_token";
 
 const initAddEventListenerToVideo = () => {
-  var myTime=setInterval(function () {myTimer2()}, 1000);
+  if (myTime) {
+    clearInterval(myTime);
+  }
+  if (window.location.href.split("/").slice(-2)[0] === "videos" && Number.isInteger(parseInt(window.location.href.split("/").slice(-1)[0],10))) {
 
-  const annotations = document.querySelectorAll(".annotations .annotation");
-  let annotationsArray = [];
+    var myTime=setInterval(function () {myTimer()}, 1000);
 
-  annotations.forEach((annotation, index) => {
-    let annotationHash = {
-      id: index,
-      annotationElement : annotation,
-      timeStart: annotation.dataset.timeStart,
-      timeEnd: annotation.dataset.timeEnd,
-      xCoordinate: annotation.dataset.xCoordinate,
-      yCoordinate: annotation.dataset.yCoordinate
-    };
-    annotationsArray.push(annotationHash);
-    annotation.style.top = `${Math.floor(annotationHash.xCoordinate*100)}%`;
-    annotation.style.left = `${Math.floor(annotationHash.yCoordinate*100)}%`;
-  });
-
-  function myTimer2() {
-    console.log("Time is ticking");
-    let videoCurrentTime = player.getCurrentTime();
-    document.getElementById("videoNow").innerHTML =  Math.round(videoCurrentTime);
-    if (videoCurrentTime >= 150 && videoCurrentTime <= 155) {
-      document.getElementById("popUp").style.display = "block";
-    } else {
-      document.getElementById("popUp").style.display = "none";
+    // 2a. Set the player size
+    let widthMultiplier = 0.8;
+    if (window.innerWidth <= 480) {
+      widthMultiplier = 0.92;
     }
-    annotationsArray.forEach((aHash)=> {
-      if (videoCurrentTime >= aHash.timeStart && videoCurrentTime <= aHash.timeEnd) {
-        aHash.annotationElement.style.display = "block";
-      } else {
-        aHash.annotationElement.style.display = "none";
-      }
+    // const playerWidth = widthMultiplier * window.innerWidth;
+    const playerWidth = window.innerWidth;
+    const playerHeight = 9/16*playerWidth;
+
+    // Set the width of the big-player-container
+    document.querySelector(".big-player-container").style.height = `${playerHeight}px`;
+    document.querySelector(".big-player-container").style.width = playerWidth;
+
+    const annotations = document.querySelectorAll(".annotations .annotation");
+    annotations.forEach((annotation)=>{
+      annotation.style.zIndex = "999";
+    });
+    let annotationsArray = [];
+
+    annotations.forEach((annotation, index) => {
+      let annotationHash = {
+        id: index,
+        annotationElement : annotation,
+        timeStart: annotation.dataset.timeStart,
+        timeEnd: annotation.dataset.timeEnd,
+        xCoordinate: annotation.dataset.xCoordinate,
+        yCoordinate: annotation.dataset.yCoordinate
+      };
+      annotationsArray.push(annotationHash);
+      annotation.style.top = `${Math.floor(annotationHash.xCoordinate*100)}%`;
+      annotation.style.left = `${Math.floor(annotationHash.yCoordinate*100)}%`;
+    });
+
+    function myTimer() {
+      console.log("Time is ticking");
+      let videoCurrentTime = player.getCurrentTime();
+
+      annotationsArray.forEach((aHash)=> {
+        if (videoCurrentTime >= aHash.timeStart && videoCurrentTime <= aHash.timeEnd) {
+          aHash.annotationElement.querySelector(".annotation-button").style.display = "inline";
+        } else {
+          aHash.annotationElement.querySelector(".annotation-button").style.display = "none";
+        }
+      })
+    }
+
+    const clickAnnotationCircle = (e) => {
+      e.preventDefault();
+      e.currentTarget.parentElement.querySelector("div").classList.toggle("annotation-product-block");
+    }
+
+    annotations.forEach((annotation) => {
+      annotation.querySelector(".annotation-button").addEventListener('click', clickAnnotationCircle);
+    })
+
+    const clickAddToCart = (e) => {
+      e.preventDefault();
+      const productId = parseInt(e.currentTarget.dataset.productId, 10);
+      // console.log(e.currentTarget.parentElement.parentElement);
+      // fetch url!!
+      // const crsfToken = document.querySelector("[name='csrf-token']").content;
+
+      fetchWithToken("/orders", {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          product: {
+            product_id: productId,
+            quantity: 1
+          }
+        })
+      })
+      .then(response => response.json())
+      .then((data) => {
+        console.log(data);
+      });
+    };
+
+    const annotationCarts = document.querySelectorAll(".annotations .annotation-add-to-cart")
+    annotationCarts.forEach((annotationCart) => {
+      annotationCart.addEventListener('click', clickAddToCart);
     })
   }
-
-  const clickAnnotation = (e) => {
-    e.preventDefault();
-    console.log(e.currentTarget);
-    console.log(e.currentTarget.querySelector("div"));
-    e.currentTarget.querySelector("div").classList.toggle("annotation-product-block")
-  }
-
-  annotations.forEach((annotation) => {
-    annotation.addEventListener('click', clickAnnotation);
-  })
-
-  const clickAnnotation = (e) => {
-
-  }
-
-  // 2. This code loads the IFrame Player API code asynchronously.
-      // var tag = document.createElement('script');
-      // console.log("test");
-
-      // tag.src = "https://www.youtube.com/iframe_api";
-      // var firstScriptTag = document.getElementsByTagName('script')[0];
-      // firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-      // 3. This function creates an <iframe> (and YouTube player)
-      //    after the API code downloads.
-      // var player;
-      // function onYouTubeIframeAPIReady() {
-      //   console.log("test2")
-      //   player = new YT.Player('player', {
-      //     height: '390',
-      //     width: '640',
-      //     videoId: 'M7lc1UVf-VE',
-      //     events: {
-      //       'onReady': onPlayerReady,
-      //       'onStateChange': onPlayerStateChange
-      //     }
-      //   });
-
-      //   function onPlayerReady(event) {
-      //     console.log("PLAYER READY");
-      //     event.target.playVideo();
-      //   }
-
-      //   function onPlayerStateChange(event) {
-      //     if(event.data == YT.PlayerState.PLAYING) {
-      //     }
-      //   }
-      // }
 }
 
 export { initAddEventListenerToVideo };
