@@ -13,10 +13,13 @@ class VideosController < ApplicationController
 
   def index
     # if params[:q].nil? || params[:q] == ""
-      @videos = Video.all
+    @videos = Video.all
     # else
     #   @videos = Video.search_by_video_title_and_tags(params[:q])
     # end
+    @creators = Video.order('creator ASC')
+    @likes = Video.order('likes DESC')
+    @views = Video.order('views DESC')
   end
 
   def show

@@ -1,7 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h2>Latest Product</h2>
+      <p>
+      <%= link_to "See all products", products_path, class: 'btn btn-primary btn-xs' %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <h3>Latest Product</h3>
       <div class="card-product-big">
         <div class="card-product-img">
           <%= cl_image_tag @products.first.photos.first.key, width: 400, crop: :fill %>
@@ -11,12 +18,19 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <h2>Popular Product</h2>
+      <h3>Popular Product</h3>
+        <div class="row no-gutters">
+        <% 3.times do |i| %>
+          <div class="col-4">
+            <%= render partial: "shared/productcard", locals: { product: @products[i] } %>
+          </div>
+        <% end %>
+        </div>
     </div>
   </div>
   <div class="row">
     <div class="col-12">
-      <h2>By Brand</h2>
+      <h3>By Brand</h3>
     </div>
   </div>
 </div>

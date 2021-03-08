@@ -106,7 +106,8 @@ puts "Call Youtube API to generate videos 🎥"
     puts "Create Annotation - #{j + 1}"
     Annotation.create!(
       video: video,
-      product: chosen_product)
+      product: chosen_product,
+      time_start: (10..90).step(10).to_a.sample)
     end
   end
 
@@ -132,6 +133,12 @@ puts "Create Users 🙋‍♂️"
       user: user,
       product: chosen_product
     )
+  end
+
+  puts "Creating reviews - start"
+  products = Product.all
+  products.each do |product|
+   Review.create!(user: user, product: product, comment: Faker::Hipster.sentence(word_count: 3, supplemental: true, random_words_to_add: 0, open_compounds_allowed: false), rating: rand(1..5))
   end
 end
 

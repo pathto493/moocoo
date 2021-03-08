@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2021_03_07_050742) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "video_id"
     t.bigint "product_id"
+    t.integer "time_start"
     t.index ["product_id"], name: "index_annotations_on_product_id"
     t.index ["video_id"], name: "index_annotations_on_video_id"
   end
@@ -93,6 +94,17 @@ ActiveRecord::Schema.define(version: 2021_03_07_050742) do
     t.index ["user_id"], name: "index_purchases_on_user_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.string "comment"
+    t.integer "rating"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "product_id"
+    t.index ["product_id"], name: "index_reviews_on_product_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -129,4 +141,6 @@ ActiveRecord::Schema.define(version: 2021_03_07_050742) do
   add_foreign_key "orders", "users"
   add_foreign_key "products", "brands", column: "brands_id"
   add_foreign_key "purchases", "users"
+  add_foreign_key "reviews", "products"
+  add_foreign_key "reviews", "users"
 end

@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
   has_many :orders
   has_many :annotations
+  has_many :reviews, dependent: :destroy
 
   has_many_attached :photos
 

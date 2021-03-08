@@ -1,0 +1,55 @@
+<div class="review-portion">
+  <h1 class="title" style="font-size: 18px; text-align: center;">Reviews</h1>
+  <BR>
+  <table class="table table-borderless" >
+    <thead></thead>
+    <% @reviews.each do |review| %>
+          <tbody>
+            <tr>
+              <th scope="row">
+                <% if review.user.photo.attached? %>
+                <%= cl_image_tag(review.user.photo.key) %>
+              <% else %>
+                <img src="http://simpleicon.com/wp-content/uploads/multy-user-256x256.png" alt="standardPic" style=
+                "width:60px;">
+              <% end %>
+              </th>
+               <td>
+                  <p> <%= review.comment %> </p>
+               </td>
+
+              <td>
+                <% if review.user == current_user %>
+                  <%= link_to edit_product_review_path(@product, review) do %>
+                    <i class="fas fa-pen"></i>
+                  <% end %>
+                  <%= link_to review_path(review), method: "delete" do %>
+                    <i class="fas fa-trash"></i>
+                  <% end %>
+                <% end %>
+              </td>
+              <td>
+                <% review.rating.times do  %>
+                    <i class="fas fa-star text-warning"></i>
+                <% end %>
+              </td>
+            </tr>
+          <tr>
+            <th scope="row"><%= review.user.last_name %></th>
+          </tr>
+            <% end %>
+        </tbody>
+        </table>
+  </div>
+
+</div>
+<div id ="review-missing">
+<div class="add-review container" style="background-color: #d4d4d4; padding: 20px; border-radius: 4px;">
+<h1 class="title" style="font-size: 18px;">Add Review</h1>
+  <%= simple_form_for @review, method: :post, url: product_reviews_path(@product) do |f| %>
+    <%= f.input :comment  %>
+    <%= f.input :rating %>
+    <%= f.button :submit, class: "btn btn-primary" %>
+  <% end %>
+</div>
+</div>
