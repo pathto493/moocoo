@@ -14,7 +14,7 @@ const initAddEventListenerToVideo = () => {
       widthMultiplier = 0.92;
     }
     // const playerWidth = widthMultiplier * window.innerWidth;
-    const playerWidth = 350;
+    const playerWidth = window.innerWidth;
     const playerHeight = 9/16*playerWidth;
 
     // Set the width of the big-player-container

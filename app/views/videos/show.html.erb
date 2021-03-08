@@ -1,6 +1,6 @@
 <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
-<div class="big-player-container">
-  <div class="container player-container">
+<div class="big-player-container sticky-card">
+  <div class="player-container">
     <div id="player" data-video-id="<%= @video.youtube_id %> ">
     </div>
   </div>
@@ -28,7 +28,7 @@ window.player = null;
 window.onYouTubeIframeAPIReady = function() {
   player = new YT.Player('player', {
     height: 9/16*350,
-    width: 350,
+    width: window.innerWidth,
     videoId: "<%= @video.youtube_id %>" ,
     events: {
       'onReady': onPlayerReady,
