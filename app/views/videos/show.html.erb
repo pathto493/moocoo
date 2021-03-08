@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
 <div class="big-player-container">
   <div class="container player-container">
@@ -55,48 +54,6 @@ console.log(tag);
 console.log(firstScriptTag);
 console.log(firstScriptTag.parentNode);
 console.log(firstScriptTag.parentNode.insertBefore(tag, firstScriptTag));
-
-// This script is to inject the youtube player iframe ready on our player
-// 2. This code loads the IFrame Player API code asynchronously.
-// var tag = document.createElement('script');
-// let getVideoId = document.querySelector("#player").dataset.videoId;
-// tag.src = "https://www.youtube.com/iframe_api";
-// var firstScriptTag = document.getElementsByTagName('script')[0];
-// firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-// // 2a. Set the player size
-// var widthMultiplier = 0.8;
-// if (window.innerWidth <= 480) {
-//   widthMultiplier = 0.92;
-// }
-
-// var playerWidth = widthMultiplier * window.innerWidth;
-// var playerHeight = 9/16*playerWidth;
-
-// // 3. This function creates an <iframe> (and YouTube player)
-// //    after the API code downloads.
-// var player;
-// function onYouTubeIframeAPIReady() {
-//   player = new YT.Player('player', {
-//     height: 390,
-//     width: 640,
-//     videoId: getVideoId,
-//     events: {
-//       'onReady': onPlayerReady,
-//       'onStateChange': onPlayerStateChange
-//     }
-//   });
-
-//   function onPlayerReady(event) {
-//     console.log("PLAYER READY");
-//     event.target.playVideo();
-//   }
-
-//   function onPlayerStateChange(event) {
-//     if(event.data == YT.PlayerState.PLAYING) {
-//     }
-//   }
-// }
 </script>
 
 <script>
@@ -118,31 +75,8 @@ console.log(firstScriptTag.parentNode.insertBefore(tag, firstScriptTag));
     </div>
   </div>
 </div>
-<div class="container shop">
-  <p class="title" style="font-size: 18px; text-align: center;">Shop the Look</p>
-    <% @products.each do |prod| %>
-    <div class="card-video card-prod">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-      <div class="card-video-infos">
-        <h2><%= link_to prod.name, prod %></h2>
-        <p><%= prod.description %></p>
-      </div>
-      <div class="card-video-infos info-right">
-        <h2>$<%= prod.price %></h2>
 
-        <%= simple_form_for(@order, method: :post, url: orders_path) do |f| %>
-        <%= f.input :product,  :as => :hidden, :input_html => { :value => prod } %>
-        <%= f.input :quantity, label: false, :collection => 1..12, :prompt => "-- Select Quantity --"%>
-        <%= f.input :user,  :as => :hidden, :input_html => { :value => current_user }%>
-        <%= button_tag type: 'submit', class: "cart" do %>
-        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-        <% end %>
-        <% end %>
-      </div>
-    </div>
-    <% end %>
-=======
-<div class="main-video-container sticky-card">
+<!-- <div class="main-video-container sticky-card">
   <iframe width="100%" height="240" allow="autoplay" src="<%= @video.video_url %>" class="main-video"></iframe>
   <div class="container">
     <div class="card-video-show">
@@ -158,7 +92,7 @@ console.log(firstScriptTag.parentNode.insertBefore(tag, firstScriptTag));
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <div class="vid-prod-container mt-3 p-3">
   <p class="title" style="font-size: 18px; text-align: center;">Shop the Look</p>
@@ -189,5 +123,4 @@ console.log(firstScriptTag.parentNode.insertBefore(tag, firstScriptTag));
       </div>
     </div>
   <% end %>
->>>>>>> 6ee9dcd37221eaa3c22a74f0c20ed12a32e2410b
 </div>

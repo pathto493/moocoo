@@ -31,6 +31,11 @@ class OrdersController < ApplicationController
     else
       order.save
     end
+
+    respond_to do |format|
+      format.html
+      format.json { render json: order}
+    end
   end
 
   def vidcreateorder
@@ -55,7 +60,10 @@ class OrdersController < ApplicationController
         order.save
       end
     end
-    render json: order
+    respond_to do |format|
+      format.html
+      format.json { render json: order}
+    end
   end
 
   def destroy
