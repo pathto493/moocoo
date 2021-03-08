@@ -17,6 +17,27 @@ puts "Cleaning Users 🧹"
 User.destroy_all
 puts "Cleaning Brands"
 Brand.destroy_all
+puts "Cleaning Articles"
+Article.destroy_all
+puts "Cleaning Forums"
+Forum.destroy_all
+
+puts "Creating articles - start"
+name = "#{Faker::Name.first_name} #{Faker::Name.last_name}"
+article = Article.create(title: "Finding your perfect match", pic_url: "https://source.unsplash.com/rNx2plB7-TQ", author: name, date: Time.now, body: "Tips on getting the right foundation shade")
+file = URI.open("https://source.unsplash.com/rNx2plB7-TQ")
+
+puts "article 2"
+name = "#{Faker::Name.first_name} #{Faker::Name.last_name}"
+article = Article.create(title: "How to be chic in 2021", pic_url:"https://source.unsplash.com/B4TjXnI0Y2c", author: name, date: Time.now, body: "The best guide on staying in trend this year")
+
+name = "#{Faker::Name.first_name} #{Faker::Name.last_name}"
+article = Article.create(title: "Which is longer lasting: lip stain vs lip tint", pic_url: "https://source.unsplash.com/aXYnU9mpit0", author: name, date: Time.now, body: "The verdict is surprising")
+
+puts "Creating forum and messages - start"
+f1 = Forum.create(name: "How to layer foundation without caking?")
+f2 = Forum.create(name: "How to make lipstick more long lasting?")
+f3 = Forum.create(name: "Best foundation brand for dry skin?")
 
 def generate_pexel_video
    # Your authentication key
@@ -160,5 +181,28 @@ puts "Create Users 🙋‍♂️"
    Review.create!(user: user, product: product, comment: Faker::Hipster.sentence(word_count: 3, supplemental: true, random_words_to_add: 0, open_compounds_allowed: false), rating: rand(1..5))
   end
 end
+puts "Creating messages for forum - start"
+Message.create(title: "Help", date: Time.now, content: "I need help with this issue", forum: f1, user: User.all.sample)
+Message.create(title: "Help", date: Time.now, content: "I need help with this issue", forum: f2, user: User.all.sample)
+Message.create(title: "Help", date: Time.now, content: "I need help with this issue", forum: f3, user: User.all.sample)
+
+
+
+# article = Article.create(title: "Finding your perfect match", author: "#{Faker::Name.first_name Faker::Name.last_name}", date: Time.now, body: "Tips on getting the right foundation shade")
+# file = URI.open("https://source.unsplash.com/1600x900/rNx2plB7-TQ")
+# article.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+# article = Article.create(title: "How to be chic in 2021", author: "#{Faker::Name.first_name Faker::Name.last_name}", date: Time.now, body: "The best guide on staying in trend this year")
+# file = URI.open("https://source.unsplash.com/1600x900/B4TjXnI0Y2c")
+# article.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+# article = Article.create(title: "Which is longer lasting: lip stain vs lip tint", author: "#{Faker::Name.first_name Faker::Name.last_name}", date: Time.now, body: "The verdict is surprising")
+# file = URI.open("https://source.unsplash.com/1600x900/aXYnU9mpit0")
+# article.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+# puts "Creating forum - start"
+# Forum.create(name: "How to layer foundation without caking?")
+# Forum.create(name: "How to make lipstick more long lasting?")
+# Forum.create(name: "Best foundation brand for dry skin?")
 
 puts "Finish seeding 🍑"

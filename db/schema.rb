@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_08_045925) do
+ActiveRecord::Schema.define(version: 2021_03_08_162726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,11 +49,39 @@ ActiveRecord::Schema.define(version: 2021_03_08_045925) do
     t.index ["video_id"], name: "index_annotations_on_video_id"
   end
 
+  create_table "articles", force: :cascade do |t|
+    t.string "title"
+    t.string "body"
+    t.string "author"
+    t.date "date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "pic_url"
+  end
+
   create_table "brands", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "name"
     t.text "image_file_path"
+  end
+
+  create_table "forums", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "forum_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.date "date"
+    t.string "title"
+    t.index ["forum_id"], name: "index_messages_on_forum_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -141,6 +169,8 @@ ActiveRecord::Schema.define(version: 2021_03_08_045925) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "annotations", "products"
   add_foreign_key "annotations", "videos"
+  add_foreign_key "messages", "forums"
+  add_foreign_key "messages", "users"
   add_foreign_key "orders", "products"
   add_foreign_key "orders", "purchases"
   add_foreign_key "orders", "users"
