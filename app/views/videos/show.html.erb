@@ -33,7 +33,7 @@
         <div class="d-flex flex-column justify-content-between h-100 px-1 align-items-end">
         <p><strong><%= humanized_money_with_symbol a.product.price %></strong></p>
         <div class="text-right">
-          <%= simple_form_for(@order, method: :post, url: vidcreateorder_path, :remote => true,  html: { class: :item }) do |f| %>
+          <%= simple_form_for(@order, method: :post, url: vidcreateorder_path) do |f| %>
             <%= f.input :product,  :as => :hidden, :input_html => { :value => a.product.id } %>
             <%= f.input :quantity, label: false, :input_html => { :id => "quantity" }, :collection => 1..12, :prompt => "-- Select Quantity --"%>
             <%= button_tag type: 'submit', class: "cart" do %>

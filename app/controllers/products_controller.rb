@@ -18,6 +18,9 @@ class ProductsController < ApplicationController
 
   def show
     @order = Order.new
+    product = Product.find(params[:id])
+    @reviews = Review.where(product: product).reverse
+    @review = Review.new
   end
 
   def update
