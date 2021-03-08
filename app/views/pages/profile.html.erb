@@ -4,7 +4,7 @@
       <% if @user.photo.attached? %>
         <%= cl_image_tag @user.photo.key, width: 56, height: 56, crop: :fill, class: 'avatar-large' %>
       <% else %>
-        <%= image_tag('profile', class: 'avatar-large') %>
+        <%= image_tag('profile.png', class: 'avatar-large') %>
       <% end %>
     </div>
     <div>
