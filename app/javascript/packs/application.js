@@ -62,14 +62,14 @@ document.addEventListener('turbolinks:load', () => {
   initRemoveOrderFromCartAlert();
   scrollNav();
 
+  document.addEventListener('turbolinks:request-start', () => {
+    const spinner = document.querySelector('#spinner');
+    spinner.style.display = 'flex';
+  });
+
+  document.addEventListener('turbolinks:request-end', () => {
+    const spinner = document.querySelector('#spinner');
+    spinner.style.display = 'none';
+  });
 });
 
-document.addEventListener('turbolinks:request-start', () => {
-  const spinner = document.querySelector('#spinner');
-  spinner.style.display = 'flex';
-});
-
-document.addEventListener('turbolinks:request-end', () => {
-  const spinner = document.querySelector('#spinner');
-  spinner.style.display = 'none';
-});

@@ -1,0 +1,13 @@
+
+
+
+<div class="container">
+  <h1 class="title">Edit your review</h1>
+  <%= simple_form_for [ @product, @review] do  |f| %>
+    <%= f.input :comment, placeholder: @review.comment %>
+    <%= f.input :rating, placeholder: @review.rating %>
+    <%= f.input :product, :as => :hidden, :input_html => { :value => @product }%>
+    <%= f.input :user, :as => :hidden, :input_html => { :value => @user }%>
+    <%= f.button :submit, class: "btn btn-primary" %>
+  <% end %>
+</div>
