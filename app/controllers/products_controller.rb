@@ -26,7 +26,9 @@ class ProductsController < ApplicationController
   end
 
   def create
+    uploaded_photos = params[:product][:photos]
     @product = Product.new(product_params)
+    @product.photos.attach(uploaded_photos)
     @product.save
     redirect_to product_path(@product)
   end
@@ -38,6 +40,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :description)
+    params.require(:product).permit(:name, :description, :price)
   end
 end
