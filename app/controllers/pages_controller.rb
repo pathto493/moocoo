@@ -22,4 +22,8 @@ class PagesController < ApplicationController
     @product_results = @results.where(searchable_type: 'Product').map(&:searchable)
     @brand_results = @results.where(searchable_type: 'Brand').map(&:searchable)
   end
+
+  def admin
+    @product = Product.new
+  end
 end

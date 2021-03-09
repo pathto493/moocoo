@@ -24,6 +24,7 @@ const initRemoveOrderFromCartAlert = () => {
     if (!document.querySelector(".card-cart")) {
       cartBody.insertAdjacentHTML("beforebegin", `
         <h2 class="py-3">Oops! Your cart is empty!</h2>
+        <a href="/products" class="btn btn-primary">Browse for more</a>
         `);
       totalPrice.remove();
       document.querySelector(".review-order-button").remove();
@@ -40,7 +41,7 @@ const initRemoveOrderFromCartAlert = () => {
     fetch("/cart.json")
       .then(respond => respond.json())
       .then((data) => {
-        totalPrice.innerHTML = `TOTAL PRICE : SGD ${centsToPrice(data.cents)}`;
+        totalPrice.innerHTML = `TOTAL : SGD ${centsToPrice(data.cents)}`;
       })
 
   }

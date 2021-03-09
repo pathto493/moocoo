@@ -1,4 +1,3 @@
-<!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
 <div class="big-player-container sticky-card">
   <div class="player-container">
     <div id="player" data-video-id="<%= @video.youtube_id %> ">
@@ -6,12 +5,12 @@
   </div>
   <div class="annotations">
     <% @video.annotations.each_with_index do |annotation, index|  %>
-    <div class="annotation" id="annotation-<%= index + 1 %>" data-time-start="<%= annotation.time_start %>" data-time-end="<%= annotation.time_end %>" data-x-coordinate="<%= annotation.x_coordinate %>" data-y-coordinate="<%= annotation.y_coordinate %>">
-      <span class="annotation-button"><i class="fas fa-circle"></i></span>
-      <div class="annotation-product px-1" id="annotation-product-<%= index + 1 %>">
+    <div class="annotation px-1" id="annotation-<%= index + 1 %>" data-time-start="<%= annotation.time_start %>" data-time-end="<%= annotation.time_end %>" data-x-coordinate="<%= annotation.x_coordinate %>" data-y-coordinate="<%= annotation.y_coordinate %>">
+      <div class="annotation-button">></div>
+      <div class="annotation-product" id="annotation-product-<%= index + 1 %>">
         <%= annotation.product.name %> -
         <%= humanized_money_with_symbol annotation.product.price %>
-        <span class="annotation-add-to-cart pl-1" id="annotation-add-to-cart-<%= index + 1 %>" data-product-id="<%= annotation.product.id%>"><i class="fas fa-cart-plus"></i></span>
+        <span class="annotation-add-to-cart px-1" id="annotation-add-to-cart-<%= index + 1 %>" data-product-id="<%= annotation.product.id%>"><i class="fas fa-cart-plus"></i></span>
       </div>
     </div>
     <% end %>
@@ -19,15 +18,15 @@
 </div>
 
 <script>
+// To embed youtube videos on div id = player
 if (window.tag) {
 location.reload();
 }
 
 window.player = null;
-
 window.onYouTubeIframeAPIReady = function() {
   player = new YT.Player('player', {
-    height: 9/16*350,
+    height: 9/16*window.innerWidth,
     width: window.innerWidth,
     videoId: "<%= @video.youtube_id %>" ,
     events: {
@@ -36,68 +35,44 @@ window.onYouTubeIframeAPIReady = function() {
     }
   });
 }
-
 window.onPlayerReady = function(event) {
   console.log("PLAYER READY");
 }
-
 window.onPlayerStateChange = function(event) {
   if(event.data == YT.PlayerState.PLAYING) {
   }
 }
-
 window.tag = document.createElement('script');
 window.tag.src = "https://www.youtube.com/iframe_api"; // Create source to script
 window.firstScriptTag = document.getElementsByTagName('script')[0]; // Get the first <script> on <head></head>!
 window.firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); // Insert the script src=youtube to <head></head> -> Calling script which you can try by opening "https://www.youtube.com/iframe_api"
-// console.log(tag);
-// console.log(firstScriptTag);
-// console.log(firstScriptTag.parentNode);
-// console.log(firstScriptTag.parentNode.insertBefore(tag, firstScriptTag));
 </script>
 
-<script>
-  window.setTimeout(function() {printTime()}, 1000);
-  const printTime = () => {
-    console.log(player.getCurrentTime());
-  }
-</script>
-
-<div class="container">
-  <div class="card-video-index">
-    <div class="card-video-index-infos">
+<div class="container px-2 mt-1">
+  <div class="video-show-description">
+    <div class="video-show-title py-1">
+      <%= @video.title %>
+    </div>
+    <div class="video-show-info d-flex justify-content-between">
       <div>
-        <h2 style="font-size: 14px;"><%= @video.title %></h2>
-        <p style="font-size: 14px; padding-top: 2px;"><%= @video.creator %></p>
+        <%= @video.creator %>
       </div>
-      <i class="fa fa-thumbs-up" aria-hidden="true"></i> <%=  number_with_delimiter(@video.likes, :delimiter => ',') %>
-      <i class="fa fa-eye"  aria-hidden="true"></i> <%= number_with_delimiter(@video.views, :delimiter => ',') %>
+      <div>
+        <i class="fa fa-thumbs-up" aria-hidden="true"></i> <%=  number_with_delimiter(@video.likes, :delimiter => ',') %>
+        <i class="fa fa-eye"  aria-hidden="true"></i> <%= number_with_delimiter(@video.views, :delimiter => ',') %>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- <div class="main-video-container sticky-card">
-  <iframe width="100%" height="240" allow="autoplay" src="<%= @video.video_url %>" class="main-video"></iframe>
-  <div class="container">
-    <div class="card-video-show">
-      <div class="card-video-show-infos">
-        <div>
-          <h2 style="font-size: 14px;"><%= @video.title %></h2>
-          <p style="font-size: 14px; padding-top: 2px;"><%= @video.creator %></p>
-        </div>
-        <h2 class="card-video-show-infos right-info" style="font-size: 14px;">
-          <i class="fa fa-thumbs-up" aria-hidden="true"></i> &nbsp <%=  number_with_delimiter(@video.likes, :delimiter => ',') %> &nbsp
-          <i class="fa fa-eye"  aria-hidden="true"></i> &nbsp <%= number_with_delimiter(@video.views, :delimiter => ',') %>
-        </h2>
-      </div>
+<div class="container-fluid px-0 mt-3">
+  <div class="row video-show-shop-title">
+    <div class="col-12">
+      Shop the Look
     </div>
   </div>
-</div> -->
-
-<div class="vid-prod-container mt-3 p-3">
-  <p class="title" style="font-size: 18px; text-align: center;">Shop the Look</p>
   <% @annotations.each do |a| %>
-    <div class="video-show-card row no-gutters p-1 my-2">
+    <div class="video-show-card row no-gutters my-2">
       <div class="video-show-card-img col-3">
         <%= cl_image_tag a.product.photos.first.key, width: 100, crop: :fill %>
       </div>
@@ -108,15 +83,17 @@ window.firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); // Insert th
         </div>
       </div>
       <div class="col-3">
-        <div class="d-flex flex-column justify-content-between h-100 px-1 align-items-end">
+        <div class="d-flex flex-column justify-content-between h-100 pl-1 px-2 align-items-end">
         <p><strong><%= humanized_money_with_symbol a.product.price %></strong></p>
         <div class="text-right">
           <%= simple_form_for(@order, method: :post, url: vidcreateorder_path) do |f| %>
             <%= f.input :product,  :as => :hidden, :input_html => { :value => a.product.id } %>
-            <%= f.input :quantity, label: false, :input_html => { :id => "quantity" }, :collection => 1..12, :prompt => "-- Select Quantity --"%>
-            <%= button_tag type: 'submit', class: "cart" do %>
-              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-            <% end %>
+            <div class="d-flex">
+              <%= f.input :quantity, label: false, :input_html => { :id => "quantity" }, :collection => 1..12, :prompt => "--"%>
+              <%= button_tag type: 'submit', class: "cart btn btn-primary px-1 py-0 ml-1" do %>
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+              <% end %>
+            </div>
           <% end %>
         </div>
         </div>

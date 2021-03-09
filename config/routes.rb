@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/profile', to: 'pages#profile'
   get '/search', to: 'pages#search'
   get 'cart', to: 'orders#cart'
+  get 'admin', to: 'pages#admin'
 
   resources :videos, only: [:index, :show] do
     collection do
@@ -13,7 +14,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :products, only: [:index, :show, :update] do
+  resources :products, only: [:index, :show, :update, :create] do
     resources :photos, only: [:destroy]
     resources :reviews, only: [ :create, :edit, :update ]
     collection do
@@ -34,4 +35,9 @@ Rails.application.routes.draw do
     get '/payments/cancel', to: 'payments#cancel'
   end
 
+  resources :forums, only: [:index, :show, :create, :new] do
+    resources :messages, only: :create
+  end
+
+  resources :articles, only: [:index, :show]
 end

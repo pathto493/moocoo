@@ -1,44 +1,100 @@
-
-.main-video-container {
-  background-color: white;
-  z-index: 1;
+// videos show main-video and annotations
+.big-player-container {
+  height: calc(9/16*350)px;
+  position: relative;
 }
 
-.card-prod img {
-  width: 150px;
+.player-container {
+  position: absolute;
 }
 
-.card-prod {
-  align-items: flex-start;
-  margin-bottom: 30px;
-  justify-content: center;
+.annotations {
+  position: absolute;
+  top: 20%;
 }
 
-.card-prod .card-video-infos {
-  padding-top: 0px;
+.annotation {
+  border-radius: 2px;
+  font-size: 0.75em;
 }
 
-.card-prod .info-right {
- text-align: right;
+.annotation-button {
+  background-color: rgba(0,0,0,0.6);
+  opacity: 0.6;
+  color: white;
+  padding: 2px;
 }
 
-// temporary disable this because it is affecting the form control for all pages, to name space it
-// .form-control {
-//   font-size: 10px;
-//   width: 50px;
-//   display: inline;
-// }
-
-.cart {
-  border-width: 0px;
+.annotation-button:hover {
+  cursor: pointer;
+  opacity: 1;
 }
 
-.cart i {
-  font-size: 1em;
+.annotation-add-to-cart:hover {
+  cursor: pointer;
+}
+
+.annotation-product {
+  background-color: rgba(0,0,0,0.6);
+  color: white;
+  border-radius: 2px;
+  padding: 2px;
+  //overflow: hidden;
+  //transition: width 1s;
+}
+
+.annotation-product-none {
+  display: none;
 }
 
 div.sticky-card {
   position: sticky;
   top: 0;
   padding-bottom: 8px;
+}
+
+// videos show title and info
+.video-show-description {
+  font-size: 0.9rem;
+  font: $body-font;
+
+  .video-show-title {
+    font-weight: bold;
+    font-size: 1rem;
+  }
+}
+
+// videos show product card
+.video-show-shop-title {
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center
+}
+
+.video-show-card-img img {
+  width: 100%;
+}
+
+.video-show-card {
+  border-radius: 2px;
+  font-size: 0.9rem;
+
+  .form-control {
+    font-size: 0.9em;
+    padding: 0px;
+    height: 100%;
+  }
+
+  .form-group {
+    margin-bottom: 0px;
+  }
+
+  p {
+    margin-bottom: 0px;
+  }
+
+  .cart i{
+    font-size: 0.9em;
+    color: white;
+  }
 }
