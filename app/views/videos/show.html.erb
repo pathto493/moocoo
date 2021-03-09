@@ -6,12 +6,12 @@
   </div>
   <div class="annotations">
     <% @video.annotations.each_with_index do |annotation, index|  %>
-    <div class="annotation" id="annotation-<%= index + 1 %>" data-time-start="<%= annotation.time_start %>" data-time-end="<%= annotation.time_end %>" data-x-coordinate="<%= annotation.x_coordinate %>" data-y-coordinate="<%= annotation.y_coordinate %>">
-      <span class="annotation-button"><i class="fas fa-circle"></i></span>
-      <div class="annotation-product px-1" id="annotation-product-<%= index + 1 %>">
+    <div class="annotation px-1" id="annotation-<%= index + 1 %>" data-time-start="<%= annotation.time_start %>" data-time-end="<%= annotation.time_end %>" data-x-coordinate="<%= annotation.x_coordinate %>" data-y-coordinate="<%= annotation.y_coordinate %>">
+      <div class="annotation-button">></div>
+      <div class="annotation-product" id="annotation-product-<%= index + 1 %>">
         <%= annotation.product.name %> -
         <%= humanized_money_with_symbol annotation.product.price %>
-        <span class="annotation-add-to-cart pl-1" id="annotation-add-to-cart-<%= index + 1 %>" data-product-id="<%= annotation.product.id%>"><i class="fas fa-cart-plus"></i></span>
+        <span class="annotation-add-to-cart px-1" id="annotation-add-to-cart-<%= index + 1 %>" data-product-id="<%= annotation.product.id%>"><i class="fas fa-cart-plus"></i></span>
       </div>
     </div>
     <% end %>

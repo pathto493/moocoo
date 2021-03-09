@@ -8,17 +8,20 @@
 }
 
 .annotations {
+  position: absolute;
+  top: 20%;
 }
 
 .annotation {
-  position: absolute;
   border-radius: 2px;
+  font-size: 0.75em;
 }
 
 .annotation-button {
+  background-color: rgba(0,0,0,0.6);
   opacity: 0.6;
-  font-size: 1.5em;
   color: white;
+  padding: 2px;
 }
 
 .annotation-button:hover {
@@ -31,13 +34,14 @@
 }
 
 .annotation-product {
-  display: none;
   background-color: rgba(0,0,0,0.6);
   color: white;
-  padding: 2px;
   border-radius: 2px;
+  padding: 2px;
+  //overflow: hidden;
+  //transition: width 1s;
 }
 
-.annotation-product-block {
-  display: block;
+.annotation-product-none {
+  display: none;
 }

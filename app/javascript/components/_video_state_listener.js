@@ -37,8 +37,8 @@ const initAddEventListenerToVideo = () => {
         yCoordinate: annotation.dataset.yCoordinate
       };
       annotationsArray.push(annotationHash);
-      annotation.style.top = `${Math.floor(annotationHash.xCoordinate*100)}%`;
-      annotation.style.left = `${Math.floor(annotationHash.yCoordinate*100)}%`;
+      //annotation.style.top = `${Math.floor(annotationHash.xCoordinate*100)}%`;
+      //annotation.style.left = `${Math.floor(annotationHash.yCoordinate*100)}%`;
     });
 
     function myTimer() {
@@ -47,16 +47,18 @@ const initAddEventListenerToVideo = () => {
 
       annotationsArray.forEach((aHash)=> {
         if (videoCurrentTime >= aHash.timeStart && videoCurrentTime <= aHash.timeEnd) {
-          aHash.annotationElement.querySelector(".annotation-button").style.display = "inline";
+          aHash.annotationElement.style.display = "flex";
         } else {
-          aHash.annotationElement.querySelector(".annotation-button").style.display = "none";
+          aHash.annotationElement.style.display = "none";
         }
       })
     }
 
     const clickAnnotationCircle = (e) => {
       e.preventDefault();
-      e.currentTarget.parentElement.querySelector("div").classList.toggle("annotation-product-block");
+      console.log("CLICKED");
+      e.currentTarget.parentElement.querySelector(".annotation-product").classList.toggle("annotation-product-none");
+      //e.currentTarget.parentElement.querySelector(".annotation-product-text").classList.toggle("annotation-product-text-active");
     }
 
     annotations.forEach((annotation) => {
