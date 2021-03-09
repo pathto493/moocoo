@@ -1,11 +1,14 @@
-<div class="index-brand-container">
-  <% @brands.each do |brand| %>
-    <div class="row">
-      <div class="col-12">
-        <%= link_to brand_path(brand.id) do %>
-        <%= image_tag brand.image_file_path %>
-        <% end %>
+
+  <div class="index-brand-container">
+    <u><h1>Brand Partners</h1></u>
+    <% @brands.each do |brand| %>
+      <div class="row">
+        <div class="col-12">
+          <%= link_to brand_path(brand.id) do %>
+          <%= image_tag brand.image_file_path %>
+          <% end %>
+        </div>
       </div>
-    </div>
-  <% end  %>
-</div>
+    <% end  %>
+  </div>
+
