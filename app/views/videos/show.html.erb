@@ -1,4 +1,3 @@
-<!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
 <div class="big-player-container sticky-card">
   <div class="player-container">
     <div id="player" data-video-id="<%= @video.youtube_id %> ">
@@ -64,24 +63,6 @@ window.firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); // Insert th
     </div>
   </div>
 </div>
-
-<!-- <div class="main-video-container sticky-card">
-  <iframe width="100%" height="240" allow="autoplay" src="<%= @video.video_url %>" class="main-video"></iframe>
-  <div class="container">
-    <div class="card-video-show">
-      <div class="card-video-show-infos">
-        <div>
-          <h2 style="font-size: 14px;"><%= @video.title %></h2>
-          <p style="font-size: 14px; padding-top: 2px;"><%= @video.creator %></p>
-        </div>
-        <h2 class="card-video-show-infos right-info" style="font-size: 14px;">
-          <i class="fa fa-thumbs-up" aria-hidden="true"></i> &nbsp <%=  number_with_delimiter(@video.likes, :delimiter => ',') %> &nbsp
-          <i class="fa fa-eye"  aria-hidden="true"></i> &nbsp <%= number_with_delimiter(@video.views, :delimiter => ',') %>
-        </h2>
-      </div>
-    </div>
-  </div>
-</div> -->
 
 <div class="vid-prod-container mt-3 p-3">
   <p class="title" style="font-size: 18px; text-align: center;">Shop the Look</p>
