@@ -44,12 +44,12 @@
 
 </div>
 <div id ="review-missing">
-<div class="add-review container" style="background-color: #d4d4d4; padding: 20px; border-radius: 4px;">
-<h1 class="title" style="font-size: 18px;">Add Review</h1>
-  <%= simple_form_for @review, method: :post, url: product_reviews_path(@product) do |f| %>
-    <%= f.input :comment  %>
-    <%= f.input :rating %>
-    <%= f.button :submit, class: "btn btn-primary" %>
-  <% end %>
-</div>
+  <div class="add-review container" style="background-color: #d4d4d4; padding: 20px; border-radius: 4px;">
+    <h1 class="title" style="font-size: 18px;">Add Review</h1>
+      <%= simple_form_for @review, method: :post, url: product_reviews_path(@product) do |f| %>
+        <%= f.input :comment  %>
+        <%= f.input :rating %>
+        <%= f.button :submit, class: "btn btn-primary" %>
+      <% end %>
+  </div>
 </div>
