@@ -35,7 +35,7 @@ class VideosController < ApplicationController
 
   def create
     @video = Video.new(video_params)
-    @Video.save
+    @video.save
     redirect_to video_path(@video)
   end
 
