@@ -7,15 +7,16 @@
           <% @orders.each do |order| %>
             <%= render partial: "shared/cart_card", locals: { order: order } %>
           <% end %>
-          <div class="total-price p-4 my-3 rounded bg-white">
-            <h4>TOTAL PRICE : SGD <%= @total_price %></h4>
+          <div class="total-price p-2 my-2 rounded bg-white">
+            <h4>TOTAL : SGD <%= @total_price %></h4>
           </div>
           <%= form_tag purchases_path, method: :post, class: "review-order-button" do %>
             <%= hidden_field_tag 'orders', @purchased_orders %>
-          <%= submit_tag 'Review Orders', class: 'btn btn-primary my-2' %>
+          <%= submit_tag 'Review Orders', class: 'btn btn-primary' %>
           <% end %>
         <% else %>
           <h2 class="py-3">Oops! Your cart is empty!</h2>
+          <%= link_to "Browse for more", products_path, class: "btn btn-primary" %>
         <% end %>
       </div>
     </div>

@@ -1,4 +1,4 @@
-const filterFunction = () => {
+const sortFunction = () => {
   const filter_btn = document.querySelectorAll(".btn-filter");
   const all = document.querySelectorAll(".all");
   const creator = document.querySelectorAll(".creator");
@@ -8,11 +8,16 @@ const filterFunction = () => {
   const filter = document.querySelectorAll(".filter");
 
   filter_btn.forEach((btn) => {
-    btn.addEventListener("click", ()=>{
+    btn.addEventListener("click", (event) => {
+
       filter_btn.forEach((btn) => {
-        btn.classList.remove("active");
+        btn.checked = false;
       })
-      btn.classList.add("active");
+
+      event.currentTarget.checked = true;
+
+
+
       const btnVal = btn.getAttribute("data-tabs");
 
       filter.forEach((item)=>{
@@ -53,4 +58,4 @@ const filterFunction = () => {
   })
 };
 
-export { filterFunction };
+export { sortFunction };

@@ -1,3 +1,18 @@
+// For styling
+.card-video-infos {
+  font-size: 0.9rem;
+  font-family: $body-font;
+  width: 350px;
+
+  .card-video-info-title {
+    max-width: 350px;
+    overflow: hidden;
+  }
+}
+
+
+// For the scrolling
+
 div.scrollmenu {
   display: flex;
   overflow: auto;
@@ -51,6 +66,3 @@ div.scrollmenu {
   width: 100%;
 
 }
-
-
-
