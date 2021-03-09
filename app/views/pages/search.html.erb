@@ -1,5 +1,5 @@
 <div class="container" style="max-width:1000px;" data-controller='filter'>
-  <div style="text-align:center;">
+  <div style="text-align:center; margin-bottom:8px;">
     <h2>Search Results</h2>
       <input type="radio" class="btn-filter" name="video" data-action="change->filter#change">Videos
       <input type="radio" class="btn-filter" name="product" data-action="change->filter#change">Products
@@ -10,9 +10,9 @@
   <div class="search-container">
     <div class="video" data-filter-target="videoresult">
       <% if @video_results.empty? %>
-        <p>No videos matched your search</p>
+        <p style="text-align:center;">No videos matched your search</p>
       <% else %>
-        <h4>Videos matching your search:</h4>
+        <h4 style="text-align:center;">Videos matching your search:</h4>
         <div class="search-video-container my-3 filter videos-search" style="text-align:center;">
           <%= render 'shared/video_display', videos: @video_results %>
         </div>
@@ -21,9 +21,9 @@
 
     <div class="product" data-filter-target="productresult">
       <% if @product_results.empty? %>
-        <p>No products matched your search</p>
+        <p style="text-align:center;">No products matched your search</p>
       <% else %>
-        <h4>Products matching your search:</h4>
+        <h4 style="text-align:center;">Products matching your search:</h4>
         <div class="search-product-container my-3 filter products-search" style="text-align:center;">
           <%= render 'shared/product_display', products: @product_results %>
         </div>
@@ -31,25 +31,15 @@
     </div>
   </div>
 
+    <div class="brands" data-filter-target="brandresult">
+      <% if @brand_results.empty? %>
+        <p style="text-align:center;">No brands matched your search</p>
+      <% else %>
+        <h4 style="text-align:center;">Brands matching your search:</h4>
+        <div class="search-video-container my-3 filter videos-search" style="text-align:center;">
+          <%= render 'shared/brand_display', brands: @brand_results %>
+        </div>
+      <% end %>
+    </div>
 </div>
 
-
-<!-- <script>
-  container = document.querySelector(".search-container");
-  function show(x){
-    if(x=="0"){
-      videos = document.querySelector(".search-container .video");
-      console.log(videos);
-
-      // 1. Clean the search container
-      // 2. Call the fetch(url) -> Retrieve the data
-      // 3. After you retrieve, you populate the data
-    }
-    else{
-      products = document.querySelector(".search-container .product");
-      console.log(products);
-    }
-    return
-
-  };
-</script> -->

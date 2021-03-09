@@ -20,6 +20,6 @@ class PagesController < ApplicationController
 
     @video_results = @results.where(searchable_type: 'Video').map(&:searchable)
     @product_results = @results.where(searchable_type: 'Product').map(&:searchable)
-    # raise
+    @brand_results = @results.where(searchable_type: 'Brand').map(&:searchable)
   end
 end
