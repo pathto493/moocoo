@@ -1,26 +1,34 @@
-.index-brand-container img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+.index-brand-container {
+    img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
 }
 
 .brand-container {
-  padding-bottom: 20px;
   text-align: center;
+  background-color: #000220;
+  h1 {
+  color: white;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  }
 }
 
 .brand-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 12px;
   padding: 10px;
-  // margin: 40px;
+  margin: 10px;
+  text-align: center;
 }
 
 .brand-cart {
     background-color: white;
-    box-shadow: whitesmoke;
   img {
     width:100%;
   }
