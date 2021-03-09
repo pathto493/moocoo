@@ -33,5 +33,6 @@ class PagesController < ApplicationController
 
   def admin
     @product = Product.new
+    @video = Video.new
   end
 end

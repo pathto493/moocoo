@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'cart', to: 'orders#cart'
   get 'admin', to: 'pages#admin'
 
-  resources :videos, only: [:index, :show] do
+  resources :videos, only: [:index, :show, :new, :create] do
     collection do
       get :home
     end

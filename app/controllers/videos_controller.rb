@@ -28,4 +28,20 @@ class VideosController < ApplicationController
     @order = Order.new
     @products = @annotations.map { |a| a.product }
   end
+
+  def new
+    @video = Video.new
+  end
+
+  def create
+    @video = Video.new(video_params)
+    @Video.save
+    redirect_to video_path(@video)
+  end
+
+  private
+
+  def video_params
+    params.require(:video).permit(:youtube_id)
+  end
 end
