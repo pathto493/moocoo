@@ -50,7 +50,11 @@ product = Product.create(
 )
 
 puts "Attaching Photos to Product 1"
-file = open("app/assets/images/Lancome.jpg")
+file = open("app/assets/images/m6.jpg")
+product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+puts "Attaching Photos to Product 1"
+file = open("app/assets/images/f1.jpg")
 product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
 
 
@@ -62,7 +66,11 @@ product = Product.create(
 )
 
 puts "Attaching Photos to Product 2"
-file = URI.open("https://picsum.photos/200")
+file = open("app/assets/images/m2.jpg")
+product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+puts "Attaching Photos to Product 2"
+file = open("app/assets/images/f1.jpg")
 product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
 
 
@@ -76,7 +84,11 @@ product = Product.create(
 
 
 puts "Attaching Photos to Product 3"
-file = URI.open("https://picsum.photos/200")
+file = open("app/assets/images/m5.jpg")
+product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+puts "Attaching Photos to Product 3"
+file = open("app/assets/images/f1.jpg")
 product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
 
 
@@ -89,9 +101,12 @@ product = Product.create(
 
 
 puts "Attaching Photos to Product 4"
-file = URI.open("https://picsum.photos/200")
+file = open("app/assets/images/m3.jpg")
 product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
 
+puts "Attaching Photos to Product 4"
+file = open("app/assets/images/f1.jpg")
+product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
 
 
 product = Product.create(
@@ -103,9 +118,12 @@ product = Product.create(
 
 
 puts "Attaching Photos to Product 5"
-file = URI.open("https://picsum.photos/200")
+file = open("app/assets/images/m1.jpg")
 product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
 
+puts "Attaching Photos to Product 5"
+file = open("app/assets/images/f1.jpg")
+product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
 
 product = Product.create(
   name: "Synchro Skin Radiant Lifting Foundation",
@@ -116,9 +134,12 @@ product = Product.create(
 
 
 puts "Attaching Photos to Product 6"
-file = URI.open("https://picsum.photos/200")
+file = open("app/assets/images/m8.jpg")
 product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
 
+puts "Attaching Photos to Product 6"
+file = open("app/assets/images/f1.jpg")
+product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
 
 product = Product.create(
   name: "Synchro Skin Self Refreshing Concealer",
@@ -129,9 +150,12 @@ product = Product.create(
 
 
 puts "Attaching Photos to Product 7"
-file = URI.open("https://picsum.photos/200")
+file = open("app/assets/images/m14.jpg")
 product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
 
+puts "Attaching Photos to Product 7"
+file = open("app/assets/images/f1.jpg")
+product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
 
 product = Product.create(
   name: "Minimalist Whipped Powder Blush",
@@ -142,7 +166,11 @@ product = Product.create(
 
 
 puts "Attaching Photos to Product 8"
-file = URI.open("https://picsum.photos/200")
+file = open("app/assets/images/m17.jpg")
+product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+puts "Attaching Photos to Product 8"
+file = open("app/assets/images/f1.jpg")
 product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
 
 
@@ -155,7 +183,11 @@ product = Product.create(
 
 
 puts "Attaching Photos to Product 9"
-file = URI.open("https://picsum.photos/200")
+file = open("app/assets/images/m18.jpg")
+product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+puts "Attaching Photos to Product 9"
+file = open("app/assets/images/f1.jpg")
 product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
 
 
@@ -168,7 +200,11 @@ product = Product.create(
 
 
 puts "Attaching Photos to Product 10"
-file = URI.open("https://picsum.photos/200")
+file = open("app/assets/images/m10.jpg")
+product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+puts "Attaching Photos to Product 10"
+file = open("app/assets/images/f1.jpg")
 product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
 
 
@@ -181,7 +217,11 @@ product = Product.create(
 
 
 puts "Attaching Photos to Product 11"
-file = URI.open("https://picsum.photos/200")
+file = open("app/assets/images/m12.jpg")
+product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+puts "Attaching Photos to Product 11"
+file = open("app/assets/images/f1.jpg")
 product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
 
 
@@ -194,9 +234,12 @@ product = Product.create(
 
 
 puts "Attaching Photos to Product 12"
-file = URI.open("https://picsum.photos/200")
+file = open("app/assets/images/m11.jpg")
 product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
 
+puts "Attaching Photos to Product 12"
+file = open("app/assets/images/f1.jpg")
+product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
 
 product = Product.create(
   name: "Innerglow Cheek Powder",
@@ -207,7 +250,11 @@ product = Product.create(
 
 
 puts "Attaching Photos to Product 13"
-file = URI.open("https://picsum.photos/200")
+file = open("app/assets/images/m17.jpg")
+product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+puts "Attaching Photos to Product 13"
+file = open("app/assets/images/f1.jpg")
 product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
 
 
@@ -220,7 +267,11 @@ product = Product.create(
 
 
 puts "Attaching Photos to Product 14"
-file = URI.open("https://picsum.photos/200")
+file = open("app/assets/images/m15.jpg")
+product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+puts "Attaching Photos to Product 14"
+file = open("app/assets/images/f1.jpg")
 product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
 
 
@@ -233,9 +284,12 @@ product = Product.create(
 
 
 puts "Attaching Photos to Product 15"
-file = URI.open("https://picsum.photos/200")
+file = open("app/assets/images/m16.jpg")
 product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
 
+puts "Attaching Photos to Product 15"
+file = open("app/assets/images/f1.jpg")
+product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
 
 ### VIDEO ###
 puts "Call Youtube API to generate videos 🎥"
@@ -260,7 +314,7 @@ id.each do |i|
   video.save
 end
 
-### ANNOTATION FOR VIDEO_ID = 5 ###
+### ANNOTATION FOR ONLY ONE VIDEO ###
 
 puts "Generate Annotations ▶️"
 video = Video.find_by(title: "THE EASIEST WAY TO ENHANCE YOUR FACE WITH MAKEUP! | Hindash")
@@ -435,13 +489,13 @@ f3 = Forum.create(name: "Best foundation brand for dry skin?")
 puts "Creating messages for forum - start"
 
 puts "Creating message for forum topic 1"
-Message.create(title: "Tried many brands but nothing work", date: Time.now, content: "I have used a couple of luxury and drug store brands but nothing works. Any good suggestions out there for severe dry skin?", forum: f1, user: User.all.sample)
+Message.create(title: "Tried many brands but nothing work", date: Time.now, content: "I have used a couple of luxury and drug store brands but nothing works. Any good suggestions out there for severe dry skin?", forum: f3, user: User.all.sample)
 
 puts "Creating message for forum topic 2"
 Message.create(title: "Lipstick gone before lunch", date: Time.now, content: "I like using lipstick over lip stain but it is not long lasting. How can I make it last longer?", forum: f2, user: User.all.sample)
 
 puts "Creating message for forum topic 3"
-Message.create(title: "Dry skin issue", date: Time.now, content: "I have difficulty layering foundation on my skin as I have dry skin. Any tips? ", forum: f3, user: User.all.sample)
+Message.create(title: "Dry skin issue", date: Time.now, content: "I have difficulty layering foundation as I have dry skin. Any tips? ", forum: f1, user: User.all.sample)
 
 
 
