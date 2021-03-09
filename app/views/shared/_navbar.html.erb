@@ -23,11 +23,11 @@
 
     <%= link_to cart_path, class: "navbar-cart my-3" do %>
       <i class="fas fa-shopping-cart" style="font-size:1.8em;"></i>
+      <span class="badge badge-pill badge-info cart-badge">0</span>
     <% end %>
-    <span class="badge badge-pill badge-info cart-badge">0</span>
   </div>
   <%# searchbar %>
-  <%= render 'shared/search' %>
+  <%= render 'shared/searchbox' %>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
