@@ -13,13 +13,16 @@ class VideosController < ApplicationController
 
   def index
     @videos = Video.all
-    @eyes = Video.search_by_video_title_and_tags("eyes")
-    @foundation = Video.search_by_video_title_and_tags("foundation")
-    @lips = Video.search_by_video_title_and_tags("lips")
 
     @creators = Video.order('creator ASC')
     @likes = Video.order('likes DESC')
     @views = Video.order('views DESC')
+  end
+
+  def filter_videos
+    @eyes = Video.search_by_video_title_and_tags("eyes")
+    @foundation = Video.search_by_video_title_and_tags("foundation")
+    @lips = Video.search_by_video_title_and_tags("lips")
   end
 
   def show
@@ -28,4 +31,12 @@ class VideosController < ApplicationController
     @order = Order.new
     @products = @annotations.map { |a| a.product }
   end
+
+  # private
+
+  # def filter_for(tag)
+  #   results = PgSearch::multisearch(tag)
+
+  # end
+
 end
