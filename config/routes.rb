@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     get '/payments/cancel', to: 'payments#cancel'
   end
 
-  resources :forums, only: [:index, :show] do
+  resources :forums, only: [:index, :show, :create, :new] do
     resources :messages, only: :create
   end
 
