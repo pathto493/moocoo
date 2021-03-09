@@ -1,7 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <!-- Control buttons -->
+      <!-- Filter Control buttons -->
+      <div class="d-flex justify-content-around" style="background-color:white;" data-controller="video">
+          <button class="btn btn-primary" name="eye" data-action="click->video#show">EYES</button>
+      </div>
+      <!-- Sort Control buttons -->
       <div class="d-flex justify-content-around" style="background-color:white;" id="myBtnContainer">
         <span class="sort-div">Sort by:</span>
         <label><input type="radio" class="btn-filter" data-tabs="all" checked><i></i>All</label>
@@ -11,6 +15,10 @@
       </div>
 
       <!-- The filterable elements. Note that some have multiple class names (this can be used if they belong to multiple categories) -->
+      <div class="eye" data-filter-target="eyeresult">
+        <%= render 'shared/video_display', videos: @eye_result %>
+      </div>
+
       <div class="filter-container">
         <div class="filter all">
           <%= render 'shared/video_display', videos: @videos %>
