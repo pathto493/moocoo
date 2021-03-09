@@ -1,13 +1,26 @@
 .card-cart {
   //display: flex;
   //justify-content: space-between;
-  align-items: center;
-}
+  //align-items: center;
+  font-size: 0.9rem;
 
-.card-cart-img-container {
-  //max-width: 25%;
-}
+  .card-cart-description {
+    font-size: 0.6rem;
+  }
 
-.card-cart img {
-  max-width: 100%;
+  img {
+    max-width: 100%;
+  }
+
+  .remove-order-from-cart {
+    font-size: 0.6rem;
+    button {
+      padding: 0px;
+      background-color: transparent;
+      border: none;
+    }
+    i {
+      //font-size: 0.6rem;
+    }
+  }
 }
