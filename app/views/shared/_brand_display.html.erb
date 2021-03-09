@@ -1,0 +1,9 @@
+<div class="brand-search-container d-flex flex-wrap justify-content-center">
+  <% brands.each do |brand| %>
+    <div class="card-brand-profile m-2" style="text-align:center;">
+      <%= link_to brand_path(brand) do %>
+        <button class="btn btn-primary" style="text-align:center;"><%= brand.name %></button>
+      <% end %>
+    </div>
+  <% end %>
+</div>
