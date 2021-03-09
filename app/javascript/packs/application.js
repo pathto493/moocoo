@@ -36,7 +36,7 @@ import { initAddEventListenerToVideo } from '../components/_video_state_listener
 
 import { vidOrderAlert } from './vidorderalert';
 
-import { filterFunction } from '../components/_filter';
+import { sortFunction } from '../components/_sort';
 
 import { initVideoJump } from '../components/_init_video_jump';
 import { initRemoveOrderFromCartAlert } from '../components/_remove_order_alert';
@@ -57,7 +57,7 @@ document.addEventListener('turbolinks:load', () => {
 
   initTabImageOnClick();
   vidOrderAlert ();
-  filterFunction();
+  sortFunction();
   initVideoJump();
   initRemoveOrderFromCartAlert();
   scrollNav();
