@@ -30,4 +30,8 @@ class PagesController < ApplicationController
       @product_results_mapped << Product.find(result.searchable_id)
     end
   end
+
+  def admin
+    @product = Product.new
+  end
 end

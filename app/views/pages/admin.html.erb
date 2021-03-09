@@ -1,0 +1,18 @@
+  <div class="row border-top border-dark border-3 py-3 mt-3">
+    <div class="col-12">
+      <%= simple_form_for @product, url: admin_path do |f| %>
+      <%= f.error_notification %>
+      <div class="form-inputs">
+        <h3>Creating New Products</h3>
+        <%= f.input :name %>
+        <%= f.input :description %>
+        <h3>Add Images</h3>
+        <%= f.input :photos, as: :file, inner_html: { multiple: true } %>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, "Add image", class: "btn btn-primary" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
