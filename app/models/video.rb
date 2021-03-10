@@ -11,6 +11,6 @@ class Video < ApplicationRecord
   include PgSearch::Model
   multisearchable against: [:title, :tags],
     using: {
-    tsearch: { prefix: true }
-  }
+      tsearch: { prefix: true }
+    }
 end

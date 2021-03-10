@@ -1,7 +1,7 @@
 
 <%#= Promotional Video section of the Home Page  %>
   <div class="home-page-container">
-    <iframe id="video" width="80%" height="200vh" src= <%="#{@video.first.video_url}"%>></iframe>
+    <iframe id="video" width="100%" height="200vh" src= <%="#{@video.first.video_url}"%>></iframe>
   </div>
   <div class="home-page-container">
       <h4>Popular Looks</h4>
@@ -9,7 +9,7 @@
       <%#= @trends - see pages controller %>
         <% @trends.each do |trend| %>
           <div class="card rounded" style="width: 7rem;">
-            <div class="card-body">
+            <div class="card-body text-center">
               <%= link_to search_path(q:trend), class:"card-link text-light" do %>
                 <%= trend %>
               <% end %>
@@ -28,7 +28,7 @@
 <%#= Latest Trend Portion  %>
   <div class="home-page-container">
     <h4>Latest Trends</h4>
-      <div class="container d-flex justify-content-around text-center pb-4">
+      <div class="container d-flex justify-content-between text-center">
           <div class="video-trend">
           <iframe class="video" width="85px" height="79px" src= <%="#{@video.first.video_url}"%> ></iframe>
           <p>Glitter Eyes</p>
@@ -45,7 +45,7 @@
   </div>
 <%#= Get Inspired Portion  %>
   <div class="get-inspired">
-  <h4>Get Inspired</h4>
+    <h4>Get Inspired</h4>
 
   <div class="container">
     <div class="holster">
@@ -56,12 +56,13 @@
       </div>
     </div>
   </div>
+</div>
 <%#= Shop by Products Portion  %>
-<div class="dark-container">
-  <h4>Shop by Products</h4>
+<div class="dark-container py-3 my-3">
+  <h4 class="py-2">Shop by Products</h4>
   <div class="d-flex justify-content-around my-2 mx-3">
     <% @featured_products.each do |product|  %>
-      <div class="card rounded pb-4 mx-3" style="width: 7rem;">
+      <div class="card rounded mx-3" style="width: 7rem;">
         <div class="product-card-body bg-white">
           <%= link_to search_path(q:product), class:"card-link text-dark" do %>
             <%= product %>
