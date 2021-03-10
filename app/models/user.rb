@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :products, through: :orders
   has_many :purchases
   has_many :reviews, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   validates :first_name, presence: true
   validates :last_name, presence: true
