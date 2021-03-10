@@ -1,11 +1,13 @@
 <div class="list-group container" style="padding-left: 20px;" id="forum-anchor">
   <h1 class="title">Topic: <%= @topic.name %></h1>
-  <div style="text-align: end;">
+  <br>
+  <div style="display: flex; justify-content: space-between; margin-bottom: 0px;">
+    <h5 style="align-self: flex-end ">Messages</h5>
     <a href="#add-message" class="btn btn-primary">Add a message</a>
   </div>
-  <br>
+
   <% @messages.each do |message| %>
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" style="border-width: 0 0 0.5px 0;">
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" style="border-width: 0.5px 0; margin-top: 0px;">
     <div class="d-flex w-100 justify-content-between">
       <p class="mb-1" style="font-size: 16px; font-weight: bold; width: 75%;"><%= message.title %></p>
       <small class="text-muted" style="line-height: 2.1;"><%= message.date %></small>
