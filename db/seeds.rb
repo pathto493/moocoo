@@ -299,6 +299,7 @@ puts "Call Youtube API to generate videos 🎥"
 id = %w[dPyKEwCn62A joBfpN9eMg0 h-lhr_mMcMA lc8xek03ZUg CpW-Hy8DFic]
 id.each do |i|
   url_one = "https://www.googleapis.com/youtube/v3/videos?part=snippet&id=#{i}&key=#{ENV['YOUTUBE_API_KEY']}"
+  binding.pry
   url_one_read = open(url_one).read
   video_info = JSON.parse(url_one_read)
   video = Video.new
@@ -313,6 +314,11 @@ id.each do |i|
   video_stats = JSON.parse(url_two_read)
   video.likes = video_stats['items'][0]['statistics']['likeCount']
   video.views = video_stats['items'][0]['statistics']['viewCount']
+
+  video_duration_url = open("https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=#{i}&key=#{ENV['YOUTUBE_API_KEY']}").read
+  video_duration_data = JSON.parse(video_duration_url)['items'][0]['contentDetails']['duration'].scan(/\d+/)
+  video_length = video_duration_data[0].to_i * 60 + video_duration_data[1].to_i
+  video.length_in_seconds = video_length
   video.save
 end
 

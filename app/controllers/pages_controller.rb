@@ -27,6 +27,9 @@ class PagesController < ApplicationController
     @product = Product.new
     @video = Video.new
     @annotation = Annotation.new
+    @annotations = Annotation.all
+    @products = Product.all
+    @videos = Video.all
   end
 
   def video_upload_error

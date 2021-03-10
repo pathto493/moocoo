@@ -41,4 +41,6 @@ Rails.application.routes.draw do
   end
 
   resources :articles, only: [:index, :show]
+
+  resources :annotations, only: [:create, :new]
 end

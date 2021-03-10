@@ -14,7 +14,7 @@
   <% end %>
 </div>
 
-<div class="col-12">
+<div class="col-12 mb-3">
   <%= simple_form_for @video do |f| %>
   <%= f.error_notification %>
   <div class="form-inputs">
@@ -23,6 +23,22 @@
   </div>
   <div class="form-actions">
     <%= f.button :submit, "Add video", class: "btn btn-primary" %>
+  </div>
+  <% end %>
+</div>
+
+<div class="col-12">
+  <%= simple_form_for @annotation do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+    <h3>Add New Annotation</h3>
+    <%= f.input :video, collection: @videos %>
+    <%= f.input :product, collection: @products %>
+    <%= f.input :time_start, collection: @annotations%>
+    <%= f.input :time_end, label: false, placeholder: 'end time' %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, "Add annotation", class: "btn btn-primary" %>
   </div>
   <% end %>
 </div>
