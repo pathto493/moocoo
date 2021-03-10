@@ -11,7 +11,33 @@ export default class extends Controller {
     console.log(e.currentTarget.value);
     fetch(`/duration.json?id=${e.currentTarget.value}`)
       .then(res => res.json())
-      .then(data => this.refreshTimeInputs(data.duration));
+      .then(data => {
+        this.refreshTimeInputs(data.duration)
+
+        const timeStart = document.getElementById('annotation_time_start');
+        timeStart.addEventListener("change", (e) => {
+          this.endTarget.min = e.target.value;
+          const timeStartMain = document.querySelector('.annotation_time_start');
+          const timeStartLabel = timeStartMain.querySelector("label");
+          timeStartLabel.innerText = "Time start ";
+          timeStartLabel.insertAdjacentText("beforeend", e.target.value);
+
+          // console.dir(timeStartMain);
+          // console.dir(e.target.value);
+        })
+
+        const timeEnd = document.getElementById('annotation_time_end');
+        timeEnd.addEventListener("change", (e) => {
+          this.endTarget.min = this.startTarget.value;
+          const timeEndMain = document.querySelector('.annotation_time_end');
+          const timeEndLabel = timeEndMain.querySelector("label");
+          timeEndLabel.innerText = "Time end ";
+          timeEndLabel.insertAdjacentText("beforeend", e.target.value);
+
+        })
+
+
+      });
     // need to get the id of the video that was selected
     // go to my database to retrieve the duration
     // update both selects with the time
@@ -21,4 +47,5 @@ export default class extends Controller {
     this.startTarget.max = duration;
     this.endTarget.max = duration;
   }
+
 }
