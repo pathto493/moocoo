@@ -1,17 +1,10 @@
 <div class="container">
   <div class="row">
-    <div class="col-12">
+    <div class="col-12" data-controller="video">
       <!-- Filter Control buttons -->
-      <div class="d-flex justify-content-around" style="background-color:white;" data-controller="video">
-          <button type="button" class="btn btn-primary first" name="eye" data-action="video#show">EYES</button>
-          <button type="button" class="btn btn-primary second" name="foundation" data-action="video#show">FOUNDATION</button>
-
-        <div class="eye" data-filter-target="video.eyeresult">
-          <%= render 'shared/video_display', videos: @eye_result %>
-        </div>
-        <div class="foundation" data-filter-target="video.foundationresult">
-          <%= render 'shared/video_display', videos: @foundation_result %>
-        </div>
+      <div class="d-flex justify-content-around" style="background-color:white;">
+          <button type="button" class="btn btn-primary" name="eye" data-action="video#show">EYES</button>
+          <button type="button" class="btn btn-primary" name="foundation" data-action="video#show">FOUNDATION</button>
       </div>
       <!-- Sort Control buttons -->
       <div class="d-flex justify-content-around" style="background-color:white;" id="myBtnContainer">
@@ -21,23 +14,42 @@
         <label><input type="radio" class="btn-filter" data-tabs="likes"><i></i>Likes</label>
         <label><input type="radio" class="btn-filter" data-tabs="views"><i></i>Views</label>
       </div>
-
+<!--This is template for videos to appear -->
+      <template id="card-template">
+        <div class="card-video-profile m-2">
+          <iframe width="320" height="180" allow="autoplay" src="template" ></iframe>
+          <div class="video-show-description">
+            <div class="video-show-title py-1">
+              <%= link_to 'video_link', '#' %>
+            </div>
+            <div class="video-show-info d-flex justify-content-between">
+              <div class="creator" style="text-align:center;">
+                Insert a creator
+              </div>
+              <div>
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> <span class="likes-count"> </span>
+                <i class="fa fa-eye" aria-hidden="true"></i> <span class="views-count"> </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </template>
       <!-- The filterable elements. Note that some have multiple class names (this can be used if they belong to multiple categories) -->
       <div class="filter-container">
-        <div class="filter all">
+        <div class="filter all" data-video-target='filterresult'>
           <%= render 'shared/video_display', videos: @videos %>
         </div>
 
-        <div class="filter creator">
-          <%= render 'shared/video_display', videos: @creators %>
+        <div class="filter creator" data-video-target='creatorresults'>
+          <%= render 'shared/video_display', videos: @videos.order('creator ASC') %>
         </div>
 
-        <div class="filter likes">
-          <%= render 'shared/video_display', videos: @likes %>
+        <div class="filter likes" data-video-target='likesresult'>
+          <%= render 'shared/video_display', videos: @videos.order('likes DESC') %>
         </div>
 
-        <div class="filter views">
-          <%= render 'shared/video_display', videos: @views %>
+        <div class="filter views" data-video-target='viewsresult'>
+          <%= render 'shared/video_display', videos: @videos.order('views DESC') %>
         </div>
 
       </div>

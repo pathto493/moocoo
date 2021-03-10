@@ -14,14 +14,9 @@ class VideosController < ApplicationController
   def index
     @videos = Video.all
 
-    eyes = PgSearch::multisearch('eye')
-    @eye_result = eyes.where(searchable: 'Video').map(&:searchable)
-    foundation = PgSearch::multisearch('foundation')
-    @foundation_result = foundation.where(searchable: 'Video').map(&:searchable)
-
-    @creators = Video.order('creator ASC')
-    @likes = Video.order('likes DESC')
-    @views = Video.order('views DESC')
+    # @creators = Video.order('creator ASC')
+    # @likes = Video.order('likes DESC')
+    # @views = Video.order('views DESC')
   end
 
   def show

@@ -25,8 +25,8 @@ const sortFunction = () => {
       })
 
       if(btnVal === "creator"){
-        creator.forEach((creator)=>{
-          creator.style.display = "block";
+        creator.forEach((creator1)=>{
+          creator1.style.display = "block";
         })
       }
       else if(btnVal === "likes"){
