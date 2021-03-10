@@ -2,6 +2,7 @@
 .big-player-container {
   height: calc(9/16*350)px;
   position: relative;
+  z-index: 100;
 }
 
 .player-container {
@@ -65,19 +66,33 @@ div.sticky-card {
 }
 
 // videos show product card
-.video-show-shop-title {
-  font-size: 1rem;
-  font-weight: bold;
-  text-align: center
+.video-show-shop {
+  z-index: -1;
 }
 
-.video-show-card-img img {
-  width: 100%;
+.video-show-shop-title {
+  text-align: center;
 }
 
 .video-show-card {
   border-radius: 2px;
   font-size: 0.9rem;
+
+  img {
+    width: 100%;
+    border-radius: 2px;
+  }
+
+  .jump-btn {
+    padding: 0px;
+    font-size: 0.9rem;
+    color: rgba(0,0,0,0.6);
+  }
+
+  .video-show-card-product-name {
+    max-height: 60px;
+    overflow: hidden;
+  }
 
   .form-control {
     font-size: 0.9em;
@@ -89,12 +104,18 @@ div.sticky-card {
     margin-bottom: 0px;
   }
 
-  p {
-    margin-bottom: 0px;
+  .cart {
+    padding-left: 10px;
+    padding-right: 10px;
+
+    i {
+      font-size: 0.9em;
+      color: white;
+    }
   }
 
-  .cart i{
-    font-size: 0.9em;
-    color: white;
+  #quantity {
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
