@@ -23,17 +23,23 @@ export default class extends Controller {
           timeStartLabel.insertAdjacentText("beforeend", this.toReadableTime(e.target.value));
 
           // console.dir(timeStartMain);
-          // console.dir(e.target.value);
+          console.dir(e.target.value);
         })
 
         const timeEnd = document.getElementById('annotation_time_end');
         timeEnd.addEventListener("change", (e) => {
-          this.endTarget.min = this.startTarget.value;
+          // this.endTarget.min = this.startTarget.value;
+          this.endTarget.min = 0;
+          this.endTarget.max = (this.startTarget.max - this.startTarget.value)
           const timeEndMain = document.querySelector('.annotation_time_end');
           const timeEndLabel = timeEndMain.querySelector("label");
           timeEndLabel.innerText = "Time end ";
-          timeEndLabel.insertAdjacentText("beforeend", this.toReadableTime(e.target.value));
+          // timeEndLabel.insertAdjacentText("beforeend", this.toReadableTime(e.target.value));
 
+          timeEndLabel.insertAdjacentText("beforeend", this.toReadableTime(this.startTarget.max - e.target.value));
+          console.dir("endTargetMin")
+          console.dir(this.endTarget.min);
+          // console.dir(timeEndLabel);
         })
 
 
