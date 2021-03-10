@@ -34,6 +34,7 @@ class PagesController < ApplicationController
   def admin
     @product = Product.new
     @video = Video.new
+    @annotation = Annotation.new
   end
 
   def video_upload_error
