@@ -1,7 +1,11 @@
 <div class="container">
-  <p>
-    <%= link_to "Browse all videos", videos_path, class: 'btn btn-primary btn-xs' %>
-  </p>
+  <div class="row my-3">
+    <div class="col-12">
+      <div class="home-card-category" style="background-image: linear-gradient(to left, rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url(<%= cloudinary_url(Product.first.photos.first.key) %> )">
+        <%= link_to "Browse all tutorials", products_path %>
+      </div>
+    </div>
+  </div>
   <p class="title">Trending</p>
   <div class="holster">
     <div class="container-snap x mandatory-scroll-snapping" dir="ltr">
