@@ -13,14 +13,16 @@ puts "Cleaning Products 🧹"
 Product.destroy_all
 puts "Cleaning Purchases 🧹"
 Purchase.destroy_all
-puts "Cleaning Users 🧹"
-User.destroy_all
+puts "Cleaning Messages 🧹"
+Message.destroy_all
 puts "Cleaning Brands"
 Brand.destroy_all
 puts "Cleaning Articles"
 Article.destroy_all
 puts "Cleaning Forums"
 Forum.destroy_all
+puts "Cleaning Users 🧹"
+User.destroy_all
 
 puts "Creating articles - start"
 name = "#{Faker::Name.first_name} #{Faker::Name.last_name}"
