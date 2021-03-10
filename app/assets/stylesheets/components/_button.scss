@@ -1,0 +1,9 @@
+.btn-cart {
+  background-color: $cart-color;
+  color: white;
+  opacity: 0.9;
+
+  :hover {
+    opacity: 1;
+  }
+}
