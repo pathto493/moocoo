@@ -26,11 +26,24 @@ const addAlert = (element) => {
   }
 }
 
+const addErrorAlert = (element) => {
+  removeAlert();
+  element.insertAdjacentHTML("beforeend", `<div id="alertcart" class="alert alert-warning alert-dismissible fade show m-1" role="alert">
+        Please sign in before adding to cart
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>`);
+}
+
 const vidOrderAlert = () => {
   const elements = document.getElementsByClassName("item");
   Array.from(elements).forEach((element) => {
     element.addEventListener("ajax:success", (event) => {
       addAlert(element);
+    });
+    element.addEventListener("ajax:error", (event) => {
+      addErrorAlert(element);
     });
   });
 };

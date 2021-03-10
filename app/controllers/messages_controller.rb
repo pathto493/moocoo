@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
   def create
     message = Message.new(params.require(:message).permit(:title, :content))
     message.user = current_user
+    message.date = Time.now
     forum = Forum.find(params[:forum_id])
     message.forum = forum
     if message.save

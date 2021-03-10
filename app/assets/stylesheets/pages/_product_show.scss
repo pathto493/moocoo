@@ -11,12 +11,19 @@
 
 .product-show-info {
   .item {
+    .quantity div:first-child {
+      margin: auto auto auto 0;
+    }
     .form-group {
       margin-bottom: 0px;
     }
     .form-control {
+      padding-left: 100px;
+      padding-right: 100px;
       height: 100%;
-      padding: 0px;
+    }
+    .cart i {
+      font-size: 1rem;
     }
   }
 }

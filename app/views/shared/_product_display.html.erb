@@ -3,9 +3,13 @@
     <div class="product-card-profile m-2" style="text-align:center;">
       <% if product.photos.attached? %>
         <%= cl_image_tag product.photos.first.key, width: 200, height: 200, crop: :fill %>
-        <p><%= product.name %></p>
+        <%= link_to product_path(product) do %>
+          <p><%= product.name %></p>
+        <% end %>
       <% else %>
-        <p><%= product.name %></p>
+        <%= link_to product_path(product) do %>
+          <p><%= product.name %></p>
+        <% end %>
       <% end %>
     </div>
   <% end %>
