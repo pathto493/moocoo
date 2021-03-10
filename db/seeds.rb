@@ -41,7 +41,7 @@ end
 
 ### PRODUCT ###
 
-puts "Create Products 💄"
+puts "Create Shiseido Products 💄"
 brand = Brand.find_by(name: "Shiseido")
 
 product = Product.create(
@@ -293,16 +293,75 @@ puts "Attaching Photos to Product 15"
 file = open("app/assets/images/f1.jpg")
 product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
 
+
+
+### CREATIING PRODUCTS FOR OTHER BRANDS ###
+
+
+brands = %w[Dior L'Oreal Lancome]
+puts "Create products for other brands💄"
+brands.each do |brand_name|
+  brand = Brand.find_by(name: brand_name)
+  product = Product.create(
+    name: "Rich Concentrate Dewy Concealer",
+    price_cents: (1000..1500).step(10).to_a.sample,
+    description: "",
+    brand: brand
+  )
+
+  puts "Attaching Photos to Product 1"
+  file = open("app/assets/images/m7.jpg")
+  product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+  puts "Attaching Photos to Product 1"
+  file = open("app/assets/images/f2.jpg")
+  product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+
+  product = Product.create(
+    name: "Long Lasting Velvet Lipstick",
+    price_cents: (1000..1500).step(10).to_a.sample,
+    description: "",
+    brand: brand
+  )
+
+  puts "Attaching Photos to Product 2"
+  file = open("app/assets/images/m9.jpg")
+  product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+  puts "Attaching Photos to Product 2"
+  file = open("app/assets/images/f2.jpg")
+  product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+
+  product = Product.create(
+    name: "Multi-purpose Cheek & Lip Stick",
+    price_cents: (1000..1500).step(10).to_a.sample,
+    description: "",
+    brand: brand
+  )
+
+  puts "Attaching Photos to Product 3"
+  file = open("app/assets/images/m13.jpg")
+  product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+  puts "Attaching Photos to Product 3"
+  file = open("app/assets/images/f2.jpg")
+  product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+end
+
+
 ### VIDEO ###
 puts "Call Youtube API to generate videos 🎥"
-
+videos = []
 id = %w[dPyKEwCn62A joBfpN9eMg0 h-lhr_mMcMA lc8xek03ZUg CpW-Hy8DFic]
-id.each do |i|
+id.each_with_index do |i, index|
   url_one = "https://www.googleapis.com/youtube/v3/videos?part=snippet&id=#{i}&key=#{ENV['YOUTUBE_API_KEY']}"
   url_one_read = open(url_one).read
   video_info = JSON.parse(url_one_read)
   video = Video.new
   video.title = video_info['items'][0]['snippet']['title']
+  videos[index] = video_info['items'][0]['snippet']['title']
   video.description = video_info['items'][0]['snippet']['description']
   video.youtube_id = video_info['items'][0]['id']
   video.video_url = "https://www.youtube.com/embed/#{i}"
@@ -316,10 +375,12 @@ id.each do |i|
   video.save
 end
 
-### ANNOTATION FOR ONLY ONE VIDEO ###
 
-puts "Generate Annotations ▶️"
-video = Video.find_by(title: "THE EASIEST WAY TO ENHANCE YOUR FACE WITH MAKEUP! | Hindash")
+### ANNOTATION FOR SELECTED VIDEO ###
+
+puts "Generate Annotations for selected video ▶️"
+# video = Video.find_by(title: "THE EASIEST WAY TO ENHANCE YOUR FACE WITH MAKEUP! | Hindash")
+video = Video.find_by(title: videos[4])
 Annotation.create!(
   video: video,
   product: Product.find_by(name: "Ultimate Defence Refresh Mist"),
@@ -434,7 +495,30 @@ Annotation.create!(
 #   time_start: 622,
 #   time_end: 627)
 
+### ANNOTATION FOR OTHER VIDEO ###
 
+puts "Generate Annotations for other video ▶️"
+videos.pop
+videos.each do |title|
+  video = Video.find_by(title: title)
+  Annotation.create!(
+    video: video,
+    product: Product.find_by(name: "Rich Concentrate Dewy Concealer"),
+    time_start: 70,
+    time_end: 74)
+
+  Annotation.create!(
+    video: video,
+    product: Product.find_by(name: "Long Lasting Velvet Lipstick"),
+    time_start: 75,
+    time_end: 101)
+
+  Annotation.create!(
+    video: video,
+    product: Product.find_by(name: "Multi-purpose Cheek & Lip Stick"),
+    time_start: 102,
+    time_end: 119)
+  end
 
 
 ### USER ###
