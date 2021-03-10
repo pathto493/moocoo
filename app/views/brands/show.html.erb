@@ -5,8 +5,7 @@
 <div class="brand-grid">
   <% @products.each do |p| %>
     <div class="brand-cart">
-      <%= cl_image_tag p.photos.first.key, width: 300, crop: :fill %>
-        <p><%= link_to p.name, product_path(p.id) %></p>
+      <%= render partial: "shared/productcard", locals: { product: p } %>
     </div>
   <% end %>
 </div>

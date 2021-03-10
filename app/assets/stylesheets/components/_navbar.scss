@@ -19,13 +19,17 @@
 }
 
 .navbar-cart {
-  position: relative;
   margin-right: 8px;
   margin-left: -4px;
 }
+.nav-cart {
+  position: relative;
+}
 
 .cart-badge {
-  position: fixed;
-  top: 12px;
-  right: 8px;
+  position: absolute;
+  top: -8px;
+  right: 0px;
+  background-color: $cart-color;
+  color: white;
 }

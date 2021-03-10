@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   get '/search', to: 'pages#search'
   get 'cart', to: 'orders#cart'
   get 'admin', to: 'pages#admin'
+  get 'video_upload_error', to: 'pages#video_upload_error'
 
-  resources :videos, only: [:index, :show] do
+  resources :videos, only: [:index, :show, :new, :create] do
     collection do
       get :home
     end
