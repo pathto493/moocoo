@@ -20,7 +20,7 @@ export default class extends Controller {
           const timeStartMain = document.querySelector('.annotation_time_start');
           const timeStartLabel = timeStartMain.querySelector("label");
           timeStartLabel.innerText = "Time start ";
-          timeStartLabel.insertAdjacentText("beforeend", e.target.value);
+          timeStartLabel.insertAdjacentText("beforeend", this.toReadableTime(e.target.value));
 
           // console.dir(timeStartMain);
           // console.dir(e.target.value);
@@ -32,7 +32,7 @@ export default class extends Controller {
           const timeEndMain = document.querySelector('.annotation_time_end');
           const timeEndLabel = timeEndMain.querySelector("label");
           timeEndLabel.innerText = "Time end ";
-          timeEndLabel.insertAdjacentText("beforeend", e.target.value);
+          timeEndLabel.insertAdjacentText("beforeend", this.toReadableTime(e.target.value));
 
         })
 
@@ -46,6 +46,12 @@ export default class extends Controller {
   refreshTimeInputs(duration) {
     this.startTarget.max = duration;
     this.endTarget.max = duration;
+  }
+
+  toReadableTime(seconds) {
+    let minutes = parseInt(seconds / 60);
+    let secondsModule = seconds % 60;
+    return `${minutes}:${secondsModule}`
   }
 
 }
