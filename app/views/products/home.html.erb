@@ -34,13 +34,13 @@
     <div class="col-12">
       <h3>By Brand</h3>
       <div class="home-card-category smaller-card my-2" style="background-image: linear-gradient(to left, rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url(<%= cloudinary_url(@products[5].photos.first.key) %> )">
-          <%= link_to @brands.first.name, brands_path(@brands.first.name) %>
+          <%= link_to @brands.first.name, brand_path(@brands.first) %>
         </div>
         <div class="home-card-category smaller-card my-2" style="background-image: linear-gradient(to left, rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url(<%= cloudinary_url(@products[6].photos.first.key) %> )">
-          <%= link_to @brands[1].name, brands_path(@brands[1].name) %>
+          <%= link_to @brands[1].name, brand_path(@brands[1]) %>
         </div>
         <div class="home-card-category smaller-card my-2" style="background-image: linear-gradient(to left, rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url(<%= cloudinary_url(@products[7].photos.first.key) %> )">
-          <%= link_to @brands.last.name, brands_path(@brands.last.name) %>
+          <%= link_to @brands.last.name, brand_path(@brands.last) %>
         </div>
     </div>
   </div>
