@@ -60,7 +60,7 @@ document.addEventListener('turbolinks:load', () => {
   initRemoveOrderFromCartAlert();
   scrollNav();
   sortFunction();
-
+  addToCart();
 
   document.addEventListener('turbolinks:request-start', () => {
     const spinner = document.querySelector('#spinner');

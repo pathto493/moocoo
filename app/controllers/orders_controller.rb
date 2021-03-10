@@ -9,8 +9,9 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       format.html
-      # format.json { render json: @total_price }
-      format.json { render json: {orders: @orders, @total_price} }
+            format.json { render json: @orders }
+      format.json { render json: @total_price }
+
 
     end
   end

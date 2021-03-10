@@ -1,12 +1,17 @@
 const addToCart = () => {
 
   const badge = document.querySelector(".cart-badge");
-  const quantity = badge.innerText
+  let cartQty = 0;
 
-    fetch('/cart.json')
+  fetch("/cart.json")
     .then(response => response.json())
-    .then(data => (data))
-    console.log(data);
-}
+    .then((data) => {
+      var i;
+      for (i=0; i < data.length; i++) {
+        cartQty += data[i].quantity;
+        badge.innerText = cartQty;
+      }
+    })
+  };
 
 export { addToCart };
