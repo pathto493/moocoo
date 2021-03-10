@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'duration/show'
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup' }
 
   root to: 'pages#home'
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   get 'cart', to: 'orders#cart'
   get 'admin', to: 'pages#admin'
   get 'video_upload_error', to: 'pages#video_upload_error'
+  get '/duration', to: 'duration#show'
 
   resources :videos, only: [:index, :show, :new, :create] do
     collection do

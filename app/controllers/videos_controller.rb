@@ -43,7 +43,7 @@ class VideosController < ApplicationController
       yotube_id = its_a_match[:y_id]
     end
     url_one = "https://www.googleapis.com/youtube/v3/videos?part=snippet&id=#{yotube_id}&key=#{ENV['YOUTUBE_API_KEY']}"
-    binding.pry
+
     url_one_read = open(url_one).read
     video_info = JSON.parse(url_one_read)
 
