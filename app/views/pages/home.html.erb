@@ -1,75 +1,39 @@
-
-<%#= Promotional Video section of the Home Page  %>
-  <div class="home-page-container">
-    <iframe id="video" width="100%" height="200vh" src= <%="#{@video.first.video_url}"%>></iframe>
-  </div>
-  <div class="home-page-container">
-      <h4>Popular Looks</h4>
-      <div class="d-flex justify-content-around">
-      <%#= @trends - see pages controller %>
-        <% @trends.each do |trend| %>
-          <div class="card rounded" style="width: 7rem;">
-            <div class="card-body text-center">
-              <%= link_to search_path(q:trend), class:"card-link text-light" do %>
-                <%= trend %>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-
-    <%#= Added ID to control the circle button  %>
-    <div class="d-flex justify-content-center mt-2">
-      <i class="fas fa-circle mx-2 black-circle"></i>
-      <i class="fas fa-circle mx-2 black-circle"></i>
-      <i class="fas fa-circle mx-2 black-circle"></i>
-    </div>
-  </div>
-<%#= Latest Trend Portion  %>
-  <div class="home-page-container">
-    <h4>Latest Trends</h4>
-      <div class="container d-flex justify-content-between text-center">
-          <div class="video-trend">
-          <iframe class="video" width="85px" height="79px" src= <%="#{@video.first.video_url}"%> ></iframe>
-          <p>Glitter Eyes</p>
-          </div>
-          <div class="video-trend">
-          <iframe class="video" width="85px" height="79px" src= <%="#{@video.first.video_url}"%>></iframe>
-          <p>Purple Eyeliner</p>
-          </div>
-          <div class="video-trend">
-          <iframe class="video" width="85px" height="79px" src= <%="#{@video.first.video_url}"%> ></iframe>
-          <p>Yellow lipstick</p>
-          </div>
-      </div>
-  </div>
-<%#= Get Inspired Portion  %>
-  <div class="get-inspired">
-    <h4>Get Inspired</h4>
-
+<div class="home-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path 'home-banner.jpg' %> );">
   <div class="container">
-    <div class="holster">
-      <div class="container-snap x mandatory-scroll-snapping" dir="ltr">
-        <div><%= image_tag "https://images.unsplash.com/photo-1602910344008-22f323cc1817?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" %></div>
-        <div><%= image_tag "https://images.unsplash.com/photo-1511424323602-d3c1a4138056?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80" %></div>
-        <div><%= image_tag "https://images.unsplash.com/photo-1602910344008-22f323cc1817?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" %></div>
-      </div>
-    </div>
+    <div class="home-banner-title">Unleash your beauty</div>
+    <p>Learn and shop with <b>moocoo</b><br>
+    Because <i>your face</i> is <i>everything</i></p>
+    <br><br><br><br><br><br><br>
+    <p>Getting started?</p>
+    <p class="text-center"><%= link_to "Browse tutorials", videos_path, class: "btn btn-cart" %> or
+    <%= link_to "Browse products", products_path, class: "btn btn-cart" %></p>
   </div>
 </div>
-<%#= Shop by Products Portion  %>
-<div class="dark-container py-3 my-3">
-  <h4 class="py-2">Shop by Products</h4>
-  <div class="d-flex justify-content-around my-2 mx-3">
-    <% @featured_products.each do |product|  %>
-      <div class="card rounded mx-3" style="width: 7rem;">
-        <div class="product-card-body bg-white">
-          <%= link_to search_path(q:product), class:"card-link text-dark" do %>
-            <%= product %>
-          <% end %>
-        </div>
-      </div>
-    <% end  %>
+<div class="home-second-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path 'f1.jpg' %> );">
+  <div class="container">
+    <div class="home-banner-title">Popular Make-up Tutorials</div>
+    <p>Personally curated for the one and only <i>you</i></p>
+    <p class="text-center"><%= link_to "Browse tutorials", videos_path, class: "btn btn-cart" %></p>
   </div>
-
+</div>
+<div class="home-second-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path 'm10.jpg' %> );">
+  <div class="container">
+    <div class="home-banner-title">Diverse Make-up Products</div>
+    <p>Widely available just for <i>you</i></p>
+    <p class="text-center"><%= link_to "Browse products", products_path, class: "btn btn-cart" %></p>
+  </div>
+</div>
+<div class="home-second-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path 'm11.jpg' %> );">
+  <div class="container">
+    <div class="home-banner-title">On-demand Articles</div>
+    <p>Check our numerous articles to enhance <i>your</i> beauty</p>
+    <p class="text-center"><%= link_to "Browse articles", articles_path, class: "btn btn-cart" %></p>
+  </div>
+</div>
+<div class="home-second-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path 'm3.jpg' %> );">
+  <div class="container">
+    <div class="home-banner-title">Got questions?</div>
+    <p>Post something on our forums</p>
+    <p class="text-center"><%= link_to "Browse forums", forums_path, class: "btn btn-cart" %></p>
+  </div>
 </div>
