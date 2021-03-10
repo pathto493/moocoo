@@ -1,0 +1,12 @@
+<div class="col-12">
+  <%= simple_form_for @video do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+    <h3>Add New Videos</h3>
+    <%= f.input :youtube_id, label: false, placeholder: 'youtube_id' %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, "Add video", class: "btn btn-primary" %>
+  </div>
+  <% end %>
+</div>
