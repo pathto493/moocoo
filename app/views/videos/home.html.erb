@@ -1,6 +1,6 @@
 <div class="container">
   <p>
-    <%= link_to "See all videos", videos_path, class: 'btn btn-primary btn-xs' %>
+    <%= link_to "Browse all videos", videos_path, class: 'btn btn-primary btn-xs' %>
   </p>
   <p class="title">Trending</p>
   <div class="holster">
@@ -20,9 +20,9 @@
   <div class="scrollmenu invisible-scrollbar">
   <% @videos.each do |vid| %>
     <div class="card-video">
-    <iframe width="40%" src="<%= vid.video_url %>" ></iframe>
+    <iframe width="100%" src="<%= vid.video_url %>" ></iframe>
     <div class="card-video-infos">
-      <h2><%= link_to vid.title, vid %></h2>
+      <div class="card-video-info-title"><strong><%= link_to vid.title, vid %></strong></div>
       <p><%= vid.creator %></p>
     </div>
     </div>
