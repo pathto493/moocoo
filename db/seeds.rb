@@ -41,7 +41,7 @@ end
 
 ### PRODUCT ###
 
-puts "Create Products 💄"
+puts "Create Shiseido Products 💄"
 brand = Brand.find_by(name: "Shiseido")
 
 product = Product.create(
@@ -293,16 +293,75 @@ puts "Attaching Photos to Product 15"
 file = open("app/assets/images/f1.jpg")
 product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
 
+
+
+### CREATIING PRODUCTS FOR OTHER BRANDS ###
+
+
+brands = %w[Dior L'Oreal Lancome]
+puts "Create products for other brands💄"
+brands.each do |brand_name|
+  brand = Brand.find_by(name: brand_name)
+  product = Product.create(
+    name: "Rich Concentrate Dewy Concealer",
+    price_cents: (1000..1500).step(10).to_a.sample,
+    description: "",
+    brand: brand
+  )
+
+  puts "Attaching Photos to Product 1"
+  file = open("app/assets/images/m7.jpg")
+  product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+  puts "Attaching Photos to Product 1"
+  file = open("app/assets/images/f2.jpg")
+  product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+
+  product = Product.create(
+    name: "Long Lasting Velvet Lipstick",
+    price_cents: (1000..1500).step(10).to_a.sample,
+    description: "",
+    brand: brand
+  )
+
+  puts "Attaching Photos to Product 2"
+  file = open("app/assets/images/m9.jpg")
+  product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+  puts "Attaching Photos to Product 2"
+  file = open("app/assets/images/f2.jpg")
+  product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+
+  product = Product.create(
+    name: "Multi-purpose Cheek & Lip Stick",
+    price_cents: (1000..1500).step(10).to_a.sample,
+    description: "",
+    brand: brand
+  )
+
+  puts "Attaching Photos to Product 3"
+  file = open("app/assets/images/m13.jpg")
+  product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+  puts "Attaching Photos to Product 3"
+  file = open("app/assets/images/f2.jpg")
+  product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+end
+
+
 ### VIDEO ###
 puts "Call Youtube API to generate videos 🎥"
-
+videos = []
 id = %w[dPyKEwCn62A joBfpN9eMg0 h-lhr_mMcMA lc8xek03ZUg CpW-Hy8DFic]
-id.each do |i|
+id.each_with_index do |i, index|
   url_one = "https://www.googleapis.com/youtube/v3/videos?part=snippet&id=#{i}&key=#{ENV['YOUTUBE_API_KEY']}"
   url_one_read = open(url_one).read
   video_info = JSON.parse(url_one_read)
   video = Video.new
   video.title = video_info['items'][0]['snippet']['title']
+  videos[index] = video_info['items'][0]['snippet']['title']
   video.description = video_info['items'][0]['snippet']['description']
   video.youtube_id = video_info['items'][0]['id']
   video.video_url = "https://www.youtube.com/embed/#{i}"
@@ -316,10 +375,12 @@ id.each do |i|
   video.save
 end
 
-### ANNOTATION FOR ONLY ONE VIDEO ###
 
-puts "Generate Annotations ▶️"
-video = Video.find_by(title: "THE EASIEST WAY TO ENHANCE YOUR FACE WITH MAKEUP! | Hindash")
+### ANNOTATION FOR SELECTED VIDEO ###
+
+puts "Generate Annotations for selected video ▶️"
+# video = Video.find_by(title: "THE EASIEST WAY TO ENHANCE YOUR FACE WITH MAKEUP! | Hindash")
+video = Video.find_by(title: videos[4])
 Annotation.create!(
   video: video,
   product: Product.find_by(name: "Ultimate Defence Refresh Mist"),
@@ -434,7 +495,30 @@ Annotation.create!(
 #   time_start: 622,
 #   time_end: 627)
 
+### ANNOTATION FOR OTHER VIDEO ###
 
+puts "Generate Annotations for other video ▶️"
+videos.pop
+videos.each do |title|
+  video = Video.find_by(title: title)
+  Annotation.create!(
+    video: video,
+    product: Product.find_by(name: "Rich Concentrate Dewy Concealer"),
+    time_start: 70,
+    time_end: 74)
+
+  Annotation.create!(
+    video: video,
+    product: Product.find_by(name: "Long Lasting Velvet Lipstick"),
+    time_start: 75,
+    time_end: 101)
+
+  Annotation.create!(
+    video: video,
+    product: Product.find_by(name: "Multi-purpose Cheek & Lip Stick"),
+    time_start: 102,
+    time_end: 119)
+  end
 
 
 ### USER ###
@@ -449,6 +533,17 @@ user = User.new(
   )
 user.save!
 
+ 3.times do |i|
+  user = User.new(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password: "testtest",
+    address: Faker::Address.street_address
+    )
+  puts "Create User - #{i + 1}"
+  user.save!
+end
 
 ### CREATING REVIEW FOR EACH PRODUCT ###
 puts "Creating reviews - start"
@@ -463,15 +558,15 @@ puts "Creating articles - start"
 
 puts "Creating article 1"
 name = "#{Faker::Name.first_name} #{Faker::Name.last_name}"
-Article.create(title: "Finding your perfect match", pic_url: "https://source.unsplash.com/rNx2plB7-TQ", author: name, date: Time.now, body: "Tips on getting the right foundation shade")
+Article.create(title: "Finding your perfect match", pic_url: "https://source.unsplash.com/rNx2plB7-TQ", author: name, date: Date.today - 1, body: "Tips on getting the right foundation shade")
 
 puts "Creating article 2"
 name = "#{Faker::Name.first_name} #{Faker::Name.last_name}"
-Article.create(title: "How to be chic in 2021", pic_url:"https://source.unsplash.com/B4TjXnI0Y2c", author: name, date: Time.now, body: "The best guide on staying in trend this year")
+Article.create(title: "How to be chic in 2021", pic_url:"https://source.unsplash.com/B4TjXnI0Y2c", author: name, date: Date.today - 2, body: "The best guide on staying in trend this year")
 
 puts "Creating article 3"
 name = "#{Faker::Name.first_name} #{Faker::Name.last_name}"
-Article.create(title: "Which is longer lasting: lip stain vs lip tint", pic_url: "https://source.unsplash.com/aXYnU9mpit0", author: name, date: Time.now, body: "The verdict is surprising")
+Article.create(title: "Which is longer lasting: lip stain vs lip tint", pic_url: "https://source.unsplash.com/aXYnU9mpit0", author: name, date: Date.today - 3, body: "The verdict is surprising")
 
 
 ### FORUM ###
@@ -491,16 +586,15 @@ f3 = Forum.create(name: "Best foundation brand for dry skin?")
 puts "Creating messages for forum - start"
 
 puts "Creating message for forum topic 1"
-Message.create(title: "Tried many brands but nothing work", date: Time.now, content: "I have used a couple of luxury and drug store brands but nothing works. Any good suggestions out there for severe dry skin?", forum: f3, user: User.all.sample)
+Message.create(title: "Dry skin issue", date: Time.now, content: "I have difficulty layering foundation as I have dry skin. Any tips? ", forum: f1, user: User.all.sample)
 
 puts "Creating message for forum topic 2"
 Message.create(title: "Lipstick gone before lunch", date: Time.now, content: "I like using lipstick over lip stain but it is not long lasting. How can I make it last longer?", forum: f2, user: User.all.sample)
 
 puts "Creating message for forum topic 3"
-Message.create(title: "Dry skin issue", date: Time.now, content: "I have difficulty layering foundation as I have dry skin. Any tips? ", forum: f1, user: User.all.sample)
-
-
-
+Message.create(title: "Tried many brands but nothing work", date: Date.today - 3, content: "I have used a couple of luxury and drug store brands but nothing works. Any good suggestions out there for severe dry skin?", forum: f3, user: User.all[1])
+Message.create(title: "Moisturising helps!", date: Date.today - 2, content: "Same problem here! I managed to solve this problem by putting a really rich moisturiser before putting any makeup", forum: f3, user: User.all[2])
+Message.create(title: "New product in the market", date: Date.today - 1, content: "Are you using powder foundation? Use a liquid formula. That helped me.", forum: f3, user: User.all[3])
 
 
 puts "Finish seeding 🍑"
