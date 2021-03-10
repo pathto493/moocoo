@@ -29,18 +29,6 @@ class VideosController < ApplicationController
     @products = @annotations.map { |a| a.product }
   end
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-  # private
-
-  # def filter_for(tag)
-  #   results = PgSearch::multisearch(tag)
-
-  # end
-
-=======
-=======
->>>>>>> 63026a6f345bdd320b5396a6643f4c2fa58f25b3
   def new
     @video = Video.new
   end
@@ -83,9 +71,3 @@ class VideosController < ApplicationController
   def video_params
     params.require(:video).permit(:title, :description, :video_url, :video_type, :creator, :tags, :likes, :views, :youtube_id)
   end
-<<<<<<< HEAD
->>>>>>> dfef38067b3b06f4e9c1279d0656380b25b83952
-=======
-
->>>>>>> 63026a6f345bdd320b5396a6643f4c2fa58f25b3
-end
