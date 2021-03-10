@@ -449,6 +449,17 @@ user = User.new(
   )
 user.save!
 
+ 3.times do |i|
+  user = User.new(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password: "testtest",
+    address: Faker::Address.street_address
+    )
+  puts "Create User - #{i + 1}"
+  user.save!
+end
 
 ### CREATING REVIEW FOR EACH PRODUCT ###
 puts "Creating reviews - start"
@@ -463,15 +474,15 @@ puts "Creating articles - start"
 
 puts "Creating article 1"
 name = "#{Faker::Name.first_name} #{Faker::Name.last_name}"
-Article.create(title: "Finding your perfect match", pic_url: "https://source.unsplash.com/rNx2plB7-TQ", author: name, date: Time.now, body: "Tips on getting the right foundation shade")
+Article.create(title: "Finding your perfect match", pic_url: "https://source.unsplash.com/rNx2plB7-TQ", author: name, date: Date.today - 1, body: "Tips on getting the right foundation shade")
 
 puts "Creating article 2"
 name = "#{Faker::Name.first_name} #{Faker::Name.last_name}"
-Article.create(title: "How to be chic in 2021", pic_url:"https://source.unsplash.com/B4TjXnI0Y2c", author: name, date: Time.now, body: "The best guide on staying in trend this year")
+Article.create(title: "How to be chic in 2021", pic_url:"https://source.unsplash.com/B4TjXnI0Y2c", author: name, date: Date.today - 2, body: "The best guide on staying in trend this year")
 
 puts "Creating article 3"
 name = "#{Faker::Name.first_name} #{Faker::Name.last_name}"
-Article.create(title: "Which is longer lasting: lip stain vs lip tint", pic_url: "https://source.unsplash.com/aXYnU9mpit0", author: name, date: Time.now, body: "The verdict is surprising")
+Article.create(title: "Which is longer lasting: lip stain vs lip tint", pic_url: "https://source.unsplash.com/aXYnU9mpit0", author: name, date: Date.today - 3, body: "The verdict is surprising")
 
 
 ### FORUM ###
@@ -491,16 +502,15 @@ f3 = Forum.create(name: "Best foundation brand for dry skin?")
 puts "Creating messages for forum - start"
 
 puts "Creating message for forum topic 1"
-Message.create(title: "Tried many brands but nothing work", date: Time.now, content: "I have used a couple of luxury and drug store brands but nothing works. Any good suggestions out there for severe dry skin?", forum: f3, user: User.all.sample)
+Message.create(title: "Dry skin issue", date: Time.now, content: "I have difficulty layering foundation as I have dry skin. Any tips? ", forum: f1, user: User.all.sample)
 
 puts "Creating message for forum topic 2"
 Message.create(title: "Lipstick gone before lunch", date: Time.now, content: "I like using lipstick over lip stain but it is not long lasting. How can I make it last longer?", forum: f2, user: User.all.sample)
 
 puts "Creating message for forum topic 3"
-Message.create(title: "Dry skin issue", date: Time.now, content: "I have difficulty layering foundation as I have dry skin. Any tips? ", forum: f1, user: User.all.sample)
-
-
-
+Message.create(title: "Tried many brands but nothing work", date: Date.today - 3, content: "I have used a couple of luxury and drug store brands but nothing works. Any good suggestions out there for severe dry skin?", forum: f3, user: User.all[1])
+Message.create(title: "Moisturising helps!", date: Date.today - 2, content: "Same problem here! I managed to solve this problem by putting a really rich moisturiser before putting any makeup", forum: f3, user: User.all[2])
+Message.create(title: "New product in the market", date: Date.today - 1, content: "Are you using powder foundation? Use a liquid formula. That helped me.", forum: f3, user: User.all[3])
 
 
 puts "Finish seeding 🍑"
