@@ -35,4 +35,8 @@ class PagesController < ApplicationController
     @product = Product.new
     @video = Video.new
   end
+
+  def video_upload_error
+    @error_message = 'You have entered a invalid Youtube ID'
+  end
 end

@@ -1,5 +1,5 @@
 <div class="col-12 mb-3">
-  <%= simple_form_for @product do |f| %>
+  <%= simple_form_for product do |f| %>
     <%= f.error_notification %>
     <div class="form-inputs">
       <h3>Add New Products</h3>
@@ -13,17 +13,3 @@
     </div>
   <% end %>
 </div>
-
-<div class="col-12">
-  <%= simple_form_for @video do |f| %>
-  <%= f.error_notification %>
-  <div class="form-inputs">
-    <h3>Add New Videos</h3>
-    <%= f.input :youtube_id, label: false, placeholder: 'youtube_id' %>
-  </div>
-  <div class="form-actions">
-    <%= f.button :submit, "Add video", class: "btn btn-primary" %>
-  </div>
-  <% end %>
-</div>
-
