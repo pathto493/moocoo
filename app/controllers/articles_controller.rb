@@ -6,5 +6,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @product = Product.find_by(name: "Microliner Ink")
+    @order = Order.new
   end
 end
