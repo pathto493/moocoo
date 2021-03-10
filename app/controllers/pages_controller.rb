@@ -21,6 +21,11 @@ class PagesController < ApplicationController
     @video_results = @results.where(searchable_type: 'Video').map(&:searchable)
     @product_results = @results.where(searchable_type: 'Product').map(&:searchable)
     @brand_results = @results.where(searchable_type: 'Brand').map(&:searchable)
+
+    respond_to do |f|
+      f.html
+      f.json { render json: { video_results: @video_results } }
+    end
   end
 
   def admin

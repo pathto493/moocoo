@@ -16,13 +16,10 @@ class VideosController < ApplicationController
 
   def index
     @videos = Video.all
-    @eyes = Video.search_by_video_title_and_tags("eyes")
-    @foundation = Video.search_by_video_title_and_tags("foundation")
-    @lips = Video.search_by_video_title_and_tags("lips")
 
-    @creators = Video.order('creator ASC')
-    @likes = Video.order('likes DESC')
-    @views = Video.order('views DESC')
+    # @creators = Video.order('creator ASC')
+    # @likes = Video.order('likes DESC')
+    # @views = Video.order('views DESC')
   end
 
   def show
@@ -74,4 +71,5 @@ class VideosController < ApplicationController
   def video_params
     params.require(:video).permit(:title, :description, :video_url, :video_type, :creator, :tags, :likes, :views, :youtube_id)
   end
+
 end
