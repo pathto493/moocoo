@@ -10,19 +10,19 @@
           <h4><%= @product.name %></h4>
         </div>
         <div class="col-4 text-right">
-          <h4><%= humanized_money_with_symbol @product.price %></h4>
+          <h4><strong><%= humanized_money_with_symbol @product.price %></strong></h4>
         </div>
       </div>
       <div class="row">
         <div class="col-12">
           <%= simple_form_for(@order, method: :post, url: vidcreateorder_path, :remote => true,  html: { class: :item }) do |f| %>
             <%= f.input :product,  :as => :hidden, :input_html => { :value => @product.id } %>
-            <div class="d-flex align-middle justify-content-between">
-              <div class="quantity d-flex align-middle">
-                <div class="m-auto pr-2">Quantity : </div>
-                <%= f.input :quantity, label: false, :input_html => { :id => "quantity" }, :collection => 1..12, :prompt => "--"%>
+            <div>
+              <div class="quantity d-flex align-middle justify-content-between">
+                <div class="pr-2">Quantity : </div>
+                <%= f.input :quantity, label: false, :input_html => { :id => "quantity" }, :collection => 1..12, selected: 1%>
               </div>
-              <%= button_tag type: 'submit', class: "cart btn btn-primary" do %>
+              <%= button_tag type: 'submit', class: "cart btn btn-cart d-block w-100 my-2" do %>
                 Add to <i class="fa fa-shopping-cart text-white" aria-hidden="true"></i>
               <% end %>
             </div>
@@ -32,11 +32,10 @@
       </div>
     </div>
   </div>
-  <BR><BR>
 
    <%= render partial: "shared/reviews"  %>
 
-  <div class="row border-top border-dark border-3 pt-3">
+  <div class="row border-top border-dark border-3 pt-3 mt-3">
     <div class="col-12">
       <h3>Admin only : Images you have</h3>
       <% if @product.photos.attached? %>

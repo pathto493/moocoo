@@ -18,6 +18,25 @@
   <br><br>
   Cras interdum nisi non nulla fermentum ultricies. Donec elementum sem auctor elementum sagittis. Ut aliquet magna eros, ac ultrices odio condimentum vel. Etiam gravida pulvinar dictum. Sed et velit eget mi molestie venenatis. Donec sollicitudin eleifend arcu, et sollicitudin nisl auctor vel. Maecenas ante justo, dictum vel sollicitudin ac, gravida non nulla. Curabitur vehicula malesuada enim, non fermentum ligula. Donec nec accumsan mi, cursus fringilla tellus.
   <br><br>
+
+  <div class="container" style="text-align:center;">
+
+    <%= cl_image_tag @product.photos.first.key, width: 250, crop: :fill %>
+    <div style="display: flex; justify-content: center;">
+      <div class="article-label-product">
+        <p><%= link_to "#{@product.brand.name} #{@product.name}", @product %> &nbsp&nbsp</p>
+      </div>
+      <div class="article">
+        <%= simple_form_for(@order, method: :post, url: vidcreateorder_path, :remote => true,  html: { class: :item }) do |f| %>
+          <%= f.input :product,  :as => :hidden, :input_html => { :value => @product.id } %>
+          <%= f.input :quantity, :as => :hidden, label: false, :input_html => { :id => "quantity", :value => 1 }%>
+          <%= button_tag type: 'submit', class: "cart btn btn-primary", id: 'cart-article-btn' do %>
+            <i class="fa fa-shopping-cart text-white" aria-hidden="true"></i>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
   Donec lectus enim, efficitur sed egestas a, scelerisque eget quam. Nullam fringilla bibendum sem eu condimentum. Donec sit amet orci ullamcorper, laoreet tortor aliquam, bibendum felis. Donec ultrices ac quam ut dapibus. Morbi scelerisque diam nec augue lobortis venenatis. Nam suscipit leo in libero facilisis, et viverra libero bibendum. Sed ligula lorem, congue ut vulputate at, lacinia id tortor.
   <br><br>
   Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum semper tellus ac porta efficitur. Nunc nisl lectus, convallis et congue non, venenatis quis nisl. Maecenas ac mauris rhoncus, tristique libero sit amet, suscipit nibh. Quisque efficitur purus sit amet elementum maximus. Sed varius congue rutrum. Nullam euismod iaculis ipsum et imperdiet. Suspendisse et erat fermentum, sagittis nisi a, tristique enim. Maecenas fermentum purus neque, quis sagittis diam elementum sit amet. Ut egestas dolor quis elit vestibulum, et laoreet ex vestibulum.
