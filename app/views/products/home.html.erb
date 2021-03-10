@@ -1,36 +1,60 @@
 <div class="container">
-  <div class="row">
+  <div class="row my-3">
     <div class="col-12">
-      <p>
-      <%= link_to "See all products", products_path, class: 'btn btn-primary btn-xs' %>
-      </p>
+      <div class="home-card-category" style="background-image: linear-gradient(to left, rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url(<%= cloudinary_url(@products.first.photos.first.key) %> )">
+        <%= link_to "All Products", products_path %>
+      </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row my-3">
     <div class="col-12">
-      <h3>Latest Product</h3>
-      <div class="card-product-big">
-        <div class="card-product-img">
-          <%= cl_image_tag @products.first.photos.first.key, width: 400, crop: :fill %>
+      <div class="home-card-category" style="background-image: linear-gradient(to left, rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url(<%= cloudinary_url(@products[1].photos.first.key) %> )">
+        <%= link_to "All Brands", brands_path %>
+      </div>
+    </div>
+  </div>
+  <div class="row my-3">
+    <div class="col-12">
+      <h3>By Type</h3>
+      <div class="smaller-cards">
+        <div class="home-card-category smaller-card" style="background-image: linear-gradient(to left, rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url(<%= cloudinary_url(@products[2].photos.first.key) %> )">
+          <%= link_to "Lipstick", products_path %>
+        </div>
+        <div class="home-card-category smaller-card" style="background-image: linear-gradient(to left, rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url(<%= cloudinary_url(@products[3].photos.first.key) %> )">
+          <%= link_to "Foundation", products_path %>
+        </div>
+        <div class="home-card-category smaller-card" style="background-image: linear-gradient(to left, rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url(<%= cloudinary_url(@products[4].photos.first.key) %> )">
+          <%= link_to "Mascara", products_path %>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-12">
+      <h3>By Brand</h3>
+      <div class="home-card-category smaller-card my-2" style="background-image: linear-gradient(to left, rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url(<%= cloudinary_url(@products[5].photos.first.key) %> )">
+          <%= link_to @brands.first.name, brands_path(@brands.first.name) %>
+        </div>
+        <div class="home-card-category smaller-card my-2" style="background-image: linear-gradient(to left, rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url(<%= cloudinary_url(@products[6].photos.first.key) %> )">
+          <%= link_to @brands[1].name, brands_path(@brands[1].name) %>
+        </div>
+        <div class="home-card-category smaller-card my-2" style="background-image: linear-gradient(to left, rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url(<%= cloudinary_url(@products[7].photos.first.key) %> )">
+          <%= link_to @brands.last.name, brands_path(@brands.last.name) %>
+        </div>
+    </div>
+  </div>
+
   <div class="row ">
     <div class="col-12">
-      <h3>Popular Product</h3>
+      <h3>Popular Products</h3>
         <div class="row no-gutters">
-        <% 3.times do |i| %>
-          <div class="col-4">
+        <% 2.times do |i| %>
+          <div class="col-6 px-1">
             <%= render partial: "shared/productcard", locals: { product: @products[i] } %>
           </div>
         <% end %>
         </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12">
-      <h3>By Brand</h3>
     </div>
   </div>
 </div>

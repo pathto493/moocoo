@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
 
   def home
     @products = Product.all
+    @brands = Brand.all
   end
 
   def index
