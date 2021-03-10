@@ -1,7 +1,4 @@
 class OrdersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:cart, :create, :vidcreateorder, :destroy]
-
-
   def cart
     @orders = Order.where(user: current_user, confirmed: false)
 

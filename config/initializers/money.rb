@@ -80,8 +80,8 @@ MoneyRails.configure do |config|
   #
   config.default_format = {
      no_cents_if_whole: false,
-  #   symbol: nil,
-  #   sign_before_symbol: nil
+     symbol: nil,
+     sign_before_symbol: nil
   }
 
   # If you would like to use I18n localization (formatting depends on the
