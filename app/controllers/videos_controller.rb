@@ -61,7 +61,6 @@ class VideosController < ApplicationController
       video_stats = JSON.parse(url_two_read)
       video.likes = video_stats['items'][0]['statistics']['likeCount']
       video.views = video_stats['items'][0]['statistics']['viewCount']
-
       video.save
       redirect_to video_path(video)
     else
@@ -73,6 +72,6 @@ class VideosController < ApplicationController
   private
 
   def video_params
-    params.require(:video).permit(:youtube_id)
+    params.require(:video).permit(:title, :description, :video_url, :video_type, :creator, :tags, :likes, :views, :youtube_id)
   end
 end
