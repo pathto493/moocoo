@@ -3,7 +3,15 @@
     <div class="col-12">
       <!-- Filter Control buttons -->
       <div class="d-flex justify-content-around" style="background-color:white;" data-controller="video">
-          <button class="btn btn-primary" name="eye" data-action="click->video#show">EYES</button>
+          <button type="button" class="btn btn-primary first" name="eye" data-action="video#show">EYES</button>
+          <button type="button" class="btn btn-primary second" name="foundation" data-action="video#show">FOUNDATION</button>
+
+        <div class="eye" data-filter-target="video.eyeresult">
+          <%= render 'shared/video_display', videos: @eye_result %>
+        </div>
+        <div class="foundation" data-filter-target="video.foundationresult">
+          <%= render 'shared/video_display', videos: @foundation_result %>
+        </div>
       </div>
       <!-- Sort Control buttons -->
       <div class="d-flex justify-content-around" style="background-color:white;" id="myBtnContainer">
@@ -15,10 +23,6 @@
       </div>
 
       <!-- The filterable elements. Note that some have multiple class names (this can be used if they belong to multiple categories) -->
-      <div class="eye" data-filter-target="eyeresult">
-        <%= render 'shared/video_display', videos: @eye_result %>
-      </div>
-
       <div class="filter-container">
         <div class="filter all">
           <%= render 'shared/video_display', videos: @videos %>

@@ -43,6 +43,7 @@ import { initRemoveOrderFromCartAlert } from '../components/_remove_order_alert'
 
 import { scrollNav } from '../components/_scrollNav';
 
+import { filterVids } from '../components/_filtervids';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -60,6 +61,7 @@ document.addEventListener('turbolinks:load', () => {
   initVideoJump();
   initRemoveOrderFromCartAlert();
   scrollNav();
+
 
   document.addEventListener('turbolinks:request-start', () => {
     const spinner = document.querySelector('#spinner');
