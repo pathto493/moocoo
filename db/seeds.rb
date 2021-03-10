@@ -558,11 +558,11 @@ puts "Creating articles - start"
 
 puts "Creating article 1"
 name = "#{Faker::Name.first_name} #{Faker::Name.last_name}"
-Article.create(title: "Finding your perfect match", pic_url: "https://source.unsplash.com/rNx2plB7-TQ", author: name, date: Date.today - 1, body: "Tips on getting the right foundation shade")
+Article.create(title: "Finding your perfect match", pic_url: "https://source.unsplash.com/yH0dth2yEQE", author: name, date: Date.today - 1, body: "Tips on getting the right foundation shade")
 
 puts "Creating article 2"
 name = "#{Faker::Name.first_name} #{Faker::Name.last_name}"
-Article.create(title: "How to be chic in 2021", pic_url:"https://source.unsplash.com/B4TjXnI0Y2c", author: name, date: Date.today - 2, body: "The best guide on staying in trend this year")
+Article.create(title: "How to be chic in 2021", pic_url:"https://source.unsplash.com/zar90MHyWYc", author: name, date: Date.today - 2, body: "The best guide on staying in trend this year")
 
 puts "Creating article 3"
 name = "#{Faker::Name.first_name} #{Faker::Name.last_name}"

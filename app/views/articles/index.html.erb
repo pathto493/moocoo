@@ -1,18 +1,13 @@
-
-
 <div class="container">
   <p class="title">Articles</p>
     <% @articles.each do |article| %>
-      <div class="card-video-index">
-         <img src= <%= article.pic_url %> style="width: 100%;">
-        <div class="card-video-index-infos">
-          <div>
-            <h2><%= link_to article.title, article %></h2>
-            <p><%= article.author %></p>
-          </div>
-          <h2 class="card-video-index-infos right-info">
-            <p><%= article.date %></p>
+      <div class="card-article">
+        <img src=<%= article.pic_url %> />
+        <div class="card-article-infos">
+          <h2><%= link_to article.title, article %></h2>
+          <p>By <%= article.author %></p>
         </div>
       </div>
+      <HR style="width: 75%; color: #D4D4D4;">
     <% end %>
-</div>
+  </div>
