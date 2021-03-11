@@ -14,7 +14,7 @@
   <% end %>
 </div>
 
-<div class="col-12">
+<div class="col-12 mb-3">
   <%= simple_form_for @video do |f| %>
   <%= f.error_notification %>
   <div class="form-inputs">
@@ -23,6 +23,24 @@
   </div>
   <div class="form-actions">
     <%= f.button :submit, "Add video", class: "btn btn-primary" %>
+  </div>
+  <% end %>
+</div>
+
+<div class="col-12" data-controller='duration'>
+  <%= simple_form_for @annotation do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+    <h3>Add New Annotation</h3>
+    <%= f.input :video, collection: @videos, input_html: { 'data-action': 'change->duration#updateTimes' } %>
+    <%= f.input :product, collection: @products %>
+    <%#= f.input :time_start, collection: [15, 20, 40, 60]%>
+    <p>duration</p>
+    <%= f.input :time_start, as: :range, input_html: { min: 0, max: 0, 'data-duration-target': 'start'} %>
+    <%= f.input :time_end, as: :range, input_html: { min: 0, max: 0, 'data-duration-target': 'end' } %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, "Add annotation", class: "btn btn-primary" %>
   </div>
   <% end %>
 </div>
