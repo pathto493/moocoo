@@ -1,6 +1,5 @@
 class AnnotationsController < ApplicationController
   def create
-    raise
     @annotation_current = Annotation.find(video)
     @annotation = Annotation.new(annotation_params)
     @annotation.save
