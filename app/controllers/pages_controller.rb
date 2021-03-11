@@ -21,11 +21,20 @@ class PagesController < ApplicationController
     @video_results = @results.where(searchable_type: 'Video').map(&:searchable)
     @product_results = @results.where(searchable_type: 'Product').map(&:searchable)
     @brand_results = @results.where(searchable_type: 'Brand').map(&:searchable)
+
+    respond_to do |f|
+      f.html
+      f.json { render json: { video_results: @video_results } }
+    end
   end
 
   def admin
     @product = Product.new
     @video = Video.new
+    @annotation = Annotation.new
+    @annotations = Annotation.all
+    @products = Product.all
+    @videos = Video.all
   end
 
   def video_upload_error

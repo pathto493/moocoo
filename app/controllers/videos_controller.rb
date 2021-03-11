@@ -16,13 +16,10 @@ class VideosController < ApplicationController
 
   def index
     @videos = Video.all
-    @eyes = Video.search_by_video_title_and_tags("eyes")
-    @foundation = Video.search_by_video_title_and_tags("foundation")
-    @lips = Video.search_by_video_title_and_tags("lips")
 
-    @creators = Video.order('creator ASC')
-    @likes = Video.order('likes DESC')
-    @views = Video.order('views DESC')
+    # @creators = Video.order('creator ASC')
+    # @likes = Video.order('likes DESC')
+    # @views = Video.order('views DESC')
   end
 
   def show
@@ -43,12 +40,17 @@ class VideosController < ApplicationController
       yotube_id = its_a_match[:y_id]
     end
     url_one = "https://www.googleapis.com/youtube/v3/videos?part=snippet&id=#{yotube_id}&key=#{ENV['YOUTUBE_API_KEY']}"
+
     url_one_read = open(url_one).read
     video_info = JSON.parse(url_one_read)
 
     if video_info["items"] != []
+      video_duration_url = open("https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=#{yotube_id}&key=#{ENV['YOUTUBE_API_KEY']}").read
+      video_duration_data = JSON.parse(video_duration_url)['items'][0]['contentDetails']['duration'].scan(/\d+/)
+      video_length = video_duration_data[0].to_i * 60 + video_duration_data[1].to_i
 
       video = Video.new
+      video.length_in_seconds = video_length
       video.title = video_info['items'][0]['snippet']['title']
       video.description = video_info['items'][0]['snippet']['description']
       # video.video_url = video_info['items'][0]['snippet']['thumbnails']['default']['url']
@@ -74,4 +76,3 @@ class VideosController < ApplicationController
   def video_params
     params.require(:video).permit(:title, :description, :video_url, :video_type, :creator, :tags, :likes, :views, :youtube_id)
   end
-end
