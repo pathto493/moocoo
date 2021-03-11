@@ -1,18 +1,21 @@
 <div class="container">
   <div class="row">
     <div class="col-12" data-controller="video">
-      <!-- Filter Control buttons -->
-      <div class="d-flex justify-content-around" style="background-color:white;">
-          <button type="button" class="btn btn-primary" name="eye" data-action="video#show">EYES</button>
-          <button type="button" class="btn btn-primary" name="foundation" data-action="video#show">FOUNDATION</button>
+
+<!--Alternative for above drop-down -->
+      <div class="d-flex justify-content-between" style="background-color:white;">
+          <button type="button" class="btn btn-primary mx-2" name="eyes" data-action="video#show">EYES</button>
+          <button type="button" class="btn btn-primary mx-2" name="lips" data-action="video#show">LIPS</button>
+          <button type="button" class="btn btn-primary mx-2" name="skin" data-action="video#show">SKIN</button>
+          <button type="button" class="btn btn-primary mx-2" name="natural" data-action="video#show">NATURAL</button>
       </div>
       <!-- Sort Control buttons -->
-      <div class="d-flex justify-content-around" style="background-color:white;" id="myBtnContainer">
+      <div class="d-flex justify-content-around my-1" style="background-color:white;" id="myBtnContainer">
         <span class="sort-div">Sort by:</span>
-        <label><input type="radio" class="btn-filter" data-tabs="all" checked><i></i>All</label>
-        <label><input type="radio" class="btn-filter" data-tabs="creator"><i></i>Creator</label>
-        <label><input type="radio" class="btn-filter" data-tabs="likes"><i></i>Likes</label>
-        <label><input type="radio" class="btn-filter" data-tabs="views"><i></i>Views</label>
+        <label><input type="radio" class="btn-filter mr-1" data-tabs="all" checked><i></i>All</label>
+        <label><input type="radio" class="btn-filter mr-1" data-tabs="creator"><i></i>Creator</label>
+        <label><input type="radio" class="btn-filter mr-1" data-tabs="likes"><i></i>Likes</label>
+        <label><input type="radio" class="btn-filter mr-1" data-tabs="views"><i></i>Views</label>
       </div>
 <!--This is template for videos to appear -->
       <template id="card-template">
@@ -41,15 +44,15 @@
         </div>
 
         <div class="filter creator" data-video-target='creatorresults'>
-          <%= render 'shared/video_display', videos: @videos.order('creator ASC') %>
+          <%#= render 'shared/video_display', videos: @videos.order('creator ASC') %>
         </div>
 
         <div class="filter likes" data-video-target='likesresult'>
-          <%= render 'shared/video_display', videos: @videos.order('likes DESC') %>
+          <%#= render 'shared/video_display', videos: @videos.order('likes DESC') %>
         </div>
 
         <div class="filter views" data-video-target='viewsresult'>
-          <%= render 'shared/video_display', videos: @videos.order('views DESC') %>
+          <%#= render 'shared/video_display', videos: @videos.order('views DESC') %>
         </div>
 
       </div>

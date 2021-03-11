@@ -13,7 +13,7 @@ class Product < ApplicationRecord
   validates :price, presence: true
 
   include PgSearch::Model
-  multisearchable against: [:name],
+  multisearchable against: [:name, :brand_id],
     using: {
       tsearch: { prefix: true }
   }
