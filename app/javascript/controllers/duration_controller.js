@@ -1,52 +1,34 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["start", "end"]
-
-  connect() {
-    console.log('I am connected!');
-  }
+  static targets = ["start", "end", 'annotation']
 
   updateTimes(e) {
-    console.log(e.currentTarget.value);
+    this.annotationTarget.classList.remove('d-none');
     fetch(`/duration.json?id=${e.currentTarget.value}`)
       .then(res => res.json())
       .then(data => {
         this.refreshTimeInputs(data.duration)
-
-        const timeStart = document.getElementById('annotation_time_start');
-        timeStart.addEventListener("change", (e) => {
-          this.endTarget.min = e.target.value;
-          const timeStartMain = document.querySelector('.annotation_time_start');
-          const timeStartLabel = timeStartMain.querySelector("label");
-          timeStartLabel.innerText = "Time start ";
-          timeStartLabel.insertAdjacentText("beforeend", this.toReadableTime(e.target.value));
-
-          // console.dir(timeStartMain);
-          console.dir(e.target.value);
-        })
-
-        const timeEnd = document.getElementById('annotation_time_end');
-        timeEnd.addEventListener("change", (e) => {
-          // this.endTarget.min = this.startTarget.value;
-          this.endTarget.min = 0;
-          this.endTarget.max = (this.startTarget.max - this.startTarget.value)
-          const timeEndMain = document.querySelector('.annotation_time_end');
-          const timeEndLabel = timeEndMain.querySelector("label");
-          timeEndLabel.innerText = "Time end ";
-          // timeEndLabel.insertAdjacentText("beforeend", this.toReadableTime(e.target.value));
-
-          timeEndLabel.insertAdjacentText("beforeend", this.toReadableTime(this.startTarget.max - e.target.value));
-          console.dir("endTargetMin")
-          console.dir(this.endTarget.min);
-          // console.dir(timeEndLabel);
-        })
-
-
       });
-    // need to get the id of the video that was selected
-    // go to my database to retrieve the duration
-    // update both selects with the time
+  }
+
+  changeStart(e) {
+    const endtime = e.target.value
+    this.endTarget.min = endtime
+    this.writeLabel();
+  }
+
+  changeEnd(e) {
+    const endtime = e.target.value
+    this.endTarget.val = endtime
+    this.writeLabel();
+  }
+
+  writeLabel() {
+    const timeStartLabel = this.startTarget.parentElement.querySelector('label')
+    const timeEndLabel = this.endTarget.parentElement.querySelector('label')
+    timeStartLabel.innerText = `Time starts: ${this.toReadableTime(this.startTarget.value)}`
+    timeEndLabel.innerText = `Time ends: ${this.toReadableTime(this.endTarget.value)}`
   }
 
   refreshTimeInputs(duration) {
@@ -54,10 +36,13 @@ export default class extends Controller {
     this.endTarget.max = duration;
   }
 
-  toReadableTime(seconds) {
-    let minutes = parseInt(seconds / 60);
-    let secondsModule = seconds % 60;
-    return `${minutes}:${secondsModule}`
+  toReadableTime(s) {
+    let minutes = parseInt(s / 60);
+    let seconds = s % 60;
+    return `${this.str_pad_left(minutes, '0', 2)}:${this.str_pad_left(seconds, '0', 2)}`
   }
 
+  str_pad_left(string, pad, length) {
+    return (new Array(length + 1).join(pad) + string).slice(-length);
+  }
 }
