@@ -48,252 +48,123 @@ product = Product.create(
   name: "Ultimate Defence Refresh Mist",
   price_cents: (1000..1500).step(10).to_a.sample,
   description: "",
-  brand: brand
+  brand: brand,
+  photo_id: %w[m6 f1]
 )
-
-puts "Attaching Photos to Product 1"
-file = open("app/assets/images/m6.jpg")
-product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
-
-puts "Attaching Photos to Product 1"
-file = open("app/assets/images/f1.jpg")
-product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
-
 
 product = Product.create(
   name: "Treatment Softener",
   price_cents: (1000..1500).step(10).to_a.sample,
   description: "",
-  brand: brand
+  brand: brand,
+  photo_id: %w[m2 f1]
 )
-
-puts "Attaching Photos to Product 2"
-file = open("app/assets/images/m2.jpg")
-product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
-
-puts "Attaching Photos to Product 2"
-file = open("app/assets/images/f1.jpg")
-product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
-
-
 
 product = Product.create(
   name: "Ultimune Eye",
   price_cents: (1000..1500).step(10).to_a.sample,
   description: "",
-  brand: brand
+  brand: brand,
+  photo_id: %w[m5 f1]
 )
-
-
-puts "Attaching Photos to Product 3"
-file = open("app/assets/images/m5.jpg")
-product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
-
-puts "Attaching Photos to Product 3"
-file = open("app/assets/images/f1.jpg")
-product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
-
 
 product = Product.create(
   name: "Ultimune Powder Infusing Concentrate",
   price_cents: (1000..1500).step(10).to_a.sample,
   description: "",
-  brand: brand
+  brand: brand,
+  photo_id: %w[m3 f1]
 )
-
-
-puts "Attaching Photos to Product 4"
-file = open("app/assets/images/m3.jpg")
-product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
-
-puts "Attaching Photos to Product 4"
-file = open("app/assets/images/f1.jpg")
-product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
-
 
 product = Product.create(
   name: "Synchro Skin Soft Blurring Primer",
   price_cents: (1000..1500).step(10).to_a.sample,
   description: "",
-  brand: brand
+  brand: brand,
+  photo_id: %w[m1 f1],
+
 )
-
-
-puts "Attaching Photos to Product 5"
-file = open("app/assets/images/m1.jpg")
-product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
-
-puts "Attaching Photos to Product 5"
-file = open("app/assets/images/f1.jpg")
-product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
 
 product = Product.create(
   name: "Synchro Skin Radiant Lifting Foundation",
   price_cents: (1000..1500).step(10).to_a.sample,
   description: "",
-  brand: brand
+  brand: brand,
+  photo_id: %w[m8 f1]
 )
-
-
-puts "Attaching Photos to Product 6"
-file = open("app/assets/images/m8.jpg")
-product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
-
-puts "Attaching Photos to Product 6"
-file = open("app/assets/images/f1.jpg")
-product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
 
 product = Product.create(
   name: "Synchro Skin Self Refreshing Concealer",
   price_cents: (1000..1500).step(10).to_a.sample,
   description: "",
-  brand: brand
+  brand: brand,
+  photo_id: %w[m14 f1]
 )
-
-
-puts "Attaching Photos to Product 7"
-file = open("app/assets/images/m14.jpg")
-product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
-
-puts "Attaching Photos to Product 7"
-file = open("app/assets/images/f1.jpg")
-product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
 
 product = Product.create(
   name: "Minimalist Whipped Powder Blush",
   price_cents: (1000..1500).step(10).to_a.sample,
   description: "",
-  brand: brand
+  brand: brand,
+  photo_id: %w[m17 f1]
 )
-
-
-puts "Attaching Photos to Product 8"
-file = open("app/assets/images/m17.jpg")
-product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
-
-puts "Attaching Photos to Product 8"
-file = open("app/assets/images/f1.jpg")
-product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
 
 
 product = Product.create(
   name: "Brow Inktrid",
   price_cents: (1000..1500).step(10).to_a.sample,
   description: "",
-  brand: brand
+  brand: brand,
+  photo_id: %w[m18 f1]
 )
-
-
-puts "Attaching Photos to Product 9"
-file = open("app/assets/images/m18.jpg")
-product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
-
-puts "Attaching Photos to Product 9"
-file = open("app/assets/images/f1.jpg")
-product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
-
 
 product = Product.create(
   name: "Microliner Ink",
   price_cents: (1000..1500).step(10).to_a.sample,
   description: "",
-  brand: brand
+  brand: brand,
+  photo_id: %w[m10 f1]
 )
-
-
-puts "Attaching Photos to Product 10"
-file = open("app/assets/images/m10.jpg")
-product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
-
-puts "Attaching Photos to Product 10"
-file = open("app/assets/images/f1.jpg")
-product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
-
 
 product = Product.create(
   name: "Essentialist Eye Palette",
   price_cents: (1000..1500).step(10).to_a.sample,
   description: "",
-  brand: brand
+  brand: brand,
+  photo_id: %w[m12 f1]
 )
-
-
-puts "Attaching Photos to Product 11"
-file = open("app/assets/images/m12.jpg")
-product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
-
-puts "Attaching Photos to Product 11"
-file = open("app/assets/images/f1.jpg")
-product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
-
 
 product = Product.create(
   name: "Imperialash Mascara",
   price_cents: (1000..1500).step(10).to_a.sample,
   description: "",
-  brand: brand
+  brand: brand,
+  photo_id: %w[m11 f1]
 )
-
-
-puts "Attaching Photos to Product 12"
-file = open("app/assets/images/m11.jpg")
-product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
-
-puts "Attaching Photos to Product 12"
-file = open("app/assets/images/f1.jpg")
-product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
 
 product = Product.create(
   name: "Innerglow Cheek Powder",
   price_cents: (1000..1500).step(10).to_a.sample,
   description: "",
-  brand: brand
+  brand: brand,
+  photo_id: %w[m17 f1]
 )
-
-
-puts "Attaching Photos to Product 13"
-file = open("app/assets/images/m17.jpg")
-product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
-
-puts "Attaching Photos to Product 13"
-file = open("app/assets/images/f1.jpg")
-product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
-
 
 product = Product.create(
   name: "Colorgel Lip Balm",
   price_cents: (1000..1500).step(10).to_a.sample,
   description: "",
-  brand: brand
+  brand: brand,
+  photo_id: %w[m15 f1]
 )
-
-
-puts "Attaching Photos to Product 14"
-file = open("app/assets/images/m15.jpg")
-product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
-
-puts "Attaching Photos to Product 14"
-file = open("app/assets/images/f1.jpg")
-product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
-
 
 product = Product.create(
   name: "Synchro Skin Self Refreshing Custom Finish Powder Foundation",
   price_cents: (1000..1500).step(10).to_a.sample,
   description: "",
-  brand: brand
+  brand: brand,
+  photo_id: %w[m16 f1]
 )
-
-
-puts "Attaching Photos to Product 15"
-file = open("app/assets/images/m16.jpg")
-product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
-
-puts "Attaching Photos to Product 15"
-file = open("app/assets/images/f1.jpg")
-product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
-
-
 
 ### CREATIING PRODUCTS FOR OTHER BRANDS ###
 
@@ -306,48 +177,25 @@ brands.each do |brand_name|
     name: "Rich Concentrate Dewy Concealer",
     price_cents: (1000..1500).step(10).to_a.sample,
     description: "",
-    brand: brand
+    brand: brand,
+    photo_id: %w[m7 f1]
   )
-
-  puts "Attaching Photos to Product 1"
-  file = open("app/assets/images/m7.jpg")
-  product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
-
-  puts "Attaching Photos to Product 1"
-  file = open("app/assets/images/f2.jpg")
-  product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
-
 
   product = Product.create(
     name: "Long Lasting Velvet Lipstick",
     price_cents: (1000..1500).step(10).to_a.sample,
     description: "",
-    brand: brand
+    brand: brand,
+    photo_id: %w[m9 f1]
   )
-
-  puts "Attaching Photos to Product 2"
-  file = open("app/assets/images/m9.jpg")
-  product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
-
-  puts "Attaching Photos to Product 2"
-  file = open("app/assets/images/f2.jpg")
-  product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
-
 
   product = Product.create(
     name: "Multi-purpose Cheek & Lip Stick",
     price_cents: (1000..1500).step(10).to_a.sample,
     description: "",
-    brand: brand
+    brand: brand,
+    photo_id: %w[m13 f1]
   )
-
-  puts "Attaching Photos to Product 3"
-  file = open("app/assets/images/m13.jpg")
-  product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
-
-  puts "Attaching Photos to Product 3"
-  file = open("app/assets/images/f2.jpg")
-  product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
 end
 
 
@@ -720,4 +568,316 @@ end
 #     file = URI.open("https://picsum.photos/200")
 #     product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
 #   end
+# end
+
+
+### PRODUCT ###
+
+# puts "Create Shiseido Products 💄"
+# brand = Brand.find_by(name: "Shiseido")
+
+# product = Product.create(
+#   name: "Ultimate Defence Refresh Mist",
+#   price_cents: (1000..1500).step(10).to_a.sample,
+#   description: "",
+#   brand: brand
+# )
+
+# puts "Attaching Photos to Product 1"
+# file = open("app/assets/images/m6.jpg")
+# product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+# puts "Attaching Photos to Product 1"
+# file = open("app/assets/images/f1.jpg")
+# product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+
+# product = Product.create(
+#   name: "Treatment Softener",
+#   price_cents: (1000..1500).step(10).to_a.sample,
+#   description: "",
+#   brand: brand
+# )
+
+# puts "Attaching Photos to Product 2"
+# file = open("app/assets/images/m2.jpg")
+# product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+# puts "Attaching Photos to Product 2"
+# file = open("app/assets/images/f1.jpg")
+# product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+
+
+# product = Product.create(
+#   name: "Ultimune Eye",
+#   price_cents: (1000..1500).step(10).to_a.sample,
+#   description: "",
+#   brand: brand
+# )
+
+
+# puts "Attaching Photos to Product 3"
+# file = open("app/assets/images/m5.jpg")
+# product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+# puts "Attaching Photos to Product 3"
+# file = open("app/assets/images/f1.jpg")
+# product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+
+# product = Product.create(
+#   name: "Ultimune Powder Infusing Concentrate",
+#   price_cents: (1000..1500).step(10).to_a.sample,
+#   description: "",
+#   brand: brand
+# )
+
+
+# puts "Attaching Photos to Product 4"
+# file = open("app/assets/images/m3.jpg")
+# product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+# puts "Attaching Photos to Product 4"
+# file = open("app/assets/images/f1.jpg")
+# product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+
+# product = Product.create(
+#   name: "Synchro Skin Soft Blurring Primer",
+#   price_cents: (1000..1500).step(10).to_a.sample,
+#   description: "",
+#   brand: brand
+# )
+
+
+# puts "Attaching Photos to Product 5"
+# file = open("app/assets/images/m1.jpg")
+# product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+# puts "Attaching Photos to Product 5"
+# file = open("app/assets/images/f1.jpg")
+# product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+# product = Product.create(
+#   name: "Synchro Skin Radiant Lifting Foundation",
+#   price_cents: (1000..1500).step(10).to_a.sample,
+#   description: "",
+#   brand: brand
+# )
+
+
+# puts "Attaching Photos to Product 6"
+# file = open("app/assets/images/m8.jpg")
+# product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+# puts "Attaching Photos to Product 6"
+# file = open("app/assets/images/f1.jpg")
+# product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+# product = Product.create(
+#   name: "Synchro Skin Self Refreshing Concealer",
+#   price_cents: (1000..1500).step(10).to_a.sample,
+#   description: "",
+#   brand: brand
+# )
+
+
+# puts "Attaching Photos to Product 7"
+# file = open("app/assets/images/m14.jpg")
+# product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+# puts "Attaching Photos to Product 7"
+# file = open("app/assets/images/f1.jpg")
+# product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+# product = Product.create(
+#   name: "Minimalist Whipped Powder Blush",
+#   price_cents: (1000..1500).step(10).to_a.sample,
+#   description: "",
+#   brand: brand
+# )
+
+
+# puts "Attaching Photos to Product 8"
+# file = open("app/assets/images/m17.jpg")
+# product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+# puts "Attaching Photos to Product 8"
+# file = open("app/assets/images/f1.jpg")
+# product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+
+# product = Product.create(
+#   name: "Brow Inktrid",
+#   price_cents: (1000..1500).step(10).to_a.sample,
+#   description: "",
+#   brand: brand
+# )
+
+
+# puts "Attaching Photos to Product 9"
+# file = open("app/assets/images/m18.jpg")
+# product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+# puts "Attaching Photos to Product 9"
+# file = open("app/assets/images/f1.jpg")
+# product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+
+# product = Product.create(
+#   name: "Microliner Ink",
+#   price_cents: (1000..1500).step(10).to_a.sample,
+#   description: "",
+#   brand: brand
+# )
+
+
+# puts "Attaching Photos to Product 10"
+# file = open("app/assets/images/m10.jpg")
+# product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+# puts "Attaching Photos to Product 10"
+# file = open("app/assets/images/f1.jpg")
+# product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+
+# product = Product.create(
+#   name: "Essentialist Eye Palette",
+#   price_cents: (1000..1500).step(10).to_a.sample,
+#   description: "",
+#   brand: brand
+# )
+
+
+# puts "Attaching Photos to Product 11"
+# file = open("app/assets/images/m12.jpg")
+# product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+# puts "Attaching Photos to Product 11"
+# file = open("app/assets/images/f1.jpg")
+# product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+
+# product = Product.create(
+#   name: "Imperialash Mascara",
+#   price_cents: (1000..1500).step(10).to_a.sample,
+#   description: "",
+#   brand: brand
+# )
+
+
+# puts "Attaching Photos to Product 12"
+# file = open("app/assets/images/m11.jpg")
+# product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+# puts "Attaching Photos to Product 12"
+# file = open("app/assets/images/f1.jpg")
+# product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+# product = Product.create(
+#   name: "Innerglow Cheek Powder",
+#   price_cents: (1000..1500).step(10).to_a.sample,
+#   description: "",
+#   brand: brand
+# )
+
+
+# puts "Attaching Photos to Product 13"
+# file = open("app/assets/images/m17.jpg")
+# product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+# puts "Attaching Photos to Product 13"
+# file = open("app/assets/images/f1.jpg")
+# product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+
+# product = Product.create(
+#   name: "Colorgel Lip Balm",
+#   price_cents: (1000..1500).step(10).to_a.sample,
+#   description: "",
+#   brand: brand
+# )
+
+
+# puts "Attaching Photos to Product 14"
+# file = open("app/assets/images/m15.jpg")
+# product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+# puts "Attaching Photos to Product 14"
+# file = open("app/assets/images/f1.jpg")
+# product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+
+# product = Product.create(
+#   name: "Synchro Skin Self Refreshing Custom Finish Powder Foundation",
+#   price_cents: (1000..1500).step(10).to_a.sample,
+#   description: "",
+#   brand: brand
+# )
+
+
+# puts "Attaching Photos to Product 15"
+# file = open("app/assets/images/m16.jpg")
+# product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+# puts "Attaching Photos to Product 15"
+# file = open("app/assets/images/f1.jpg")
+# product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+
+
+# ### CREATIING PRODUCTS FOR OTHER BRANDS ###
+
+
+# brands = %w[Dior L'Oreal Lancome]
+# puts "Create products for other brands💄"
+# brands.each do |brand_name|
+#   brand = Brand.find_by(name: brand_name)
+#   product = Product.create(
+#     name: "Rich Concentrate Dewy Concealer",
+#     price_cents: (1000..1500).step(10).to_a.sample,
+#     description: "",
+#     brand: brand
+#   )
+
+#   puts "Attaching Photos to Product 1"
+#   file = open("app/assets/images/m7.jpg")
+#   product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+#   puts "Attaching Photos to Product 1"
+#   file = open("app/assets/images/f2.jpg")
+#   product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+
+#   product = Product.create(
+#     name: "Long Lasting Velvet Lipstick",
+#     price_cents: (1000..1500).step(10).to_a.sample,
+#     description: "",
+#     brand: brand
+#   )
+
+#   puts "Attaching Photos to Product 2"
+#   file = open("app/assets/images/m9.jpg")
+#   product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+#   puts "Attaching Photos to Product 2"
+#   file = open("app/assets/images/f2.jpg")
+#   product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+
+#   product = Product.create(
+#     name: "Multi-purpose Cheek & Lip Stick",
+#     price_cents: (1000..1500).step(10).to_a.sample,
+#     description: "",
+#     brand: brand
+#   )
+
+#   puts "Attaching Photos to Product 3"
+#   file = open("app/assets/images/m13.jpg")
+#   product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
+
+#   puts "Attaching Photos to Product 3"
+#   file = open("app/assets/images/f2.jpg")
+#   product.photos.attach(io: file, filename: "#{Faker::Name.first_name}.jpg", content_type: 'image/jpg')
 # end

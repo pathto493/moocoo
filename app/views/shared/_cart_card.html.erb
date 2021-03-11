@@ -1,6 +1,6 @@
 <div class="row no-gutters card-cart bg-white my-3 rounded" id="order-<%= order.id %>">
   <div class="col-3 card-cart-img-container">
-    <%= cl_image_tag order.product.photos.first.key, width: 400, crop: :fill %>
+    <%= cl_image_tag order.product.photo_id[0], width: 400, crop: :fill %>
   </div>
   <div class="col-5 card-cart-name text-left px-1">
     <div class="h-100 d-flex flex-column justify-content-between">
