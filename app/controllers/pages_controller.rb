@@ -17,7 +17,7 @@ class PagesController < ApplicationController
 
   def search
     @results = PgSearch.multisearch(params[:q])
-
+    @search = params[:q]
     @video_results = @results.where(searchable_type: 'Video').map(&:searchable)
     @product_results = @results.where(searchable_type: 'Product').map(&:searchable)
     @brand_results = @results.where(searchable_type: 'Brand').map(&:searchable)
