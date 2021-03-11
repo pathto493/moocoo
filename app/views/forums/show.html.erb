@@ -1,19 +1,26 @@
 <div class="list-group container" style="padding-left: 20px;" id="forum-anchor">
   <h1 class="title">Topic: <%= @topic.name %></h1>
+  <br>
+  <div style="display: flex; justify-content: space-between; margin-bottom: 0px;">
+    <h5 style="align-self: flex-end ">Messages</h5>
+    <a href="#add-message" class="btn btn-primary">Add a message</a>
+  </div>
+
   <% @messages.each do |message| %>
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" style="border-left: 0; border-right: 0px; margin-top: 0px;">
     <div class="d-flex w-100 justify-content-between">
       <p class="mb-1" style="font-size: 16px; font-weight: bold; width: 75%;"><%= message.title %></p>
-      <small class="text-muted" ><%= message.date %></small>
+      <small class="text-muted" style="line-height: 2.1;"><%= message.date %></small>
     </div>
     <p class="mb-1 mt-2" style="font-size: 13px;"><%= message.content %></p>
+    <p></p>
     <p class="mb-1 mt-2" style="font-size: 13px;"><%= message.user.first_name %> <%= message.user.last_name %></p>
   </a>
   <% end %>
 </div>
 <br><br>
 <div id ="forum-missing">
-  <div class="add-review container" style="background-color: #d4d4d4; padding: 20px; border-radius: 4px;">
+  <div id="add-message" class="add-review container" style="background-color: #d4d4d4; padding: 20px; border-radius: 4px;">
     <h1 class="title" style="font-size: 18px;">Add A Message</h1>
       <%= simple_form_for @message, method: :post, url: forum_messages_path(@topic) do |f| %>
         <%= f.input :title  %>
