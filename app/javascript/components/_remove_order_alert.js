@@ -34,6 +34,9 @@ const initRemoveOrderFromCartAlert = () => {
   const centsToPrice = (cents) => {
     let priceDollar = Math.floor(cents / 100);
     let priceCents = cents % 100;
+    if (priceCents < 10) {
+      priceCents = `0${priceCents}`
+    }
     return `${priceDollar}.${priceCents}`
   };
 
@@ -58,6 +61,51 @@ const initRemoveOrderFromCartAlert = () => {
       refreshTotalPrice(totalPrice);
     });
   });
+
+  const minusQuantity = (e) => {
+    const quantityDiv = e.currentTarget.parentElement.querySelector(".card-cart-quantity");
+    let orderId = parseInt(e.currentTarget.dataset.orderId, 10);
+    let orderTotalPrice = document.querySelector(`#order-${orderId} .card-cart-price`);
+    let orderProductPrice = parseInt(e.currentTarget.dataset.productPrice, 10);
+    fetch('/cart.json')
+    .then(respond => respond.json())
+    .then(data => {
+      let order = data.orders.find(el=>el.id === orderId);
+      console.log(order);
+      quantityDiv.innerText = `Quantity : ${order.quantity}`;
+      orderTotalPrice.innerText = `$${centsToPrice(order.quantity * orderProductPrice)}`;
+    });
+  }
+
+  const addQuantity = (e) => {
+    const quantityDiv = e.currentTarget.parentElement.querySelector(".card-cart-quantity");
+    let orderId = parseInt(e.currentTarget.dataset.orderId, 10);
+    let orderTotalPrice = document.querySelector(`#order-${orderId} .card-cart-price`);
+    let orderProductPrice = parseInt(e.currentTarget.dataset.productPrice, 10);
+    fetch('/cart.json')
+    .then(respond => respond.json())
+    .then(data => {
+      let order = data.orders.find(el=>el.id === orderId);
+      console.log(order);
+      console.log(orderProductPrice);
+      quantityDiv.innerText = `Quantity : ${order.quantity}`;
+      orderTotalPrice.innerText = `$${centsToPrice(order.quantity * orderProductPrice)}`;
+    });
+  }
+
+  document.querySelectorAll(".minus-quantity").forEach((minusSign)=>{
+    minusSign.addEventListener("ajax:success", (e) => {
+      minusQuantity(e);
+      refreshTotalPrice(totalPrice);
+    });
+  })
+
+  document.querySelectorAll(".add-quantity").forEach((addSign)=>{
+    addSign.addEventListener("ajax:success", (e) => {
+      addQuantity(e);
+      refreshTotalPrice(totalPrice);
+    });
+  })
 };
 
 export { initRemoveOrderFromCartAlert };

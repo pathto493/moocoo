@@ -28,7 +28,10 @@ Rails.application.routes.draw do
   resources :brands, only: [:index, :show]
   resources :reviews, only: [ :destroy ]
 
-  resources :orders, only: [:create, :destroy]
+  resources :orders, only: [:create, :destroy] do
+    post 'add_quantity', to: 'orders#add_quantity'
+    post 'minus_quantity', to: 'orders#minus_quantity'
+  end
 
   post '/vidcreateorder', to: 'orders#vidcreateorder'
 
