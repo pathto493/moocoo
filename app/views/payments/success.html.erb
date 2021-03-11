@@ -1,23 +1,14 @@
-<div class="container min-vh-100">
-  <div class="col-12 col-md-6 m-auto">
-
-
-    <h1>Congratulations!</h1>
-    <h3>Your payment is successful</h3>
-
-    <div class="bg-white p-4 my-2">
-    <% if @purchase %>
-      <h4>Payment status : <%= @purchase.state %></h4>
-      <h4>Item Bought : </h4>
-      <% @purchase.orders.each do |o| %>
-      <h4><%= o.product.name %></h4>
-      <h4><%= o.quantity %> items - <%= humanized_money_with_symbol (o.quantity * o.product.price) %></h4>
-      <% end %>
-      <h4>Total Amount spent : <%= humanized_money_with_symbol @purchase.total_price %> </h4>
-      <% end %>
-    </div>
-    <div class="my-2">
-      <%= link_to "Go back to carts", cart_path, class: "btn btn-primary"%>
+<div class="container">
+  <div class="row cart-body-big mx-1 p-1">
+    <div class="col-12 text-center">
+      <h2 class="my-3">Congratulations!</h2>
+      <div class="cart-body py-3 px-1 border-top" style="min-height:50vh;">
+        <h4>Your payment is successful!</h4>
+        <i class="fas fa-check-circle my-3" style="font-size: 4em; color:green;"></i>
+        <div class="mt-5 mb-2">
+          <%= link_to "Go back to carts", cart_path, class: "btn btn-primary"%>
+        </div>
+      </div>
     </div>
   </div>
 </div>
