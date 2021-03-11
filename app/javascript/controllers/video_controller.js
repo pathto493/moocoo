@@ -7,17 +7,28 @@ export default class extends Controller {
   show(e) {
     const filterType = e.currentTarget.getAttribute('name');
 
-    if(filterType === 'eye'){
-      fetch('/search.json?query=eye')
+    fetch(`/search.json?q=${filterType}`)
       .then(response => response.json() )
-      .then(data => this.checkFilter(data));
+      .then(data => {
+        console.log(data);
+        this.checkFilter(data);
+    })
 
-    }
-    else if(filterType === 'foundation'){
-      fetch('/search.json?query=foundation')
-      .then(response => response.json() )
-      .then(data => this.checkFilter(data));
-    }
+
+    // if(filterType === 'eyes'){
+    //   fetch('/search.json?q=eyes')
+    //   .then(response => response.json() )
+    //   .then(data => {
+    //     console.log(data);
+    //     this.checkFilter(data);
+    // })
+
+    // }
+    // else if(filterType === 'foundation'){
+    //   fetch('/search.json?q=foundation')
+    //   .then(response => response.json() )
+    //   .then(data => this.checkFilter(data));
+    // }
   }
 
   checkFilter(data) {
