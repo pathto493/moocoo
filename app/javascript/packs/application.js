@@ -34,7 +34,7 @@ import { initTabImageOnClick } from '../components/_tab_images';
 
 import { initAddEventListenerToVideo } from '../components/_video_state_listener';
 
-import { vidOrderAlert } from './vidorderalert';
+import { vidOrderAlert } from '../components/_vidorderalert';
 
 import { sortFunction } from '../components/_sort';
 
