@@ -71,7 +71,6 @@ const initRemoveOrderFromCartAlert = () => {
     .then(respond => respond.json())
     .then(data => {
       let order = data.orders.find(el=>el.id === orderId);
-      console.log(order);
       quantityDiv.innerText = `Quantity : ${order.quantity}`;
       orderTotalPrice.innerText = `$${centsToPrice(order.quantity * orderProductPrice)}`;
     });
@@ -86,17 +85,31 @@ const initRemoveOrderFromCartAlert = () => {
     .then(respond => respond.json())
     .then(data => {
       let order = data.orders.find(el=>el.id === orderId);
-      console.log(order);
-      console.log(orderProductPrice);
       quantityDiv.innerText = `Quantity : ${order.quantity}`;
       orderTotalPrice.innerText = `$${centsToPrice(order.quantity * orderProductPrice)}`;
     });
   }
 
+  const addToCart = () => {
+    const badge = document.querySelector(".cart-badge");
+    let cartQty = 0;
+
+    fetch("/cart.json")
+      .then(response => response.json())
+      .then((data) => {
+        var i;
+        for (i=0; i < data.orders.length; i++) {
+          cartQty += data.orders[i].quantity;
+          badge.innerText = cartQty;
+        }
+      })
+  };
+
   document.querySelectorAll(".minus-quantity").forEach((minusSign)=>{
     minusSign.addEventListener("ajax:success", (e) => {
       minusQuantity(e);
       refreshTotalPrice(totalPrice);
+      addToCart();
     });
   })
 
@@ -104,6 +117,7 @@ const initRemoveOrderFromCartAlert = () => {
     addSign.addEventListener("ajax:success", (e) => {
       addQuantity(e);
       refreshTotalPrice(totalPrice);
+      addToCart();
     });
   })
 };

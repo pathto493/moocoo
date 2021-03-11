@@ -9,13 +9,13 @@
       </div>
       <div class="card-cart-description">
         <%= form_tag order_minus_quantity_path(order), method: :post, remote: true, class: "minus-quantity", data: { order_id: order.id, product_price: order.product.price_cents } do %>
-          <%= button_tag type: 'submit' do %>
+          <%= button_tag type: 'submit', class: "btn btn-cart" do %>
             -
           <% end %>
         <% end %>
         <div class="card-cart-quantity">Quantity : <%= order.quantity %></div>
         <%= form_tag order_add_quantity_path(order), method: :post, remote: true, class: "add-quantity", data: { order_id: order.id, product_price: order.product.price_cents } do %>
-          <%= button_tag type: 'submit' do %>
+          <%= button_tag type: 'submit', class: "btn btn-cart" do %>
             +
           <% end %>
         <% end %>

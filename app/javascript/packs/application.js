@@ -57,10 +57,10 @@ document.addEventListener('turbolinks:load', () => {
   initTabImageOnClick();
   vidOrderAlert ();
   initVideoJump();
-  initRemoveOrderFromCartAlert();
   scrollNav();
   sortFunction();
   addToCart();
+  initRemoveOrderFromCartAlert();
 
   document.addEventListener('turbolinks:request-start', () => {
     const spinner = document.querySelector('#spinner');
