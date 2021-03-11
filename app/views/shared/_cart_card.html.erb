@@ -1,36 +1,36 @@
-<div class="row no-gutters card-cart bg-white my-3 rounded" id="order-<%= order.id %>">
+<div class="row no-gutters card-cart bg-white py-3 rounded" id="order-<%= order.id %>">
   <div class="col-3 card-cart-img-container">
     <%= cl_image_tag order.product.photo_id[0], width: 400, crop: :fill %>
   </div>
-  <div class="col-5 card-cart-name text-left px-1">
+  <div class="col-6 card-cart-name text-left pl-2 pr-1">
     <div class="h-100 d-flex flex-column justify-content-between">
       <div>
         <div><strong><%= order.product.brand.name %></strong></div>
         <div><%= link_to order.product.name, product_path(order.product) %></div>
       </div>
-      <div class="card-cart-description d-flex">
-        <div class="card-cart-quantity">Quantity : <%= order.quantity %></div>
+      <div class="card-cart-description d-flex mt-2">
+        <div class="pr-1">Qty :</div>
         <%= form_tag order_minus_quantity_path(order), method: :post, remote: true, class: "minus-quantity", data: { order_id: order.id, product_price: order.product.price_cents } do %>
           <%= button_tag type: 'submit', class: "btn btn-cart" do %>
             <div>-</div>
           <% end %>
         <% end %>
+        <div class="card-cart-quantity px-3"><%= order.quantity %></div>
         <%= form_tag order_add_quantity_path(order), method: :post, remote: true, class: "add-quantity", data: { order_id: order.id, product_price: order.product.price_cents } do %>
           <%= button_tag type: 'submit', class: "btn btn-cart" do %>
             <div>+</div>
           <% end %>
         <% end %>
-        <div>Unit Price : <%= humanized_money_with_symbol order.product.price %></div>
       </div>
     </div>
   </div>
-  <div class="card-cart-price col-3">
+  <div class="card-cart-price col-2">
     <%= humanized_money_with_symbol (order.quantity * order.product.price) %>
   </div>
   <div class="col-1 text-right">
     <%= form_tag order_path(order), method: :delete, remote: true, class: "remove-order-from-cart pt-1" do %>
       <%= button_tag type: 'submit' do %>
-        <i class="fas fa-trash" aria-hidden="true"></i>
+        <i class="fas fa-times"></i>
       <% end %>
     <% end %>
   </div>

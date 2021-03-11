@@ -71,7 +71,7 @@ const initRemoveOrderFromCartAlert = () => {
     .then(respond => respond.json())
     .then(data => {
       let order = data.orders.find(el=>el.id === orderId);
-      quantityDiv.innerText = `Quantity : ${order.quantity}`;
+      quantityDiv.innerText = order.quantity;
       orderTotalPrice.innerText = `$${centsToPrice(order.quantity * orderProductPrice)}`;
     });
   }
@@ -85,7 +85,7 @@ const initRemoveOrderFromCartAlert = () => {
     .then(respond => respond.json())
     .then(data => {
       let order = data.orders.find(el=>el.id === orderId);
-      quantityDiv.innerText = `Quantity : ${order.quantity}`;
+      quantityDiv.innerText = order.quantity;
       orderTotalPrice.innerText = `$${centsToPrice(order.quantity * orderProductPrice)}`;
     });
   }
