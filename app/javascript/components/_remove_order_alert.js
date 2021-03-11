@@ -1,4 +1,18 @@
 const initRemoveOrderFromCartAlert = () => {
+  const addToCart = () => {
+    const badge = document.querySelector(".cart-badge");
+    let cartQty = 0;
+
+    fetch("/cart.json")
+      .then(response => response.json())
+      .then((data) => {
+        var i;
+        for (i=0; i < data.orders.length; i++) {
+          cartQty += data.orders[i].quantity;
+          badge.innerText = cartQty;
+        }
+      })
+  };
 
   const removeRemoveOrderAlert = () => {
     if (document.getElementById("alertcart")) {
@@ -59,6 +73,7 @@ const initRemoveOrderFromCartAlert = () => {
       renderCart(orderId);
       addRemoveOrderAlert(cartBody);
       refreshTotalPrice(totalPrice);
+      addToCart();
     });
   });
 
@@ -89,21 +104,6 @@ const initRemoveOrderFromCartAlert = () => {
       orderTotalPrice.innerText = `$${centsToPrice(order.quantity * orderProductPrice)}`;
     });
   }
-
-  const addToCart = () => {
-    const badge = document.querySelector(".cart-badge");
-    let cartQty = 0;
-
-    fetch("/cart.json")
-      .then(response => response.json())
-      .then((data) => {
-        var i;
-        for (i=0; i < data.orders.length; i++) {
-          cartQty += data.orders[i].quantity;
-          badge.innerText = cartQty;
-        }
-      })
-  };
 
   document.querySelectorAll(".minus-quantity").forEach((minusSign)=>{
     minusSign.addEventListener("ajax:success", (e) => {
