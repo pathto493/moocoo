@@ -1,7 +1,14 @@
 class AnnotationsController < ApplicationController
   def create
-    @annotation_current = Annotation.find(video)
-    @annotation = Annotation.new(annotation_params)
+    video = Video.find(annotation_params[:video])
+    product = Product.find(annotation_params[:product])
+    time_start = annotation_params[:time_start]
+    time_end = annotation_params[:time_end]
+    @annotation = Annotation.new(
+      video: video,
+      product: product,
+      time_start: time_start,
+      time_end: time_end)
     @annotation.save
     redirect_to video_path(video)
   end
@@ -13,6 +20,6 @@ class AnnotationsController < ApplicationController
   private
 
   def annotation_params
-    params.require(:annotation).permit(:video_id, :product_id, :time_start, :time_end)
+    params.require(:annotation).permit(:video, :product, :time_start, :time_end)
   end
 end
