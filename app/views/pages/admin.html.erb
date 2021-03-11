@@ -35,9 +35,23 @@
     <%= f.input :video, collection: @videos, input_html: { 'data-action': 'change->duration#updateTimes' } %>
     <%= f.input :product, collection: @products %>
     <%#= f.input :time_start, collection: [15, 20, 40, 60]%>
-    <p>duration</p>
-    <%= f.input :time_start, as: :range, input_html: { min: 0, max: 0, 'data-duration-target': 'start'} %>
-    <%= f.input :time_end, as: :range, input_html: { min: 0, max: 0, 'data-duration-target': 'end' } %>
+  </div>
+  <div class="form-inputs d-none" data-duration-target="annotation">
+    <h3>Duration</h3>
+    <%= f.input :time_start, as: :range, input_html: {
+      min: 0, max: 0,
+      data: {
+        'duration-target': 'start',
+        action: 'change->duration#changeStart'
+      }
+    } %>
+    <%= f.input :time_end, as: :range, input_html: {
+      min: 0, max: 0,
+      data: {
+        'duration-target': 'end',
+        action: 'change->duration#changeEnd'
+      }
+    } %>
   </div>
   <div class="form-actions">
     <%= f.button :submit, "Add annotation", class: "btn btn-primary" %>
