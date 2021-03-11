@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def cart
-    @orders = Order.where(user: current_user, confirmed: false)
+    @orders = Order.where(user: current_user, confirmed: false).order("id asc")
 
     @total_price = 0
     @orders.each do |order|
@@ -10,8 +10,6 @@ class OrdersController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: { orders: @orders, total_price: @total_price } }
-
-
     end
   end
 
@@ -73,5 +71,17 @@ class OrdersController < ApplicationController
     order.destroy
     #redirect_to cart_path
     #flash.alert = "Remove items from cart"
+  end
+
+  def add_quantity
+    order = Order.find(params[:order_id])
+    order.quantity += 1
+    order.save
+  end
+
+  def minus_quantity
+    order = Order.find(params[:order_id])
+    order.quantity -= 1
+    order.save
   end
 end
