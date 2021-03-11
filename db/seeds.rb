@@ -357,7 +357,6 @@ videos = []
 id = %w[dPyKEwCn62A joBfpN9eMg0 h-lhr_mMcMA lc8xek03ZUg CpW-Hy8DFic]
 id.each_with_index do |i, index|
   url_one = "https://www.googleapis.com/youtube/v3/videos?part=snippet&id=#{i}&key=#{ENV['YOUTUBE_API_KEY']}"
-  binding.pry
   url_one_read = open(url_one).read
   video_info = JSON.parse(url_one_read)
   video = Video.new
