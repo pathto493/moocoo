@@ -12,6 +12,7 @@ export default class extends Controller {
     fetch(`/duration.json?id=${e.currentTarget.value}`)
       .then(res => res.json())
       .then(data => {
+        debuggger
         this.refreshTimeInputs(data.duration)
 
         const timeStart = document.getElementById('annotation_time_start');
@@ -29,8 +30,10 @@ export default class extends Controller {
         const timeEnd = document.getElementById('annotation_time_end');
         timeEnd.addEventListener("change", (e) => {
           // this.endTarget.min = this.startTarget.value;
+          // this.endTarget.min = 0;
+          // this.endTarget.max = (this.startTarget.max - this.startTarget.value)
           this.endTarget.min = 0;
-          this.endTarget.max = (this.startTarget.max - this.startTarget.value)
+          this.endTarget.max = (this.startTarget.max - this.startTarget.value);
           const timeEndMain = document.querySelector('.annotation_time_end');
           const timeEndLabel = timeEndMain.querySelector("label");
           timeEndLabel.innerText = "Time end ";
