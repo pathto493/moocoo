@@ -21,7 +21,7 @@
 
   <div class="container" style="text-align:center;">
 
-    <%= cl_image_tag @product.photos.first.key, width: 250, crop: :fill %>
+    <%= cl_image_tag @product.photo_id[0], width: 250, crop: :fill %>
     <div style="justify-content: center;">
       <div class="article-label-product">
         <p><%= link_to "#{@product.brand.name} #{@product.name}", @product %> &nbsp&nbsp</p>

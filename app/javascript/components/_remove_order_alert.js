@@ -41,7 +41,7 @@ const initRemoveOrderFromCartAlert = () => {
     fetch("/cart.json")
       .then(respond => respond.json())
       .then((data) => {
-        totalPrice.innerHTML = `TOTAL : SGD ${centsToPrice(data.cents)}`;
+        totalPrice.innerHTML = `TOTAL : SGD ${centsToPrice(data.total_price.cents)}`;
       })
 
   }

@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
     product = Product.find(params[:id])
     @reviews = Review.where(product: product).reverse
     @review = Review.new
+    @product_photos = product.photo_id
   end
 
   def update
