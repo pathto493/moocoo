@@ -64,7 +64,7 @@ document.addEventListener('turbolinks:load', () => {
 
   document.addEventListener('turbolinks:request-start', () => {
     const spinner = document.querySelector('#spinner');
-    spinner.style.display = 'flex';
+    spinner.style.display = 'block';
   });
 
   document.addEventListener('turbolinks:request-end', () => {
