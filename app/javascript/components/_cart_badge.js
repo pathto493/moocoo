@@ -7,8 +7,8 @@ const addToCart = () => {
     .then(response => response.json())
     .then((data) => {
       var i;
-      for (i=0; i < data.length; i++) {
-        cartQty += data[i].quantity;
+      for (i=0; i < data.orders.length; i++) {
+        cartQty += data.orders[i].quantity;
         badge.innerText = cartQty;
       }
     })
