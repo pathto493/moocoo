@@ -49,7 +49,7 @@ product = Product.create(
   price_cents: (1000..1500).step(10).to_a.sample,
   description: "",
   brand: brand,
-  photo_id: "m6"
+  photo_id: %w[m6 f1]
 )
 
 product = Product.create(
@@ -57,7 +57,7 @@ product = Product.create(
   price_cents: (1000..1500).step(10).to_a.sample,
   description: "",
   brand: brand,
-  photo_id: "m2"
+  photo_id: %w[m2 f1]
 )
 
 product = Product.create(
@@ -65,7 +65,7 @@ product = Product.create(
   price_cents: (1000..1500).step(10).to_a.sample,
   description: "",
   brand: brand,
-  photo_id: "m5"
+  photo_id: %w[m5 f1]
 )
 
 product = Product.create(
@@ -73,7 +73,7 @@ product = Product.create(
   price_cents: (1000..1500).step(10).to_a.sample,
   description: "",
   brand: brand,
-  photo_id: "m3"
+  photo_id: %w[m3 f1]
 )
 
 product = Product.create(
@@ -81,7 +81,7 @@ product = Product.create(
   price_cents: (1000..1500).step(10).to_a.sample,
   description: "",
   brand: brand,
-  photo_id: "m1",
+  photo_id: %w[m1 f1],
 
 )
 
@@ -90,7 +90,7 @@ product = Product.create(
   price_cents: (1000..1500).step(10).to_a.sample,
   description: "",
   brand: brand,
-  photo_id: "m8"
+  photo_id: %w[m8 f1]
 )
 
 product = Product.create(
@@ -98,7 +98,7 @@ product = Product.create(
   price_cents: (1000..1500).step(10).to_a.sample,
   description: "",
   brand: brand,
-  photo_id: "m14"
+  photo_id: %w[m14 f1]
 )
 
 product = Product.create(
@@ -106,7 +106,7 @@ product = Product.create(
   price_cents: (1000..1500).step(10).to_a.sample,
   description: "",
   brand: brand,
-  photo_id: "m17"
+  photo_id: %w[m17 f1]
 )
 
 
@@ -115,7 +115,7 @@ product = Product.create(
   price_cents: (1000..1500).step(10).to_a.sample,
   description: "",
   brand: brand,
-  photo_id: "m18"
+  photo_id: %w[m18 f1]
 )
 
 product = Product.create(
@@ -123,7 +123,7 @@ product = Product.create(
   price_cents: (1000..1500).step(10).to_a.sample,
   description: "",
   brand: brand,
-  photo_id: "m10"
+  photo_id: %w[m10 f1]
 )
 
 product = Product.create(
@@ -131,7 +131,7 @@ product = Product.create(
   price_cents: (1000..1500).step(10).to_a.sample,
   description: "",
   brand: brand,
-  photo_id: "m12"
+  photo_id: %w[m12 f1]
 )
 
 product = Product.create(
@@ -139,7 +139,7 @@ product = Product.create(
   price_cents: (1000..1500).step(10).to_a.sample,
   description: "",
   brand: brand,
-  photo_id: "m11"
+  photo_id: %w[m11 f1]
 )
 
 product = Product.create(
@@ -147,7 +147,7 @@ product = Product.create(
   price_cents: (1000..1500).step(10).to_a.sample,
   description: "",
   brand: brand,
-  photo_id: "m17"
+  photo_id: %w[m17 f1]
 )
 
 product = Product.create(
@@ -155,7 +155,7 @@ product = Product.create(
   price_cents: (1000..1500).step(10).to_a.sample,
   description: "",
   brand: brand,
-  photo_id: "m15"
+  photo_id: %w[m15 f1]
 )
 
 product = Product.create(
@@ -163,7 +163,7 @@ product = Product.create(
   price_cents: (1000..1500).step(10).to_a.sample,
   description: "",
   brand: brand,
-  photo_id: "m16"
+  photo_id: %w[m16 f1]
 )
 
 ### CREATIING PRODUCTS FOR OTHER BRANDS ###
@@ -178,7 +178,7 @@ brands.each do |brand_name|
     price_cents: (1000..1500).step(10).to_a.sample,
     description: "",
     brand: brand,
-    photo_id: "m7"
+    photo_id: %w[m7 f1]
   )
 
   product = Product.create(
@@ -186,7 +186,7 @@ brands.each do |brand_name|
     price_cents: (1000..1500).step(10).to_a.sample,
     description: "",
     brand: brand,
-    photo_id: "m9"
+    photo_id: %w[m9 f1]
   )
 
   product = Product.create(
@@ -194,7 +194,7 @@ brands.each do |brand_name|
     price_cents: (1000..1500).step(10).to_a.sample,
     description: "",
     brand: brand,
-    photo_id: "m13"
+    photo_id: %w[m13 f1]
   )
 end
 

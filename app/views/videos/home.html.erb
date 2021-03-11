@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row my-3">
     <div class="col-12">
-      <div class="home-card-category" style="background-image: linear-gradient(to left, rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url(<%= cloudinary_url(Product.first.photos.first.key) %> )">
+      <div class="home-card-category" style="background-image: linear-gradient(to left, rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url(<%= cloudinary_url(Product.first.photo_id[0]) %> )">
         <%= link_to "Browse all tutorials", products_path %>
       </div>
     </div>

@@ -74,7 +74,7 @@ window.firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); // Insert th
   <% @annotations.each do |a| %>
     <div class="video-show-card row no-gutters my-4">
       <div class="video-show-card-img col-3">
-        <%= cl_image_tag a.product.photos.first.key, width: 100, crop: :fill %>
+        <%= cl_image_tag a.product.photo_id[0], width: 100, crop: :fill %>
       </div>
       <div class="col-9 d-flex flex-column justify-content-between p-2">
         <div class="row">
