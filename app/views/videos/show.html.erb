@@ -90,7 +90,7 @@ window.firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); // Insert th
         </div>
         <div class="row">
           <div class="col-12 d-flex justify-content-between">
-            <button class="jump-btn btn" data-url="<%= @video.video_url %>" data-point="<%= a.time_start %>" ><%= seconds_to_minute(a.time_start) %></button>
+            <button class="jump-btn btn" data-url="<%= @video.video_url %>" data-point="<%= a.time_start %>" >See at <%= seconds_to_minute(a.time_start) %></button>
             <%= simple_form_for(@order, method: :post, url: vidcreateorder_path, remote: true, html: { class: "item" }) do |f| %>
             <%= f.input :product,  :as => :hidden, :input_html => { :value => a.product.id } %>
             <div class="d-flex">
