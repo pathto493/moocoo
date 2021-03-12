@@ -12,36 +12,38 @@
 .annotations {
   position: absolute;
   top: 20%;
-}
 
-.annotation {
-  border-radius: 2px;
-  font-size: 0.75em;
-}
+  .annotation {
+    border-radius: 2px;
+    font-size: 0.9em;
 
-.annotation-button {
-  background-color: rgba(0,0,0,0.6);
-  opacity: 0.6;
-  color: white;
-  padding: 2px;
-}
+    .annotation-button {
+      background-color: rgba(0,0,0,0.6);
+      opacity: 0.6;
+      color: white;
+      padding: 2px;
+    }
+    .annotation-button:hover {
+      cursor: pointer;
+      opacity: 1;
+    }
+    .annotation-product {
+      background-color: rgba(0,0,0,0.6);
+      color: white;
+      border-radius: 2px;
+      padding: 2px;
+      //overflow: hidden;
+      //transition: width 1s;
+      .annotation-add-to-cart {
+        color: $cart-color;
+        cursor: pointer;
+      }
+      .annotation-add-to-cart:hover {
+        cursor: pointer;
+      }
+    }
 
-.annotation-button:hover {
-  cursor: pointer;
-  opacity: 1;
-}
-
-.annotation-add-to-cart:hover {
-  cursor: pointer;
-}
-
-.annotation-product {
-  background-color: rgba(0,0,0,0.6);
-  color: white;
-  border-radius: 2px;
-  padding: 2px;
-  //overflow: hidden;
-  //transition: width 1s;
+  }
 }
 
 .annotation-product-none {
@@ -56,25 +58,28 @@ div.sticky-card {
 
 // annotaions shake
 @keyframes shake {
-  10%, 90% {
-    transform: translate3d(-1px, 0, 0);
-  }
+  // 10%, 90% {
+  //   transform: translate3d(-10px, 0, 0);
+  // }
 
-  20%, 80% {
-    transform: translate3d(2px, 0, 0);
-  }
+  // 20%, 80% {
+  //   transform: translate3d(10px, 0, 0);
+  // }
 
-  30%, 50%, 70% {
-    transform: translate3d(-4px, 0, 0);
-  }
+  // 30%, 50%, 70% {
+  //   transform: translate3d(-10px, 0, 0);
+  // }
 
-  40%, 60% {
-    transform: translate3d(4px, 0, 0);
-  }
+  // 40%, 60% {
+  //   transform: translate3d(10px, 0, 0);
+  // }
+  0%, 100%   {color: $cart-color;}
+  25%, 75%  {color: orange;}
+  50%  {color: white;}
 }
 
 .apply-shake {
-    animation: shake 2s cubic-bezier(.36,.07,.19,.97) both;
+    animation: shake 0.3s ease both;
 }
 
 // videos show title and info

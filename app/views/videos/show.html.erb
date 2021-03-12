@@ -10,7 +10,7 @@
       <div class="annotation-product" id="annotation-product-<%= index + 1 %>">
         <%= annotation.product.name %> -
         <%= humanized_money_with_symbol annotation.product.price %>
-        <span class="annotation-add-to-cart px-1" id="annotation-add-to-cart-<%= index + 1 %>" data-product-id="<%= annotation.product.id%>"><i class="fas fa-cart-plus"></i></span>
+        <span class="annotation-add-to-cart px-1" id="annotation-add-to-cart-<%= index + 1 %>" data-product-id="<%= annotation.product.id%>">- <i class="fas fa-cart-plus"></i></span>
       </div>
     </div>
     <% end %>
