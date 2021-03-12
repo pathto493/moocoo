@@ -58,8 +58,8 @@ window.firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); // Insert th
         <%= @video.creator %>
       </div>
       <div>
-        <i class="fa fa-thumbs-up" aria-hidden="true"></i> <%=  number_with_delimiter(@video.likes, :delimiter => ',') %>
-        <i class="fa fa-eye"  aria-hidden="true"></i> <%= number_with_delimiter(@video.views, :delimiter => ',') %>
+        <i class="fa fa-thumbs-up" aria-hidden="true"></i> <%=  number_to_human(@video.likes, precision: 1, significant: false, units: { thousand: "k", million: "m", billion: "b" }) %>
+        <i class="fa fa-eye"  aria-hidden="true"></i> <%=  number_to_human(@video.views, precision: 1, significant: false, units: { thousand: "k", million: "m", billion: "b" }) %>
       </div>
     </div>
   </div>
