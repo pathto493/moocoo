@@ -66,14 +66,9 @@ const initAddEventListenerToVideo = () => {
     })
 
     const clickAddToCart = (e) => {
-      e.preventDefault();
       console.log(e.currentTarget);
       // For shaking animation after clicked
       e.currentTarget.classList.add("apply-shake");
-
-      e.currentTarget.addEventListener("animationend", () => {
-        e.currentTarget.classList.remove("apply-shake");
-      })
 
       const productId = parseInt(e.currentTarget.dataset.productId, 10);
       // console.log(e.currentTarget.parentElement.parentElement);
@@ -99,9 +94,61 @@ const initAddEventListenerToVideo = () => {
       });
     };
 
+    const addToCart = () => {
+      const badge = document.querySelector(".cart-badge");
+      let cartQty = 0;
+      fetch("/cart.json")
+        .then(response => response.json())
+        .then((data) => {
+          const orders = data.orders;
+          var i;
+          for (i=0; i < orders.length; i++) {
+            cartQty += orders[i].quantity;
+            badge.innerText = cartQty;
+          }
+        })
+    };
+
+    const removeAlert = () => {
+      if (document.getElementById("alertcart")) {
+        let myobj = document.getElementById("alertcart");
+        myobj.remove();
+      }
+    };
+
+    const addAlert = (element) => {
+      removeAlert();
+      element.insertAdjacentHTML("beforeend", `<div id="alertcart" class="alert alert-warning alert-dismissible fade show m-1" role="alert">
+            Successfully added to cart
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>`);
+    };
+
+    const addErrorAlert = (element) => {
+      removeAlert();
+      element.insertAdjacentHTML("beforeend", `<div id="alertcart" class="alert alert-warning alert-dismissible fade show m-1" role="alert">
+            Please sign in before adding to cart
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>`);
+    };
+
     const annotationCarts = document.querySelectorAll(".annotations .annotation-add-to-cart")
     annotationCarts.forEach((annotationCart) => {
-      annotationCart.addEventListener('click', clickAddToCart);
+      annotationCart.addEventListener('animationend',(e) => {
+        e.currentTarget.classList.remove("apply-shake");
+      })
+
+
+      annotationCart.addEventListener('click', (e) => {
+        e.preventDefault();
+        clickAddToCart(e);
+        addAlert(e.currentTarget.parentElement);
+        addToCart();
+      });
     })
   }
 }
