@@ -57,7 +57,7 @@ document.addEventListener('turbolinks:load', () => {
   initTabImageOnClick();
   vidOrderAlert ();
   initVideoJump();
-  scrollNav();
+  // scrollNav();
   sortFunction();
   addToCart();
   initRemoveOrderFromCartAlert();
