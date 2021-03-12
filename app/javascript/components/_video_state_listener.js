@@ -149,8 +149,8 @@ const initAddEventListenerToVideo = () => {
         addAlert(e.currentTarget.parentElement);
         addToCart();
       });
-    })
+    });
   }
-}
+};
 
 export { initAddEventListenerToVideo };
