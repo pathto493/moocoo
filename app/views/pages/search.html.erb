@@ -1,13 +1,24 @@
 <div class="container" style="max-width:1000px;" data-controller='filter'>
   <div style="text-align:center; margin-bottom:8px;">
     <h2>Search Results for <i>'<%= @search %>'</i> </h2>
-      <input type="radio" class="btn-filter mr-1" name="searchvideo" data-action="change->filter#change">Videos
-      <input type="radio" class="btn-filter mr-1" name="searchproduct" data-action="change->filter#change">Products
-      <input type="radio" class="btn-filter mr-1" name="searchbrand" data-action="change->filter#change">Brands
+    <div class="border-bottom pb-3">
+      <div class="row no-gutter">
+        <div class="col-3">
+          <p><strong>Filter by:</strong></p>
+        </div>
+        <div class="col-9">
+          <div class="search-filter">
+            <input type="radio" class="btn-filter mr-3" name="searchvideo" data-action="change->filter#change">Videos
+            <input type="radio" class="btn-filter mr-3" name="searchproduct" data-action="change->filter#change">Products
+            <input type="radio" class="btn-filter mr-3" name="searchbrand" data-action="change->filter#change">Brands
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
 
-  <div class="search-container">
+  <div class="search-container border-bottom pt-1 pb-4">
     <div class="searchvideo" data-filter-target="videoresult">
       <% if @video_results.empty? %>
         <p style="text-align:center;">No videos matched your search</p>
@@ -18,7 +29,9 @@
         </div>
       <% end %>
     </div>
+  </div>
 
+  <div class="search-container border-bottom pt-3 pb-4">
     <div class="searchproduct" data-filter-target="productresult">
       <% if @product_results.empty? %>
         <p style="text-align:center;">No products matched your search</p>
@@ -31,6 +44,7 @@
     </div>
   </div>
 
+  <div class="search-container border-bottom pt-3 pb-4">
     <div class="searchbrands" data-filter-target="brandresult">
       <% if @brand_results.empty? %>
         <p style="text-align:center;">No brands matched your search</p>
@@ -41,5 +55,7 @@
         </div>
       <% end %>
     </div>
+  </div>
+
 </div>
 
