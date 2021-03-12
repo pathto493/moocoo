@@ -1,9 +1,10 @@
 <div class="products-bought d-flex flex-wrap justify-content-center">
   <% products.each do |product| %>
-    <div class="product-card-profile m-2" style="text-align:center;">
-      <% if product.photos.attached? %>
-        <%= cl_image_tag product.photos.first.key, width: 200, height: 200, crop: :fill %>
+    <div class="product-card-profile my-3" style="text-align:center;">
+      <% if product.photo_id[0] %>
+        <%= cl_image_tag product.photo_id[0], width: 200, height: 200, crop: :fit %>
         <%= link_to product_path(product) do %>
+          <p class="mt-1"><strong><%= product.brand.name %></strong></p>
           <p><%= product.name %></p>
         <% end %>
       <% else %>

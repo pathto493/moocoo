@@ -58,8 +58,8 @@ window.firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); // Insert th
         <%= @video.creator %>
       </div>
       <div>
-        <i class="fa fa-thumbs-up" aria-hidden="true"></i> <%=  number_with_delimiter(@video.likes, :delimiter => ',') %>
-        <i class="fa fa-eye"  aria-hidden="true"></i> <%= number_with_delimiter(@video.views, :delimiter => ',') %>
+        <i class="fa fa-thumbs-up" aria-hidden="true"></i> <%=  number_to_human(@video.likes, precision: 1, significant: false, units: { thousand: "k", million: "m", billion: "b" }) %>
+        <i class="fa fa-eye"  aria-hidden="true"></i> <%=  number_to_human(@video.views, precision: 1, significant: false, units: { thousand: "k", million: "m", billion: "b" }) %>
       </div>
     </div>
   </div>
@@ -74,7 +74,7 @@ window.firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); // Insert th
   <% @annotations.each do |a| %>
     <div class="video-show-card row no-gutters my-4">
       <div class="video-show-card-img col-3">
-        <%= cl_image_tag a.product.photos.first.key, width: 100, crop: :fill %>
+        <%= cl_image_tag a.product.photo_id[0], width: 100, crop: :fill %>
       </div>
       <div class="col-9 d-flex flex-column justify-content-between p-2">
         <div class="row">
@@ -90,7 +90,7 @@ window.firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); // Insert th
         </div>
         <div class="row">
           <div class="col-12 d-flex justify-content-between">
-            <button class="jump-btn btn" data-url="<%= @video.video_url %>" data-point="<%= a.time_start %>" ><%= seconds_to_minute(a.time_start) %></button>
+            <button class="jump-btn btn" data-url="<%= @video.video_url %>" data-point="<%= a.time_start %>" >See at <%= seconds_to_minute(a.time_start) %></button>
             <%= simple_form_for(@order, method: :post, url: vidcreateorder_path, remote: true, html: { class: "item" }) do |f| %>
             <%= f.input :product,  :as => :hidden, :input_html => { :value => a.product.id } %>
             <div class="d-flex">

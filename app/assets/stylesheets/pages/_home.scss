@@ -1,5 +1,6 @@
 // Specific CSS for your home-page
 .home-banner {
+  margin: auto 0;
   background-size: cover;
   background-position: center;
   padding: 250px 0;
@@ -7,6 +8,7 @@
   margin-top: -130px;
   //text-align: center;
   .home-banner-title {
+    font-family: $headers-font;
     margin: 0;
     color: white;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
@@ -16,7 +18,6 @@
   p {
     font-size: 20px;
     color: white;
-    opacity: .7;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   }
   a {
@@ -27,10 +28,12 @@
 .home-second-banner {
   background-size: cover;
   background-position: center;
-  padding: 130px 0;
+  padding: 76px 0 96px 0;
   height: 50vh;
+  margin: auto 0;
   //text-align: center;
   .home-banner-title {
+    font-family: $headers-font;
     margin: 0;
     color: white;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
@@ -40,7 +43,6 @@
   p {
     font-size: 20px;
     color: white;
-    opacity: .7;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   }
   a {
@@ -92,3 +94,10 @@
   width: 50%;
 }
 
+.padded-end {
+  width: 100vw;
+  background-color: #000022;
+  height: 60px;
+  position: absolute;
+  bottom: 0;
+}

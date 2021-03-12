@@ -6,9 +6,10 @@ const addToCart = () => {
   fetch("/cart.json")
     .then(response => response.json())
     .then((data) => {
+      const orders = data.orders;
       var i;
-      for (i=0; i < data.length; i++) {
-        cartQty += data[i].quantity;
+      for (i=0; i < orders.length; i++) {
+        cartQty += orders[i].quantity;
         badge.innerText = cartQty;
       }
     })

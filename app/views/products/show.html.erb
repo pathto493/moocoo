@@ -1,13 +1,12 @@
 <div class="container">
-  <% if @product.photos.attached? %>
-  <%= render partial: "shared/tab_images", locals: { photos: @product.photos } %>
-  <% end %>
+  <%= render partial: "shared/tab_images", locals: { photos: @product_photos} %>
 
   <div class="row">
     <div class="col-12 product-show-info">
       <div class="row mt-3">
         <div class="col-8">
-          <h4><%= @product.name %></h4>
+          <h4><strong><%= @product.brand.name %></strong></h4>
+          <h6><%= @product.name %></h6>
         </div>
         <div class="col-4 text-right">
           <h4><strong><%= humanized_money_with_symbol @product.price %></strong></h4>
@@ -38,11 +37,11 @@
   <div class="row border-top border-dark border-3 pt-3 mt-3">
     <div class="col-12">
       <h3>Admin only : Images you have</h3>
-      <% if @product.photos.attached? %>
+      <% if @product.photo_id.present? %>
       <div class="product-imgs">
-        <% @product.photos.each do |photo| %>
+        <% @product.photo_id.each do |photo| %>
         <div class="product-img-container text-center">
-          <%= cl_image_tag photo.key, width: 400, crop: :fill %>
+          <%= cl_image_tag photo, width: 400, crop: :fill %>
           <%= link_to "Delete", product_photo_path(@product, photo), method: :delete %>
         </div>
         <% end %>

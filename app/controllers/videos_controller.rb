@@ -1,6 +1,8 @@
 require 'open-uri'
 require 'json'
 
+regex = %r['']
+
 class VideosController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show, :home ]
 
@@ -35,8 +37,8 @@ class VideosController < ApplicationController
 
   def create
     id = video_params["youtube_id"]
-    if id.match?(/www.[a-z]*.com\/watch\?v=(?<y_id>[a-zA-Z0-9]{11})&[a-z]*_[a-z]*=[a-zA-Z]*/)
-      its_a_match = id.match(/www.[a-z]*.com\/watch\?v=(?<y_id>[a-zA-Z0-9]{11})&[a-z]*_[a-z]*=[a-zA-Z]*/)
+    if id.match?(/www.[a-z]*.com\/watch\?v=(?<y_id>[a-zA-Z0-9-_]{11})&[a-z]*_[a-z]*=[a-zA-Z]*/)
+      its_a_match = id.match(/www.[a-z]*.com\/watch\?v=(?<y_id>[a-zA-Z0-9-_]{11})&[a-z]*_[a-z]*=[a-zA-Z]*/)
       yotube_id = its_a_match[:y_id]
     end
     url_one = "https://www.googleapis.com/youtube/v3/videos?part=snippet&id=#{yotube_id}&key=#{ENV['YOUTUBE_API_KEY']}"
@@ -76,3 +78,4 @@ class VideosController < ApplicationController
   def video_params
     params.require(:video).permit(:title, :description, :video_url, :video_type, :creator, :tags, :likes, :views, :youtube_id)
   end
+end

@@ -11,13 +11,13 @@ class PagesController < ApplicationController
   def profile
     @user = current_user
     @watched_videos = Video.order("views DESC").limit(3)
-    @products = @user.products
+    @products = @user.products.distinct
     @purchased_order = Order.where(user: @user, confirmed: true)
   end
 
   def search
     @results = PgSearch.multisearch(params[:q])
-
+    @search = params[:q]
     @video_results = @results.where(searchable_type: 'Video').map(&:searchable)
     @product_results = @results.where(searchable_type: 'Product').map(&:searchable)
     @brand_results = @results.where(searchable_type: 'Brand').map(&:searchable)

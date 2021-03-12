@@ -1,5 +1,5 @@
 <%# navbar %>
-<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top my-0 py-0">
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top my-0 p-0">
   <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -14,7 +14,7 @@
         <% end %>
       <% else  %>
         <%= link_to profile_path do %>
-        <%= image_tag "profile.png", width: 35, height: 35, crop: :fill, class: "avatar my-3 mx-2" %>
+        <%= image_tag "profile.png", width: 35, height: 40, crop: :fill, class: "avatar my-3 mx-2" %>
         <% end %>
       <% end %>
     <% else %>
@@ -23,7 +23,11 @@
     <div class="nav-cart">
       <%= link_to cart_path, class: "navbar-cart my-3" do %>
         <i class="fas fa-shopping-cart" style="font-size:1.8em;"></i>
+        <% if user_signed_in? %>
+        <span class="badge badge-pill badge-info cart-badge"><%= current_user.orders.where(confirmed: false).inject(0) { |sum, o| sum + o.quantity } %> </span>
+        <% else %>
         <span class="badge badge-pill badge-info cart-badge">0</span>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -31,12 +35,12 @@
   <%= render 'shared/searchbox' %>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <%= link_to 'Products', home_products_path, class: 'nav-link'  %>
-      </li>
+    <ul class="navbar-nav mr-auto pl-2">
       <li class="nav-item">
         <%= link_to 'Tutorials', home_videos_path, class: 'nav-link'  %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Products', home_products_path, class: 'nav-link'  %>
       </li>
       <li class="nav-item">
         <%= link_to 'Articles', articles_path, class: 'nav-link'  %>
@@ -46,6 +50,9 @@
       </li>
       <li class="nav-item">
         <%= link_to 'Brands', brands_path, class: 'nav-link'  %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Admin', admin_path, class: 'nav-link'  %>
       </li>
       <% if user_signed_in? %>
       <li class="nav-item">

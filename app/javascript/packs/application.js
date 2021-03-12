@@ -34,7 +34,7 @@ import { initTabImageOnClick } from '../components/_tab_images';
 
 import { initAddEventListenerToVideo } from '../components/_video_state_listener';
 
-import { vidOrderAlert } from './vidorderalert';
+import { vidOrderAlert } from '../components/_vidorderalert';
 
 import { sortFunction } from '../components/_sort';
 
@@ -42,7 +42,7 @@ import { initVideoJump } from '../components/_init_video_jump';
 import { initRemoveOrderFromCartAlert } from '../components/_remove_order_alert';
 
 import { scrollNav } from '../components/_scrollNav';
-import { addToCart } from '../components/_cart_badge';
+//import { addToCart } from '../components/_cart_badge';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -57,17 +57,17 @@ document.addEventListener('turbolinks:load', () => {
   initTabImageOnClick();
   vidOrderAlert ();
   initVideoJump();
-  initRemoveOrderFromCartAlert();
-  scrollNav();
+  // scrollNav();
   sortFunction();
-  addToCart();
+  //addToCart();
+  initRemoveOrderFromCartAlert();
 
   document.addEventListener('turbolinks:request-start', () => {
     const spinner = document.querySelector('#spinner');
-    spinner.style.display = 'flex';
+    spinner.style.display = 'block';
   });
 
-  document.addEventListener('turbolinks:request-end', () => {
+  document.addEventListener('turbolinks:render', () => {
     const spinner = document.querySelector('#spinner');
     spinner.style.display = 'none';
   });

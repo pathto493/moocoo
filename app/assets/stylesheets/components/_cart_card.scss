@@ -3,13 +3,22 @@
   //justify-content: space-between;
   //align-items: center;
   font-size: 0.9rem;
+  border-bottom: 1px solid lightgrey;
 
   .card-cart-description {
-    font-size: 0.6rem;
+    button {
+      width: 25px;
+      padding: 0px;
+      font-size: 0.9rem;
+    }
+    .card-cart-quantity {
+      border: 1px solid darkgrey;
+    }
   }
 
   img {
     max-width: 100%;
+    border-radius: 5px;
   }
 
   .remove-order-from-cart {
