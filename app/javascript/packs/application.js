@@ -42,7 +42,7 @@ import { initVideoJump } from '../components/_init_video_jump';
 import { initRemoveOrderFromCartAlert } from '../components/_remove_order_alert';
 
 import { scrollNav } from '../components/_scrollNav';
-import { addToCart } from '../components/_cart_badge';
+//import { addToCart } from '../components/_cart_badge';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -59,7 +59,7 @@ document.addEventListener('turbolinks:load', () => {
   initVideoJump();
   // scrollNav();
   sortFunction();
-  addToCart();
+  //addToCart();
   initRemoveOrderFromCartAlert();
 
   document.addEventListener('turbolinks:request-start', () => {

@@ -1,3 +1,11 @@
+.profile {
+  .profile-name {
+    font-family: $headers-font;
+    font-size: 1.5em;
+    font-weight: 600;
+  }
+}
+
 .profile-tab .home-tab {
   font-family: $body-font;
 }
