@@ -1,9 +1,11 @@
-<div class="list-group container" style="padding-left: 20px;" id="forum-anchor">
-  <h1 class="title">Topic: <%= @topic.name %></h1>
+<div class="list-group container" id="forum-anchor">
+  <div style="display:flex; justify-content: space-between;">
+    <p class="title" >Topic: <%= @topic.name %></p>
+    <div><a href="#add-message" style=" display: inline-block; white-space: pre;" class="btn btn-primary">Add a Post</a></div>
+  </div>
   <br>
   <div style="display: flex; justify-content: space-between; margin-bottom: 0px;">
-    <h5 style="align-self: flex-end ">Messages</h5>
-    <a href="#add-message" class="btn btn-primary">Add a message</a>
+    <h5 style="align-self: flex-end ">Posts</h5>
   </div>
 
   <% @messages.each do |message| %>
@@ -14,7 +16,16 @@
     </div>
     <p class="mb-1 mt-2" style="font-size: 13px;"><%= message.content %></p>
     <p></p>
-    <p class="mb-1 mt-2" style="font-size: 13px;">- <%= message.user.first_name %> <%= message.user.last_name %></p>
+    <div style ="display: flex;">
+      <% if message.user.photo.attached? %>
+      <div style="margin-top: 3px;">
+        <%= cl_image_tag(message.user.photo.key,:width=>14, :height=>14, :gravity=>"faces") %>
+      </div>
+      <% else %>
+        <img src="http://simpleicon.com/wp-content/uploads/multy-user-256x256.png" alt="standardPic" style="width: 14px; object-fit: contain;">
+      <% end %>
+      <p class="mb-1 mt-2" style="font-size: 13px;">&nbsp<%= message.user.first_name %> <%= message.user.last_name %></p>
+    </div>
   </a>
   <% end %>
 </div>
@@ -29,3 +40,4 @@
       <% end %>
   </div>
 </div>
+
