@@ -1,10 +1,10 @@
-<div class="home-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path 'home-banner.jpg' %> );">
+<div class="home-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path 'home-banner.jpg' %> ); position:relative;">
   <div class="container">
     <div class="home-banner-title">Unleash your beauty</div>
     <p>Learn and shop with <b>moocoo</b><br>
     Because <i>your face</i> is <i>everything</i></p>
     <div class="my-4">
-      <p>Getting started?</p>
+      <p>Get started!</p>
       <p class="text-center"><%= link_to "Discover tutorials", videos_path, class: "btn btn-cart mt-2" %>
       <%= link_to "Discover products", products_path, class: "btn btn-cart mt-2" %></p>
     </div>
@@ -13,28 +13,31 @@
 <div class="home-second-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path 'f1.jpg' %> );">
   <div class="container">
     <div class="home-banner-title">Popular Make-up Tutorials</div>
-    <p>Personally curated for the one and only <i>you</i></p>
+    <p>Specially curated for <i>you</i></p>
     <p class="text-center"><%= link_to "Discover tutorials", videos_path, class: "btn btn-cart" %></p>
   </div>
 </div>
 <div class="home-second-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path 'm10.jpg' %> );">
   <div class="container">
-    <div class="home-banner-title">Diverse Make-up Products</div>
-    <p>Widely available just for <i>you</i></p>
+    <div class="home-banner-title">Cult Favourite Products</div>
+    <p>Made available just for <i>you</i></p>
     <p class="text-center"><%= link_to "Discover products", products_path, class: "btn btn-cart" %></p>
   </div>
 </div>
 <div class="home-second-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path 'm11.jpg' %> );">
   <div class="container">
-    <div class="home-banner-title">On-demand Articles</div>
-    <p>Check our numerous articles to enhance <i>your</i> beauty</p>
+    <div class="home-banner-title">Latest Articles</div>
+    <p>The latest on <i>your</i> beauty journey</p>
     <p class="text-center"><%= link_to "Discover articles", articles_path, class: "btn btn-cart" %></p>
   </div>
 </div>
 <div class="home-second-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path 'm3.jpg' %> );">
   <div class="container">
     <div class="home-banner-title">Got questions?</div>
-    <p>Post something on our forums</p>
+    <p>We've got your back</p>
     <p class="text-center"><%= link_to "Discover forums", forums_path, class: "btn btn-cart" %></p>
+  </div>
+  <div class="padded-end">
+
   </div>
 </div>

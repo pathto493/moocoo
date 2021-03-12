@@ -2,20 +2,28 @@
   <div class="row">
     <div class="col-12" data-controller="video">
 
-<!--Alternative for above drop-down -->
-      <div class="d-flex justify-content-between" style="background-color:white;">
-          <button type="button" class="btn btn-primary mx-2" name="eyes" data-action="video#show">EYES</button>
-          <button type="button" class="btn btn-primary mx-2" name="lips" data-action="video#show">LIPS</button>
-          <button type="button" class="btn btn-primary mx-2" name="skin" data-action="video#show">SKIN</button>
-          <button type="button" class="btn btn-primary mx-2" name="natural" data-action="video#show">NATURAL</button>
+<!--Filters -->
+      <div class="row no-gutters">
+        <div class="col-3">
+          <p><strong>Filter by:</strong></p>
+        </div>
+        <div class="col-9 d-flex justify-content-between" style="background-color:white;">
+            <button type="button" class="btn btn-primary btn-block mx-1" name="eyes" data-action="video#show">EYES</button>
+            <button type="button" class="btn btn-primary btn-block mx-1 mt-0" name="lips" data-action="video#show">LIPS</button>
+            <button type="button" class="btn btn-primary btn-block mx-1 mt-0" name="skin" data-action="video#show">SKIN</button>
+        </div>
       </div>
       <!-- Sort Control buttons -->
-      <div class="d-flex justify-content-around my-1" style="background-color:white;" id="myBtnContainer">
-        <span class="sort-div">Sort by:</span>
-        <label><input type="radio" class="btn-filter mr-1" data-tabs="all" checked><i></i>All</label>
-        <label><input type="radio" class="btn-filter mr-1" data-tabs="creator"><i></i>Creator</label>
-        <label><input type="radio" class="btn-filter mr-1" data-tabs="likes"><i></i>Likes</label>
-        <label><input type="radio" class="btn-filter mr-1" data-tabs="views"><i></i>Views</label>
+      <div class="row mt-2">
+        <div class="col-3">
+          <p class="sort-div"><strong>Sort by:</strong></p>
+        </div>
+        <div class="col-9 d-flex justify-content-between my-1" style="background-color:white;" id="myBtnContainer">
+          <label><input type="radio" class="btn-filter mr-1" data-tabs="all" checked><i></i>All</label>
+          <label><input type="radio" class="btn-filter mr-1" data-tabs="creator"><i></i>Creator</label>
+          <label><input type="radio" class="btn-filter mr-1" data-tabs="likes"><i></i>Likes</label>
+          <label><input type="radio" class="btn-filter mr-1" data-tabs="views"><i></i>Views</label>
+        </div>
       </div>
 <!--This is template for videos to appear -->
       <template id="card-template">
