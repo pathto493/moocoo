@@ -5,7 +5,8 @@
     <div class="col-12 product-show-info">
       <div class="row mt-3">
         <div class="col-8">
-          <h4><%= @product.name %></h4>
+          <h4><strong><%= @product.brand.name %></strong></h4>
+          <h6><%= @product.name %></h6>
         </div>
         <div class="col-4 text-right">
           <h4><strong><%= humanized_money_with_symbol @product.price %></strong></h4>

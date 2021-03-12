@@ -67,6 +67,14 @@ const initAddEventListenerToVideo = () => {
 
     const clickAddToCart = (e) => {
       e.preventDefault();
+      console.log(e.currentTarget);
+      // For shaking animation after clicked
+      e.currentTarget.classList.add("apply-shake");
+
+      e.currentTarget.addEventListener("animationend", () => {
+        e.currentTarget.classList.remove("apply-shake");
+      })
+
       const productId = parseInt(e.currentTarget.dataset.productId, 10);
       // console.log(e.currentTarget.parentElement.parentElement);
       // fetch url!!

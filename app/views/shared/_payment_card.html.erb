@@ -1,0 +1,25 @@
+<div class="row no-gutters card-cart bg-white py-3 rounded" id="order-<%= order.id %>">
+  <div class="col-3 card-cart-img-container">
+    <%= cl_image_tag order.product.photo_id[0], width: 400, crop: :fill %>
+  </div>
+  <div class="col-6 card-cart-name text-left px-1">
+    <div class="h-100 d-flex flex-column justify-content-between">
+      <div>
+        <div><strong><%= order.product.brand.name %></strong></div>
+        <div><%= link_to order.product.name, product_path(order.product) %></div>
+      </div>
+      <div class="card-cart-description d-flex mt-2">
+        <div class="pr-1">Qty :</div>
+
+        <div class="card-cart-quantity px-3"><%= order.quantity %></div>
+
+      </div>
+    </div>
+  </div>
+  <div class="card-cart-price col-2">
+    <%= humanized_money_with_symbol (order.quantity * order.product.price) %>
+  </div>
+  <div class="col-1 text-right">
+
+  </div>
+</div>
