@@ -9,8 +9,8 @@
           <div class="video-show-info d-flex justify-content-between">
             <div><%= vid.creator %></div>
             <div>
-              <i class="fa fa-thumbs-up" aria-hidden="true"></i> <%=  number_with_delimiter(vid.likes, :delimiter => ',') %> &nbsp
-              <i class="fa fa-eye" aria-hidden="true"></i> <%= number_with_delimiter(vid.views, :delimiter => ',') %>
+              <i class="fa fa-thumbs-up" aria-hidden="true"></i> <%=  number_to_human(vid.likes, precision: 1, significant: false, units: { thousand: "k", million: "m", billion: "b" }) %> &nbsp
+              <i class="fa fa-eye" aria-hidden="true"></i> <%=  number_to_human(vid.views, precision: 1, significant: false, units: { thousand: "k", million: "m", billion: "b" }) %>
             </div>
           </div>
         </div>
