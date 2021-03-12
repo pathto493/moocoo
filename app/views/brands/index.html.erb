@@ -1,6 +1,7 @@
 
   <div class="container index-brand-container">
     <h3>Brand Partners</h3>
+    <%#= to show the brand page with 2 of the items being shown as well %>
     <% @brands.each do |brand| %>
       <div class="row">
         <div class="col-12">
@@ -9,6 +10,7 @@
           <% end %>
         </div>
       </div>
+     <%= @products.where(brand_id: brand.id).name %>
+     <%raise %>
     <% end  %>
   </div>
-
