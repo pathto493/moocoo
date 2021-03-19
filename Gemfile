@@ -34,7 +34,7 @@ gem 'devise'
 # For video seeding
 gem 'pexels'
 # For uploading and storing of photos
-gem 'open-uri' # Youtube API
+# gem 'open-uri' # Youtube API
 gem 'cloudinary'
 # gem 'activestorage-cloudinary-service'
 # For creating seeds
